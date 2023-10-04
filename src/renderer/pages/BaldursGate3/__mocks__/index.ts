@@ -1,1 +1,1 @@
-export { default } from "./BaldursGate3.mock";
+export { BaldursGate3Mock as BaldursGate3 } from "./BaldursGate3.mock";

@@ -1,1 +1,1 @@
-export { default } from "./ModFileList.mock";
+export { ModFileListMock as ModFileList } from "./ModFileList.mock";
