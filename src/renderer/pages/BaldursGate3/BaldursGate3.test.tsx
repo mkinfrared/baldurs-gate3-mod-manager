@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 
 import { BaldursGate3 } from "./BaldursGate3";
 
+jest.mock("renderer/widgets/ui");
+
 describe("<BaldursGate3 />", () => {
   const Component = <BaldursGate3 />;
 

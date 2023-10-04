@@ -5,57 +5,6 @@ exports[`<BaldursGate3 /> should match the snapshot 1`] = `
   <div
     class="BaldursGate3"
     data-testid="BaldursGate3"
-  >
-    <div
-      class="InstalledModsSection"
-      data-testid="InstalledModsSection"
-    >
-      <h3
-        class="Heading"
-        data-testid="Heading"
-      >
-        Installed Mods
-      </h3>
-      <div
-        class="InstalledModsList"
-        data-testid="InstalledModsList"
-      >
-        <table
-          class="Table DataTable table"
-          data-testid="Table"
-        >
-          <thead>
-            <tr>
-              <th>
-                Active
-              </th>
-              <th>
-                Name
-              </th>
-              <th>
-                Version
-              </th>
-            </tr>
-          </thead>
-          <tbody />
-        </table>
-      </div>
-    </div>
-    <div
-      class="ModFileSection"
-      data-testid="ModFileSection"
-    >
-      <h3
-        class="Heading"
-        data-testid="Heading"
-      >
-        Modification Files
-      </h3>
-      <div
-        class="ModFileList"
-        data-testid="ModFileList"
-      />
-    </div>
-  </div>
+  />
 </div>
 `;

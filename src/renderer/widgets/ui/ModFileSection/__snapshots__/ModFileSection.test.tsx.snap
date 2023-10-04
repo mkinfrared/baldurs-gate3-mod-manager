@@ -12,10 +12,6 @@ exports[`<ModFileSection /> should match the snapshot 1`] = `
     >
       Modification Files
     </h3>
-    <div
-      class="ModFileList"
-      data-testid="ModFileList"
-    />
   </div>
 </div>
 `;
