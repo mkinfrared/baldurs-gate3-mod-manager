@@ -1,3 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should match the snapshot 1`] = `<div />`;
+exports[`App should match the snapshot 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <aside>
+      <div
+        class="AppNavBar"
+        data-testid="AppNavBar"
+      >
+        AppNavBar works!!
+      </div>
+    </aside>
+    <main />
+  </div>
+</div>
+`;

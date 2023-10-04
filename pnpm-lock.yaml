@@ -35,6 +35,12 @@ dependencies:
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
+  node-stream-zip:
+    specifier: ^1.15.0
+    version: 1.15.0
+  node-unrar-js:
+    specifier: ^2.0.0
+    version: 2.0.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -12797,6 +12803,16 @@ packages:
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
     dev: true
+
+  /node-stream-zip@1.15.0:
+    resolution: {integrity: sha512-LN4fydt9TqhZhThkZIVQnF9cwjU3qmUH9h78Mx/K7d3VvfRqqwthLwJEUOEL0QPZ0XQmNN7be5Ggit5+4dq3Bw==}
+    engines: {node: '>=0.12.0'}
+    dev: false
+
+  /node-unrar-js@2.0.0:
+    resolution: {integrity: sha512-jYAAdR/+aUHGyBIKdSnhbsO4juwPPlKk5FPnd/RAVL7SlF+6PippzDihJa4CU4w3Q4nosg99XcGuVWE/Qorxpg==}
+    engines: {node: '>=10.0.0'}
+    dev: false
 
   /nopt@6.0.0:
     resolution: {integrity: sha512-ZwLpbTgdhuZUnZzjd7nb1ZV+4DoiC6/sfiVKok72ym/4Tlf+DFdlHYmT2JPmcNNWV6Pi3SDf1kT+A4r9RTuT9g==}

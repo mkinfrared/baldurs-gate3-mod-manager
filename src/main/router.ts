@@ -1,9 +1,11 @@
-import { userController } from "./controllers";
+import { modController, userController } from "./controllers";
 import { t } from "./shared/lib/helpers";
 
 const appRouter = t.router({
-  getAllUsers: userController.getAllUsers,
-  createUser: userController.createUser,
+  user: t.router({ ...userController }),
+  mod: t.router({
+    ...modController,
+  }),
 });
 
 export type AppRouter = typeof appRouter;
