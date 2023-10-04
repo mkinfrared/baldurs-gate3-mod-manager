@@ -1,0 +1,13 @@
+@import "../../styles/button-base.scss";
+
+.Button {
+  @extend %button-base;
+
+  .content {
+    align-items: center;
+    display: inline-flex;
+    gap: 1rem;
+    max-height: var(--text-height);
+    white-space: nowrap;
+  }
+}

@@ -20,6 +20,7 @@ module.exports = {
   moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],
   moduleNameMapper: {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+    "^lodash-es$": "lodash",
   },
   setupFiles: [
     "./.erb/scripts/check-build-exists.ts",
@@ -32,8 +33,15 @@ module.exports = {
     url: "http://localhost/",
   },
   transform: {
-    "\\.(ts|tsx|js|jsx)$": "ts-jest",
-    "^.+\\.svg$": "jest-transformer-svg",
+    "\\.(ts|tsx|js|jsx)$": [
+      "ts-jest",
+      {
+        babelConfig: {
+          plugins: ["babel-plugin-transform-import-meta"],
+        },
+      },
+    ],
+    "^.+\\.svg$": "<rootDir>/config/jest/svgTransformer.js",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/config/jest/fileTransformer.js",
   },

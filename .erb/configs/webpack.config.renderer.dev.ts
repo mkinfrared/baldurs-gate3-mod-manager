@@ -7,10 +7,12 @@ import path from "path";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import chalk from "chalk";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import postcssPresetEnv from "postcss-preset-env";
 import webpack from "webpack";
 import { merge } from "webpack-merge";
 
 import checkNodeEnv from "../scripts/check-node-env";
+import getLocalIdent from "../scripts/getLocalIdent";
 
 import baseConfig from "./webpack.config.base";
 import webpackPaths from "./webpack.paths";
@@ -23,6 +25,11 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 1212;
 const manifest = path.resolve(webpackPaths.dllPath, "renderer.json");
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const skipDLLs =
   module.parent?.filename.includes("webpack.config.renderer.dev.dll") ||
@@ -68,26 +75,118 @@ const configuration: webpack.Configuration = {
 
   module: {
     rules: [
+      // "postcss" loader applies autoprefixer to our CSS.
+      // "css" loader resolves paths in CSS and adds assets as dependencies.
+      // "style" loader turns CSS into JS modules that inject <style> tags.
+      // In production, we use MiniCSSExtractPlugin to extract that CSS
+      // to a file, but in development "style" loader enables hot editing
+      // of CSS.
+      // By default we support CSS Modules with the extension .module.css
       {
-        test: /\.s?(c|a)ss$/,
+        test: cssRegex,
+        exclude: cssModuleRegex,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: cssModuleRegex,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
+              esModule: true,
+              importLoaders: 2,
+              modules: {
+                auto: true,
+                getLocalIdent,
+              },
             },
           },
-          "sass-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
         ],
-        include: /\.module\.s?(c|a)ss$/,
       },
       {
-        test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-        exclude: /\.module\.s?(c|a)ss$/,
+        test: sassModuleRegex,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              esModule: true,
+              importLoaders: 2,
+              modules: {
+                auto: true,
+                getLocalIdent,
+              },
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", postcssPresetEnv({ stage: 0 })],
+              },
+            },
+          },
+          {
+            loader: "resolve-url-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: sassRegex,
+        exclude: sassModuleRegex,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", postcssPresetEnv({ stage: 0 })],
+              },
+            },
+          },
+          {
+            loader: "resolve-url-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+              },
+            },
+          },
+        ],
       },
       // Fonts
       {

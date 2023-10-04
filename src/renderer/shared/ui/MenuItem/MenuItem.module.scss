@@ -1,0 +1,34 @@
+@use "../../styles/vars" as v;
+
+.MenuItem {
+  --background: transparent;
+  --color: var(--black);
+
+  background-color: var(--background);
+  color: var(--color);
+  cursor: pointer;
+  font-size: 1.6rem;
+  list-style: none;
+  padding: 1rem 1.6rem;
+  transition: background-color 250ms var(--ease-4);
+
+  &[aria-selected="true"] {
+    --background: var(--primary-6);
+
+    @media (prefers-color-scheme: light) {
+      --background: var(--primary-4);
+    }
+  }
+
+  &:hover {
+    --background: var(--primary-7);
+
+    @media (prefers-color-scheme: light) {
+      --background: var(--primary-3);
+    }
+  }
+
+  &:focus-visible {
+    @include v.focus-visible;
+  }
+}

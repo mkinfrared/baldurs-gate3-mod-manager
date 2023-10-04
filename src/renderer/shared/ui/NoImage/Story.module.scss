@@ -1,0 +1,32 @@
+.Story {
+  > div {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    &:nth-child(1) {
+      height: 32px;
+      width: 32px;
+    }
+
+    &:nth-child(2) {
+      height: 64px;
+      width: 64px;
+    }
+
+    &:nth-child(3) {
+      height: 500px;
+      width: 300px;
+    }
+
+    &:nth-child(4) {
+      height: 300px;
+      width: 500px;
+    }
+
+    &:nth-child(5) {
+      height: 480px;
+      width: 768px;
+    }
+  }
+}

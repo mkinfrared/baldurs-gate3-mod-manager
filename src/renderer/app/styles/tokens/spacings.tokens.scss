@@ -1,0 +1,15 @@
+/* stylelint-disable */
+
+:root {
+  /**
+  * @tokens Spacings
+  * @presenter Spacing
+  */
+  @for $i from 1 through 10 {
+    --spacing-#{$i}: #{$i * 0.2}rem;
+  }
+  --spacing-11: 2.4rem;
+  --spacing-12: 3.2rem;
+  --spacing-13: 4.8rem;
+  --spacing-14: 6.4rem;
+}

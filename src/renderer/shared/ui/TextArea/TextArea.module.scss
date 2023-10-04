@@ -1,0 +1,21 @@
+@import "../../styles/input-base";
+
+.TextArea {
+  @extend %input-base;
+
+  .counter {
+    @extend %input-base, .label;
+
+    margin-inline-start: auto;
+    width: fit-content;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .labelBlock {
+    align-items: baseline;
+    display: flex;
+  }
+}

@@ -1,35 +1,54 @@
-type Styles = Record<string, string>;
-
-declare module "*.svg" {
-  import React = require("react");
-
-  export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
-
-  const content: string;
-  export default content;
+declare module "*.avif" {
+  const src: string;
+  export default src;
 }
 
-declare module "*.png" {
-  const content: string;
-  export default content;
+declare module "*.bmp" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.gif" {
+  const src: string;
+  export default src;
 }
 
 declare module "*.jpg" {
-  const content: string;
-  export default content;
+  const src: string;
+  export default src;
 }
 
-declare module "*.scss" {
-  const content: Styles;
-  export default content;
+declare module "*.jpeg" {
+  const src: string;
+  export default src;
 }
 
-declare module "*.sass" {
-  const content: Styles;
-  export default content;
+declare module "*.png" {
+  const src: string;
+  export default src;
 }
 
-declare module "*.css" {
-  const content: Styles;
-  export default content;
+declare module "*.webp" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.svg" {
+  const src: FC<SVGProps<SVGSVGElement>>;
+  export default src;
+}
+
+declare module "*.module.css" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.scss" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.sass" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
 }

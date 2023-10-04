@@ -7,6 +7,7 @@ import path from "path";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import postcssPresetEnv from "postcss-preset-env";
 import TerserPlugin from "terser-webpack-plugin";
 import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
@@ -14,6 +15,7 @@ import { merge } from "webpack-merge";
 
 import checkNodeEnv from "../scripts/check-node-env";
 import deleteSourceMaps from "../scripts/delete-source-maps";
+import getLocalIdent from "../scripts/getLocalIdent";
 
 import baseConfig from "./webpack.config.base";
 import webpackPaths from "./webpack.paths";
@@ -21,6 +23,11 @@ import webpackPaths from "./webpack.paths";
 checkNodeEnv("production");
 
 deleteSourceMaps();
+
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const configuration: webpack.Configuration = {
   devtool: "source-map",
@@ -43,25 +50,110 @@ const configuration: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
+        test: cssRegex,
+        exclude: cssModuleRegex,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: cssModuleRegex,
+        use: [
+          MiniCssExtractPlugin,
+          {
+            loader: "css-loader",
+            options: {
+              esModule: true,
+              importLoaders: 2,
+              modules: {
+                auto: true,
+                getLocalIdent,
+              },
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: sassModuleRegex,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
+              esModule: true,
+              importLoaders: 2,
+              modules: {
+                auto: true,
+                getLocalIdent,
+              },
             },
           },
-          "sass-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", postcssPresetEnv({ stage: 0 })],
+              },
+            },
+          },
+          {
+            loader: "resolve-url-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+              },
+            },
+          },
         ],
-        include: /\.module\.s?(c|a)ss$/,
       },
       {
-        test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-        exclude: /\.module\.s?(c|a)ss$/,
+        test: sassRegex,
+        exclude: sassModuleRegex,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", postcssPresetEnv({ stage: 0 })],
+              },
+            },
+          },
+          {
+            loader: "resolve-url-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+              },
+            },
+          },
+        ],
       },
       // Fonts
       {

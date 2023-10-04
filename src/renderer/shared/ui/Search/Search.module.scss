@@ -1,0 +1,16 @@
+@import "../../styles/input-base";
+@import "../../styles/vars";
+
+.Search {
+  @extend %input-base;
+
+  .container {
+    input {
+      cursor: pointer;
+    }
+  }
+
+  .container:focus-visible {
+    @include focus-visible;
+  }
+}

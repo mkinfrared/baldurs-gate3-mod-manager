@@ -1,0 +1,21 @@
+.Table {
+  --background: var(--secondary-8);
+  --border-color: var(--secondary-7);
+
+  @media (prefers-color-scheme: light) {
+    --background: var(--secondary-2);
+    --border-color: var(--secondary-3);
+  }
+
+  background-color: var(--background);
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: var(--border-color);
+  font-size: 16px;
+
+  th,
+  td {
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+  }
+}

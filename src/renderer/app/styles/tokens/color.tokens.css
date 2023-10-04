@@ -1,0 +1,93 @@
+/* stylelint-disable */
+:root {
+  /**
+  * @tokens Colors
+  * @presenter Color
+  */
+  /**
+  * @primary
+  */
+  --primary-hue: 290;
+  --primary-1: oklch(99% 0.05 var(--primary-hue));
+  --primary-2: oklch(90% 0.1 var(--primary-hue));
+  --primary-3: oklch(80% 0.2 var(--primary-hue));
+  --primary-4: oklch(72% 0.25 var(--primary-hue));
+  --primary-5: oklch(67% 0.31 var(--primary-hue));
+  --primary-6: oklch(50% 0.27 var(--primary-hue));
+  --primary-7: oklch(35% 0.25 var(--primary-hue));
+  --primary-8: oklch(25% 0.2 var(--primary-hue));
+  --primary-9: oklch(13% 0.2 var(--primary-hue));
+  --primary-10: oklch(5% 0.1 var(--primary-hue));
+  /**
+  * @secondary
+  */
+  --secondary-hue: 200;
+  --secondary-1: oklch(99% 0.05 var(--secondary-hue));
+  --secondary-2: oklch(90% 0.1 var(--secondary-hue));
+  --secondary-3: oklch(80% 0.2 var(--secondary-hue));
+  --secondary-4: oklch(72% 0.25 var(--secondary-hue));
+  --secondary-5: oklch(67% 0.31 var(--secondary-hue));
+  --secondary-6: oklch(50% 0.27 var(--secondary-hue));
+  --secondary-7: oklch(35% 0.25 var(--secondary-hue));
+  --secondary-8: oklch(25% 0.2 var(--secondary-hue));
+  --secondary-9: oklch(13% 0.2 var(--secondary-hue));
+  --secondary-10: oklch(5% 0.1 var(--secondary-hue));
+  /**
+  * @success
+  */
+  --success-hue: 140;
+  --success-1: oklch(99% 0.05 var(--success-hue));
+  --success-2: oklch(90% 0.1 var(--success-hue));
+  --success-3: oklch(80% 0.2 var(--success-hue));
+  --success-4: oklch(72% 0.25 var(--success-hue));
+  --success-5: oklch(67% 0.31 var(--success-hue));
+  --success-6: oklch(50% 0.27 var(--success-hue));
+  --success-7: oklch(35% 0.25 var(--success-hue));
+  --success-8: oklch(25% 0.2 var(--success-hue));
+  --success-9: oklch(13% 0.2 var(--success-hue));
+  --success-10: oklch(5% 0.1 var(--success-hue));
+  /**
+  * @danger
+  */
+  --danger-hue: 20;
+  --danger-1: oklch(99% 0.05 var(--danger-hue));
+  --danger-2: oklch(90% 0.1 var(--danger-hue));
+  --danger-3: oklch(80% 0.2 var(--danger-hue));
+  --danger-4: oklch(72% 0.25 var(--danger-hue));
+  --danger-5: oklch(67% 0.31 var(--danger-hue));
+  --danger-6: oklch(50% 0.27 var(--danger-hue));
+  --danger-7: oklch(35% 0.25 var(--danger-hue));
+  --danger-8: oklch(25% 0.2 var(--danger-hue));
+  --danger-9: oklch(13% 0.2 var(--danger-hue));
+  --danger-10: oklch(5% 0.1 var(--danger-hue));
+  /**
+  * @warning
+  */
+  --warning-hue: 80;
+  --warning-1: oklch(99% 0.05 var(--warning-hue));
+  --warning-2: oklch(90% 0.1 var(--warning-hue));
+  --warning-3: oklch(80% 0.2 var(--warning-hue));
+  --warning-4: oklch(72% 0.25 var(--warning-hue));
+  --warning-5: oklch(67% 0.31 var(--warning-hue));
+  --warning-6: oklch(50% 0.27 var(--warning-hue));
+  --warning-7: oklch(35% 0.25 var(--warning-hue));
+  --warning-8: oklch(25% 0.2 var(--warning-hue));
+  --warning-9: oklch(13% 0.2 var(--warning-hue));
+  --warning-10: oklch(5% 0.1 var(--warning-hue));
+  /**
+  * @info
+  */
+  --info-hue: 235;
+  --info-1: oklch(99% 0.05 var(--info-hue));
+  --info-2: oklch(90% 0.1 var(--info-hue));
+  --info-3: oklch(80% 0.2 var(--info-hue));
+  --info-4: oklch(72% 0.25 var(--info-hue));
+  --info-5: oklch(67% 0.31 var(--info-hue));
+  --info-6: oklch(50% 0.27 var(--info-hue));
+  --info-7: oklch(35% 0.25 var(--info-hue));
+  --info-8: oklch(25% 0.2 var(--info-hue));
+  --info-9: oklch(13% 0.2 var(--info-hue));
+  --info-10: oklch(5% 0.1 var(--info-hue));
+}
+
+/*# sourceMappingURL=color.tokens.css.map */

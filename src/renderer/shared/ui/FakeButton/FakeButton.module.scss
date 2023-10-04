@@ -1,0 +1,10 @@
+@use "../../styles/_vars.scss" as v;
+
+.FakeButton {
+  height: 100%;
+  width: 100%;
+
+  &:focus-visible {
+    @include v.focus-visible;
+  }
+}

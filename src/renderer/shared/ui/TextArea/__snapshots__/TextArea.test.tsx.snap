@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea /> should match the snapshot 1`] = `
+<div>
+  <label
+    class="TextArea"
+    data-testid="TextArea"
+  >
+    <div
+      class="labelBlock"
+    >
+      <p
+        class="Text counter"
+        data-testid="Text"
+      />
+    </div>
+    <div
+      class="container textAreaContainer"
+    >
+      <textarea
+        rows="4"
+      />
+    </div>
+    <div
+      class="errorContainer"
+    >
+      <p
+        class="Text error"
+        data-testid="Text"
+      />
+    </div>
+  </label>
+</div>
+`;

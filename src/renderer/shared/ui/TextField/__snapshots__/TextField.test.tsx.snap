@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> should match the snapshot 1`] = `
+<div>
+  <label
+    class="TextField"
+    data-testid="TextField"
+  >
+    <div
+      class="container"
+    >
+      <input
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="errorContainer"
+    >
+      <p
+        class="Text error small"
+        data-testid="Text"
+      />
+    </div>
+  </label>
+</div>
+`;
