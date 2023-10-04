@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModFileToggle /> should match the snapshot 1`] = `
+<div>
+  <label
+    class="Checkbox ModFileToggler"
+    data-testid="Checkbox"
+  >
+    <input
+      checked=""
+      class="input"
+      type="checkbox"
+      value=""
+    />
+    <div
+      class="container"
+    >
+      <div
+        class="box"
+      >
+        <svg
+          class="tick"
+        >
+          tick.svg
+        </svg>
+      </div>
+    </div>
+  </label>
+</div>
+`;

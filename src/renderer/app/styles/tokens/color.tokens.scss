@@ -1,0 +1,44 @@
+/* stylelint-disable */
+$hues: (
+  "primary": 290,
+  "secondary": 200,
+  "success": 140,
+  "danger": 20,
+  "warning": 80,
+  "info": 235,
+);
+
+$lc-values: (
+  99%: 0.05,
+  90%: 0.1,
+  80%: 0.2,
+  72%: 0.25,
+  67%: 0.31,
+  50%: 0.27,
+  35%: 0.25,
+  25%: 0.2,
+  13%: 0.2,
+  5%: 0.1,
+);
+
+:root {
+  /**
+  * @tokens Colors
+  * @presenter Color
+  */
+  @each $name, $hue-value in $hues {
+    $i: 1;
+    /**
+    * @#{$name}
+    */
+    $hue-name: --#{$name}-hue;
+
+    #{$hue-name}: #{$hue-value};
+
+    @each $light, $chroma in $lc-values {
+      --#{$name}-#{$i}: #{oklch($light $chroma var($hue-name))};
+
+      $i: $i + 1;
+    }
+  }
+}

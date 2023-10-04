@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LazyImage /> should match the snapshot 1`] = `
+<div>
+  <picture
+    class="LazyImage"
+    data-testid="LazyImage"
+  >
+    <img
+      class=""
+    />
+    <svg
+      class="skeleton"
+    >
+      skeleton.svg
+    </svg>
+  </picture>
+</div>
+`;

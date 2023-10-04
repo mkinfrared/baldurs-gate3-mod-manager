@@ -1,0 +1,14 @@
+.Text {
+  --font-size: 1.4rem;
+  --line-height: 2rem;
+
+  color: inherit;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  margin: 0;
+
+  &.small {
+    --font-size: 1.2rem;
+    --line-height: 1.8rem;
+  }
+}

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenuItem /> should match the snapshot 1`] = `
+<div>
+  <li
+    class="MenuItem"
+    data-testid="MenuItem"
+    role="option"
+    tabindex="-1"
+  />
+</div>
+`;

@@ -1,0 +1,171 @@
+/* stylelint-disable max-nesting-depth */
+@use "./_vars.scss" as v;
+
+%button-base {
+  --background: var(--primary-4);
+  --border-color: var(--primary-4);
+
+  @media (prefers-color-scheme: light) {
+    --background: var(--primary-7);
+    --border-color: var(--primary-7);
+  }
+
+  align-items: center;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: var(--primary-text-2);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 140%;
+  min-width: 4.4rem;
+  overflow: hidden;
+  padding: var(--spacing-4) var(--spacing-6);
+  -webkit-tap-highlight-color: transparent; // removes blue highlight in mobile chrome
+  transition:
+    background-color 250ms var(--ease-1),
+    border-color 250ms var(--ease-1),
+    color 250ms var(--ease-1),
+    transform 250ms var(--ease-5);
+  white-space: nowrap;
+
+  svg {
+    fill: currentcolor;
+    max-height: 1.4rem;
+    transition: fill 250ms var(--ease-1);
+    width: 1.4rem;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    @include v.focus-visible;
+  }
+
+  &.contained {
+    &:hover {
+      --background: var(--primary-5);
+      --border-color: var(--primary-5);
+
+      @media (prefers-color-scheme: light) {
+        --background: var(--primary-6);
+        --border-color: var(--primary-6);
+      }
+    }
+
+    &:active {
+      --border-color: var(--primary-6);
+
+      @media (prefers-color-scheme: light) {
+        --border-color: var(--primary-5);
+      }
+    }
+
+    &:disabled {
+      filter: grayscale(0.8);
+      pointer-events: none;
+    }
+
+    &.secondary {
+      --background: var(--secondary-4);
+      --border-color: var(--secondary-4);
+
+      @media (prefers-color-scheme: light) {
+        --background: var(--secondary-7);
+        --border-color: var(--secondary-7);
+      }
+
+      &:hover {
+        --background: var(--secondary-5);
+        --border-color: var(--secondary-5);
+
+        @media (prefers-color-scheme: light) {
+          --background: var(--secondary-6);
+          --border-color: var(--secondary-6);
+        }
+      }
+
+      &:active {
+        --border-color: var(--secondary-6);
+
+        @media (prefers-color-scheme: light) {
+          --border-color: var(--secondary-5);
+        }
+      }
+    }
+
+    &.error {
+      --background: var(--danger-4);
+      --border-color: var(--danger-4);
+
+      @media (prefers-color-scheme: light) {
+        --background: var(--danger-7);
+        --border-color: var(--danger-7);
+      }
+
+      &:hover {
+        --background: var(--danger-5);
+        --border-color: var(--danger-5);
+
+        @media (prefers-color-scheme: light) {
+          --background: var(--danger-6);
+          --border-color: var(--danger-6);
+        }
+      }
+
+      &:active {
+        --border-color: var(--danger-6);
+
+        @media (prefers-color-scheme: light) {
+          --border-color: var(--danger-5);
+        }
+      }
+    }
+
+    &.success {
+      --background: var(--success-4);
+      --border-color: var(--success-4);
+
+      @media (prefers-color-scheme: light) {
+        --background: var(--success-7);
+        --border-color: var(--success-7);
+      }
+
+      &:hover {
+        --background: var(--success-5);
+        --border-color: var(--success-5);
+
+        @media (prefers-color-scheme: light) {
+          --background: var(--success-6);
+          --border-color: var(--success-6);
+        }
+      }
+
+      &:active {
+        --border-color: var(--success-6);
+
+        @media (prefers-color-scheme: light) {
+          --border-color: var(--success-5);
+        }
+      }
+    }
+  }
+
+  &.transparent {
+    --background: transparent;
+    --border-color: transparent;
+
+    &:hover {
+    }
+  }
+}

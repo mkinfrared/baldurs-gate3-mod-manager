@@ -1,0 +1,23 @@
+/* stylelint-disable */
+:root {
+  /**
+  * @tokens Spacings
+  * @presenter Spacing
+  */
+  --spacing-1: 0.2rem;
+  --spacing-2: 0.4rem;
+  --spacing-3: 0.6rem;
+  --spacing-4: 0.8rem;
+  --spacing-5: 1rem;
+  --spacing-6: 1.2rem;
+  --spacing-7: 1.4rem;
+  --spacing-8: 1.6rem;
+  --spacing-9: 1.8rem;
+  --spacing-10: 2rem;
+  --spacing-11: 2.4rem;
+  --spacing-12: 3.2rem;
+  --spacing-13: 4.8rem;
+  --spacing-14: 6.4rem;
+}
+
+/*# sourceMappingURL=spacings.tokens.css.map */

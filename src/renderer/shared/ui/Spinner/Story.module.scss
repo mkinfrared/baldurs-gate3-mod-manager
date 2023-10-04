@@ -1,0 +1,23 @@
+.Story {
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-template-columns: repeat(4, 200px); /* stylelint-disable-line */
+
+  .loader {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+
+    p {
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

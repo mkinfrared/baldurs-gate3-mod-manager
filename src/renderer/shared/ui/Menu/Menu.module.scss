@@ -1,0 +1,30 @@
+.Menu {
+  --left: 0;
+  --top: 0;
+  --combobox-width: 0;
+  --background: var(--surface-1);
+  --border-radius: 0.4rem;
+  --border-color: var(--primary-4);
+
+  margin: 0;
+
+  &[role="listbox"] {
+    background-color: var(--background);
+    border: 0.1rem solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 32px 64px -12px rgb(85 105 135 / 8%);
+    left: var(--left);
+    max-height: 25rem;
+    max-width: 100%;
+    min-height: 4.4rem;
+    min-width: var(--combobox-width);
+    overflow-y: auto;
+    padding: 0;
+    position: fixed;
+    scroll-behavior: smooth;
+    scroll-padding-block: 0.4rem;
+    scroll-snap-type: y;
+    top: var(--top);
+    width: var(--combobox-width);
+  }
+}

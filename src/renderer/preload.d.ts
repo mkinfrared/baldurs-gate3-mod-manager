@@ -1,3 +1,5 @@
+import { FC, SVGProps } from "react";
+
 import { ElectronHandler } from "../main/preload";
 
 declare global {

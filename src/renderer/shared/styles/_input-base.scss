@@ -1,0 +1,168 @@
+%input-base {
+  --border-color: var(--primary-4);
+  --icon-color: var(--primary-4);
+  --background: transparent;
+  --left-spacing: 0;
+  --right-spacing: 0;
+
+  @media (prefers-color-scheme: light) {
+    --border-color: var(--primary-7);
+    --icon-color: var(--primary-7);
+  }
+
+  display: block;
+  width: 100%;
+
+  .label {
+    cursor: pointer;
+    margin-bottom: 0.6rem;
+    text-transform: capitalize;
+  }
+
+  .container {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.2rem;
+    font-family: Roboto, sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.8;
+    overflow: hidden;
+    padding-inline-end: var(--right-spacing);
+    padding-inline-start: var(--left-spacing);
+    position: relative;
+    transition: border-color 350ms var(--ease-4);
+    width: 100%;
+
+    :is(textarea, input) {
+      background-color: transparent;
+      border: none;
+      caret-color: var(--violet-1);
+      color: inherit;
+      font-size: 1.6rem;
+      font-weight: 400;
+      height: 100%;
+      line-height: 1;
+      overflow: hidden;
+      padding: 1.2rem 1.4rem;
+      resize: none;
+      width: 100%;
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:active,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        background-color: var(--background);
+        border: none;
+
+        // it's not possible to use transparent background color
+        // to override chrome autofill styles, so background needs
+        // to be set to a certain color, to keep the initial background
+        // transparent the transition delay can be used
+        box-shadow: 0 0 0 1000px var(--background-color) inset;
+        caret-color: var(--violet-1);
+        font-size: 1.4rem;
+        -webkit-text-fill-color: var(--black);
+        transition: background-color 7200s ease-in-out 0s; // 2 hr delay
+      }
+
+      &:-webkit-autofill::selection,
+      &::selection {
+        background-color: var(--violet-1);
+        color: var(--white);
+      }
+
+      &::placeholder {
+        color: var(--gray-72);
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .prefix,
+    .suffix {
+      aspect-ratio: 1/1;
+      color: var(--icon-color);
+      display: inline-flex;
+      height: 1.4rem;
+      justify-content: center;
+      max-width: 1.4rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      svg {
+        fill: currentcolor;
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .prefix {
+      inset-inline-start: 1.2rem;
+    }
+
+    .suffix {
+      cursor: pointer;
+      inset-inline-end: 1.2rem;
+    }
+  }
+
+  .errorContainer {
+    color: var(--danger-4);
+    height: 1.8rem;
+    margin-top: 0.6rem;
+
+    @media (prefers-color-scheme: light) {
+      color: var(--danger-7);
+    }
+
+    .error {
+      line-height: 1.8rem;
+      opacity: 1;
+      overflow: hidden;
+      padding: 0;
+      text-overflow: ellipsis;
+      transform: scaleY(1);
+      transform-origin: top;
+      transition:
+        transform 250ms var(--ease-4),
+        opacity 250ms var(--ease-4);
+      white-space: nowrap;
+
+      &:empty {
+        opacity: 0;
+        transform: scaleY(0);
+      }
+    }
+  }
+
+  &:has(.error:not(:empty)) {
+    --border-color: var(--danger-4);
+    --icon-color: var(--danger-4);
+
+    @media (prefers-color-scheme: light) {
+      --icon-color: var(--danger-7);
+      --border-color: var(--danger-7);
+    }
+  }
+
+  &:has(input:disabled) {
+    filter: grayscale(0.8);
+
+    .label {
+      cursor: default;
+    }
+  }
+
+  &:has(.prefix) {
+    --left-spacing: 2.8rem;
+  }
+
+  &:has(.suffix) {
+    --right-spacing: 2.8rem;
+  }
+}

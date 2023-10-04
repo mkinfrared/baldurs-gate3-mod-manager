@@ -1,0 +1,19 @@
+.NoImage {
+  --hue: 275;
+
+  background-color: var(--primary-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  padding: 1rem;
+  place-items: center;
+  width: 100%;
+
+  .cross {
+    aspect-ratio: 1/1;
+    fill: var(--primary-8);
+    max-width: 10rem;
+    min-width: 1rem;
+    opacity: 0.6;
+  }
+}

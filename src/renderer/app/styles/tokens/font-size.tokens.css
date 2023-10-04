@@ -1,0 +1,10 @@
+:root {
+
+  /**
+  * @tokens Font Sizes
+  * @presenter FontSize
+  */
+  --font-size-s: 0.75rem;
+  --font-size-m: 0.875rem;
+  --font-size-l: 1rem;
+}

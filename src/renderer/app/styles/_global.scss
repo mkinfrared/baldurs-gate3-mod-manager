@@ -1,0 +1,57 @@
+@import "./reset";
+@import "./fonts";
+
+@import "./tokens/animation.tokens";
+@import "./tokens/border.tokens";
+@import "./tokens/border-radius.tokens";
+@import "./tokens/color.tokens";
+@import "./tokens/easings.tokens";
+@import "./tokens/font-size.tokens";
+@import "./tokens/font-weight.tokens";
+@import "./tokens/letter-spacing.tokens";
+@import "./tokens/line-height.tokens";
+@import "./tokens/opacity.tokens";
+@import "./tokens/shadows.tokens";
+@import "./tokens/spacings.tokens";
+
+html {
+  --surface-1: var(--primary-1);
+  --surface-2: var(--primary-10);
+  --scrollbar-track-color: var(--gray-58);
+  --scrollbar-width: 0.5rem;
+  --primary-text-1: var(--primary-10);
+  --primary-text-2: var(--primary-1);
+  --secondary-text-1: var(--secondary-6);
+  --secondary-text-2: var(--secondary-4);
+
+  background-color: chocolate;
+  color: var(--primary-text-1);
+  font-family: Roboto, sans-serif;
+  font-size: 10px;
+  scrollbar-color: var(--scrollbar-track-color) transparent;
+  scrollbar-width: thin; // width is ~8-10px
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: var(--scrollbar-width);
+    width: var(--scrollbar-width);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-track-color);
+    border-radius: 0.5rem;
+  }
+
+  body {
+    background-color: var(--surface-1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --surface-1: var(--primary-10);
+    --surface-2: var(--primary-1);
+    --primary-text-1: var(--primary-1);
+    --primary-text-2: var(--primary-10);
+    --secondary-text-1: var(--secondary-4);
+    --secondary-text-2: var(--secondary-6);
+  }
+}

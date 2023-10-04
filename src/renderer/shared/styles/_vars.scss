@@ -1,0 +1,9 @@
+@mixin focus-visible {
+  outline: 0.2rem solid var(--primary-6);
+  outline-offset: 0.2rem;
+  transition: outline-offset 250ms ease-out;
+
+  &:active {
+    outline-offset: 0;
+  }
+}

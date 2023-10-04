@@ -1,0 +1,22 @@
+@import "../../styles/input-base";
+@import "../../styles/vars";
+
+.Select {
+  @extend %input-base;
+
+  .container {
+    svg {
+      transition: transform 250ms ease-in-out;
+    }
+
+    &[aria-expanded="true"] {
+      svg {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  .container:focus-visible {
+    @include focus-visible;
+  }
+}

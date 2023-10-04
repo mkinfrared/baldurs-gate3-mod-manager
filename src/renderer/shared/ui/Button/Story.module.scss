@@ -1,0 +1,31 @@
+%button-story {
+  > section {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .sameWidthList {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
+}
+
+.Story {
+  @extend %button-story;
+
+  .buttonBlock {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    margin-block-end: 20px;
+  }
+
+  .subtitle {
+    margin-block-end: 10px;
+  }
+}

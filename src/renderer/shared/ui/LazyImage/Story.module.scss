@@ -1,0 +1,19 @@
+.Story {
+  .def {
+    height: 200px;
+    width: 150px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 2rem;
+    grid-auto-rows: 200px;
+    grid-template-columns: repeat(2, 300px);
+  }
+
+  .skeleton {
+    --stop-hue: 53;
+    --sk-color-1: var(--primary-4);
+    --sk-color-2: var(--primary-5);
+  }
+}
