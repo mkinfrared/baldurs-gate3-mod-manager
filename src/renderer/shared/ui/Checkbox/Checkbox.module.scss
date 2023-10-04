@@ -1,0 +1,131 @@
+@import "../../styles/vars";
+
+.Checkbox {
+  --background-color: transparent;
+  --border-color: var(--primary-4);
+  --border-radius: 0.2rem;
+  --border-width: 0.5rem;
+
+  @media (prefers-color-scheme: light) {
+    --border-color: var(--primary-7);
+  }
+
+  // TODO ask Natasha is 2rem is fine for checkmark block
+  // needs to be adjusted because the text is 2rem tall
+  --checkbox-width: 2rem;
+  --icon-color: transparent;
+  --stroke-color: var(--primary-5);
+  --stroke-dashoffset: 25;
+  --text-color: var(--primary-10);
+  --timing-duration: 250ms;
+  --transition-time: 250ms;
+
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  width: fit-content;
+
+  &:has(input:checked) {
+    --icon-color: var(--primary-4);
+
+    @media (prefers-color-scheme: light) {
+      --icon-color: var(--primary-7);
+    }
+
+    .tick {
+      path {
+        stroke-dashoffset: 0;
+        transition:
+          var(--timing-duration) stroke-dashoffset linear,
+          var(--timing-duration) fill linear var(--timing-duration);
+      }
+    }
+  }
+
+  // https://stackoverflow.com/questions/70375526/why-is-read-only-css-pseudo-class-being-applied-on-this-checkbox
+  &:has(input:disabled, input[readonly]) {
+    --stroke-color: var(--gray-88);
+    --text-color: var(--gray-88);
+
+    filter: grayscale(0.8);
+    pointer-events: none;
+  }
+
+  &.error:has(.input:is(.error)) {
+    --border-color: var(--danger-4);
+    --stroke-color: var(--danger-4);
+    --text-color: var(--danger-4);
+
+    @media (prefers-color-scheme: light) {
+      --border-color: var(--danger-7);
+      --stroke-color: var(--danger-7);
+      --text-color: var(--danger-7);
+    }
+
+    &:has(input:checked) {
+      --icon-color: var(--danger-4);
+
+      @media (prefers-color-scheme: light) {
+        --icon-color: var(--danger-7);
+      }
+    }
+  }
+
+  .container {
+    align-items: center;
+    border-radius: 0.4rem;
+    display: flex;
+  }
+
+  .input {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    z-index: -1;
+  }
+
+  .input:focus-visible ~ .container {
+    @include focus-visible;
+  }
+
+  .text {
+    color: var(--text-color);
+    margin-left: 1rem;
+  }
+
+  .box {
+    align-items: baseline;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    height: var(--checkbox-width);
+    justify-content: center;
+    padding: 0.3rem;
+    position: relative;
+    width: var(--checkbox-width);
+  }
+
+  .tick {
+    fill: var(--icon-color);
+    height: 100%;
+    opacity: 1;
+    overflow: visible;
+    width: 100%;
+
+    path {
+      fill: var(--icon-color);
+      stroke: var(--stroke-color);
+      stroke-dasharray: 25;
+      stroke-dashoffset: var(--stroke-dashoffset);
+      stroke-opacity: 1;
+      stroke-width: 0.2;
+      transition:
+        var(--timing-duration) fill linear,
+        var(--timing-duration) stroke-dashoffset linear var(--timing-duration);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InstalledModsList /> should match the snapshot 1`] = `
+<div>
+  <div
+    class="InstalledModsList"
+    data-testid="InstalledModsList"
+  >
+    <table
+      class="Table DataTable table"
+      data-testid="Table"
+    >
+      <thead>
+        <tr>
+          <th>
+            Active
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Version
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;

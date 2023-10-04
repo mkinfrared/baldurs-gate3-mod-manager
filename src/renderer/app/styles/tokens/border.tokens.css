@@ -1,0 +1,19 @@
+:root {
+
+  /**
+  * @tokens Borders
+  * @presenter Border
+  */
+  --border-dashed: 3px dashed var(--cyan);
+  --border-dotted: 3px dotted var(--orange);
+  --border-dot-dash: 3px dot-dash var(--orange);
+  --border-dot-dot-dash: 3px dot-dot-dash var(--orange);
+  --border-double: 3px double var(--orange);
+  --border-groove: 3px groove var(--orange);
+  --border-hidden: 3px hidden var(--orange);
+  --border-inset: 3px inset var(--orange);
+  --border-outset: 3px outset var(--orange);
+  --border-ridge: 3px ridge var(--orange);
+  --border-wave: 3px wave var(--orange);
+  --border-solid: 3px solid var(--cyan);
+}

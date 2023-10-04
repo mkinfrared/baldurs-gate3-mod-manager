@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> should match the snapshot 1`] = `
+<div>
+  <a
+    class="Link contained primary"
+    data-testid="Link"
+    href="http://localhost/marklar"
+    rel="noopener"
+  />
+</div>
+`;

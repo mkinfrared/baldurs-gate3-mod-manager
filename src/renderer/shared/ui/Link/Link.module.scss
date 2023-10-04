@@ -1,0 +1,36 @@
+@import "../../styles/button-base.scss";
+@import "../../styles/vars";
+
+.Link {
+  --color: inherit;
+
+  border-radius: 0.2rem;
+  color: var(--color);
+  font-size: 1.4rem;
+  line-height: 3rem;
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+  transition: color 250ms var(--ease-4);
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  :where(&:is(:hover, :active)) {
+    --color: var(--gray-23);
+  }
+
+  &.button {
+    @extend %button-base;
+
+    text-decoration: none;
+
+    .content {
+      align-items: center;
+      display: inline-flex;
+      gap: 1rem;
+      max-height: var(--text-height);
+      white-space: nowrap;
+    }
+  }
+}

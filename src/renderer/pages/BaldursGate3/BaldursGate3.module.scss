@@ -1,0 +1,7 @@
+.BaldursGate3 {
+  display: grid;
+  gap: var(--spacing-10);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  min-height: 100dvh;
+  padding: var(--spacing-10);
+}

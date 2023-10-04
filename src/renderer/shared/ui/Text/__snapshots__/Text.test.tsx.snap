@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Text /> should match the snapshot 1`] = `
+<div>
+  <p
+    class="Text"
+    data-testid="Text"
+  />
+</div>
+`;
