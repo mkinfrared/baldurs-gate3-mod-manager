@@ -3,6 +3,8 @@ import { render } from "@testing-library/react";
 
 import { App } from "./App";
 
+jest.mock("renderer/routes");
+
 describe("App", () => {
   it("should render", () => {
     expect(render(<App />)).toBeTruthy();

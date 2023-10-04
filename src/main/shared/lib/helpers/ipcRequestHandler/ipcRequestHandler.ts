@@ -1,7 +1,7 @@
 import { AnyRouter, inferRouterContext } from "@trpc/server";
 import { HTTPRequest, resolveHTTPResponse } from "@trpc/server/http";
 
-import { IpcRequest, IpcResponse } from "../../../types";
+import { IpcRequest, IpcResponse } from "../../../types/types";
 
 const ipcRequestHandler = async <TRouter extends AnyRouter>(opts: {
   req: IpcRequest;

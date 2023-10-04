@@ -102,6 +102,7 @@
         "allow": ["warn", "error", "info"]
       }
     ],
+    "no-continue": "off",
     "no-empty": "error",
     "no-param-reassign": "off",
     "no-restricted-syntax": ["off", "ForOfStatement"],

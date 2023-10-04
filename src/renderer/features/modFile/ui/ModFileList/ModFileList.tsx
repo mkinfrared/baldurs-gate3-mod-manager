@@ -1,14 +1,15 @@
 import { DragEventHandler, useState } from "react";
 
-import { classNames } from "renderer/shared/lib/helpers";
+import { classNames, trpc } from "renderer/shared/lib/helpers";
 
 import { ModFileRow } from "../ModFileRow";
 
 import css from "./ModFileList.module.scss";
-import { ModFileListProps } from "./ModFileList.type";
+import { ModFileListProps, ReadModResult } from "./ModFileList.type";
 
 const ModFileList = ({ className }: ModFileListProps) => {
-  const [zipFiles, setZipFiles] = useState<File[]>([]);
+  const [zipFiles, setZipFiles] = useState<ReadModResult>([]);
+  const readFilesMutation = trpc.mod.readMods.useMutation();
 
   const handleDragOver: DragEventHandler = (event) => {
     event.stopPropagation();
@@ -16,14 +17,20 @@ const ModFileList = ({ className }: ModFileListProps) => {
     event.preventDefault();
   };
 
-  const handleDrop: DragEventHandler = (event) => {
-    event.stopPropagation();
+  const handleDrop: DragEventHandler = async (event) => {
+    try {
+      event.stopPropagation();
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const { files } = event.dataTransfer;
+      const { files } = event.dataTransfer;
+      const filePaths = [...files].map(({ path }) => path);
+      const result = await readFilesMutation.mutateAsync(filePaths);
 
-    setZipFiles([...files]);
+      setZipFiles(result);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -33,9 +40,16 @@ const ModFileList = ({ className }: ModFileListProps) => {
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      {zipFiles.map((zipFile) => (
-        <ModFileRow key={zipFile.name} file={zipFile} />
-      ))}
+      {readFilesMutation.isLoading
+        ? "Loading..."
+        : zipFiles?.map(({ filePath, info }, index) => (
+            <ModFileRow
+              key={info?.uuid ?? index}
+              modFilePath={filePath}
+              modName={info?.name}
+              modVersion={info?.version}
+            />
+          ))}
     </div>
   );
 };
