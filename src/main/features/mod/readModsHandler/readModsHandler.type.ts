@@ -1,6 +1,6 @@
-import { ModInfo } from "main/entities/mod";
+import { ModInfo } from "./lib/helpers";
 
 export type ReadModResult = {
   filePath: string;
-  info: ModInfo;
+  info: ModInfo | null;
 };

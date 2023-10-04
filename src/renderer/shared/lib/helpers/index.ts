@@ -12,4 +12,4 @@ export { mergeRefs } from "./mergeRefs";
 
 export * from "./typeGuards";
 
-export { createTrpcClient, trpc } from "./trpc";
+export { trpcClient, trpc } from "./trpc";

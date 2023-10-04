@@ -1,1 +1,1 @@
-export { renderWithRouter } from "./testUtils";
+export { renderWithRouter, withQueryProvider } from "./testUtils";

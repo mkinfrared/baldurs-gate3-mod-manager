@@ -1,29 +1,18 @@
-import path from "path";
-
-import { getModData, getModInfo } from "main/entities/mod";
-
+import { getModData, getModInfo } from "./lib/helpers";
 import { ReadModResult } from "./readModsHandler.type";
 
 const readModsHandler = async (filePaths: string[]) => {
   try {
     const modsData = await Promise.all(filePaths.map(getModData));
 
-    const modsInfo = modsData.map(({ filePath, data }) => {
-      const defaultInfo = {
-        folder: null,
-        md5: null,
-        name: path.basename(filePath),
-        uuid: null,
-        version: null,
-      };
-
+    const modsInfo = modsData.map((modData) => {
       const result: ReadModResult = {
-        filePath,
-        info: defaultInfo,
+        filePath: modData.filePath,
+        info: null,
       };
 
-      if (data) {
-        result.info = getModInfo(data) ?? defaultInfo;
+      if (modData.data) {
+        result.info = getModInfo(modData.data) ?? null;
       }
 
       return result;
