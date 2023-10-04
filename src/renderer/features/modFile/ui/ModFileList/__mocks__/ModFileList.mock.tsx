@@ -4,4 +4,4 @@ const ModFileListMock = (props: ModFileListProps) => (
   <div data-testid="ModFileList">{JSON.stringify(props)}</div>
 );
 
-export { ModFileListMock };
+export default ModFileListMock;

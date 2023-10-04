@@ -1,1 +1,1 @@
-export { ModFileSectionMock as ModFileSection } from "./ModFileSection.mock";
+export { default } from "./ModFileSection.mock";

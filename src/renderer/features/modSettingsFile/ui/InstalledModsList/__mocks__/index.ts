@@ -1,1 +1,1 @@
-export { InstalledModsListMock as InstalledModsList } from "./InstalledModsList.mock";
+export { default } from "./InstalledModsList.mock";

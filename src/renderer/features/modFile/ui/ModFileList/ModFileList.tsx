@@ -1,32 +1,19 @@
-import { ChangeEventHandler, DragEventHandler, useState } from "react";
+import { DragEventHandler, useState } from "react";
 
-import { classNames, trpc } from "renderer/shared/lib/helpers";
+import { classNames } from "renderer/shared/lib/helpers";
 
-import { EmptyList } from "../EmptyList";
 import { ModFileRow } from "../ModFileRow";
 
 import css from "./ModFileList.module.scss";
-import { ModFileListProps, ReadModResult } from "./ModFileList.type";
+import { ModFileListProps } from "./ModFileList.type";
 
 const ModFileList = ({ className }: ModFileListProps) => {
-  const [zipFiles, setZipFiles] = useState<ReadModResult>([]);
-  const readFilesMutation = trpc.mod.readMods.useMutation();
+  const [zipFiles, setZipFiles] = useState<File[]>([]);
 
   const handleDragOver: DragEventHandler = (event) => {
     event.stopPropagation();
 
     event.preventDefault();
-  };
-
-  const submitFiles = async (files: FileList) => {
-    try {
-      const filePaths = [...files].map(({ path }) => path);
-      const result = await readFilesMutation.mutateAsync(filePaths);
-
-      setZipFiles(result);
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   const handleDrop: DragEventHandler = (event) => {
@@ -36,48 +23,19 @@ const ModFileList = ({ className }: ModFileListProps) => {
 
     const { files } = event.dataTransfer;
 
-    submitFiles(files);
-  };
-
-  const handleFilesSelect: ChangeEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-
-    const { files } = event.target;
-
-    if (files) {
-      submitFiles(files);
-    }
+    setZipFiles([...files]);
   };
 
   return (
     <div
-      className={classNames(
-        css.ModFileList,
-        className,
-        readFilesMutation.isLoading && css.isLoading,
-      )}
+      className={classNames(css.ModFileList, className)}
       data-testid="ModFileList"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <ModFileRow
-        className={css.header}
-        modFilePath=""
-        modName="Modification Name"
-        modVersion="Version"
-      />
-      {zipFiles?.length ? (
-        zipFiles?.map(({ filePath, info }, index) => (
-          <ModFileRow
-            key={info?.uuid ?? index}
-            modFilePath={filePath}
-            modName={info?.name ?? undefined}
-            modVersion={info?.version}
-          />
-        ))
-      ) : (
-        <EmptyList onFilesSelect={handleFilesSelect} />
-      )}
+      {zipFiles.map((zipFile) => (
+        <ModFileRow key={zipFile.name} file={zipFile} />
+      ))}
     </div>
   );
 };

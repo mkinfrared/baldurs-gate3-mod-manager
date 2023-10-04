@@ -11,14 +11,7 @@ exports[`<App/> should match the snapshot 1`] = `
         class="AppNavBar"
         data-testid="AppNavBar"
       >
-        <a
-          href="/baldurs-gate-3"
-        >
-          <img
-            alt="Baldur's Gate 3 Logo"
-            src="BG3-logo.png"
-          />
-        </a>
+        AppNavBar works!!
       </div>
     </aside>
     <main>
@@ -30,8 +23,35 @@ exports[`<App/> should match the snapshot 1`] = `
           class="InstalledModsSection"
           data-testid="InstalledModsSection"
         >
-          <div>
-            Loading..
+          <h3
+            class="Heading"
+            data-testid="Heading"
+          >
+            Installed Mods
+          </h3>
+          <div
+            class="InstalledModsList"
+            data-testid="InstalledModsList"
+          >
+            <table
+              class="Table DataTable table"
+              data-testid="Table"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    Active
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Version
+                  </th>
+                </tr>
+              </thead>
+              <tbody />
+            </table>
           </div>
         </div>
         <div
@@ -47,72 +67,7 @@ exports[`<App/> should match the snapshot 1`] = `
           <div
             class="ModFileList"
             data-testid="ModFileList"
-          >
-            <div
-              class="Card ModFileRow header"
-              data-testid="Card"
-            >
-              <span>
-                Modification Name
-              </span>
-              <span>
-                Version
-              </span>
-              <button
-                class="Button ModFileButton contained primary"
-                data-testid="ModFileButton"
-                type="button"
-              >
-                <svg
-                  class="Spinner spinner"
-                >
-                  bars.svg
-                </svg>
-                <span
-                  class="content"
-                >
-                  Install
-                </span>
-              </button>
-            </div>
-            <div
-              class="Card EmptyList"
-              data-testid="Card"
-            >
-              <h4
-                class="Heading header"
-                data-testid="Heading"
-              >
-                Drag and drop you zip files here or
-              </h4>
-              <button
-                class="Button contained primary"
-                data-testid="Button"
-                type="button"
-              >
-                <svg
-                  class="Spinner spinner"
-                >
-                  bars.svg
-                </svg>
-                <span
-                  class="content"
-                >
-                  <label
-                    for="file"
-                  >
-                    Click this button to select files
-                  </label>
-                </span>
-              </button>
-              <input
-                accept="zip"
-                id="file"
-                multiple=""
-                type="file"
-              />
-            </div>
-          </div>
+          />
         </div>
       </div>
     </main>

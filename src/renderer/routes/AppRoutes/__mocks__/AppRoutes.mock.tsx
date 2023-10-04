@@ -1,3 +1,3 @@
 const AppRoutesMock = () => <div data-testid="AppRoutes" />;
 
-export { AppRoutesMock };
+export default AppRoutesMock;

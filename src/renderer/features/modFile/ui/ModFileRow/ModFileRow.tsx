@@ -1,29 +1,37 @@
-import { ModFileButton } from "renderer/features/modFile/ui/ModFileButton";
+import { useEffect, useState } from "react";
+
+import { ModInfo, useModFileReader } from "renderer/entities/modFile";
 import { classNames } from "renderer/shared/lib/helpers";
-import { Card } from "renderer/shared/ui";
 
 import css from "./ModFileRow.module.scss";
 import { ModFileRowProps } from "./ModFileRow.type";
 
-const ModFileRow = ({
-  className,
-  currentModVersion,
-  modName,
-  modVersion,
-  modFilePath,
-}: ModFileRowProps) => (
-  <Card
-    className={classNames(css.ModFileRow, className)}
-    data-testid="ModFileRow"
-  >
-    <span>{modName || modFilePath}</span>
-    <span>{modVersion}</span>
-    <ModFileButton
-      modPath={modFilePath}
-      currentModVersion={currentModVersion}
-      modVersion={modVersion}
-    />
-  </Card>
-);
+const ModFileRow = ({ className, file }: ModFileRowProps) => {
+  const [modInfo, setModInfo] = useState<ModInfo>();
+  const manager = useModFileReader();
+
+  const getFileInfo = async () => {
+    const info = await manager.worker.readZipFile(file);
+
+    setModInfo(info);
+  };
+
+  useEffect(() => {
+    getFileInfo();
+  }, []);
+
+  const modName = modInfo?.name === "N/A" ? file.name : modInfo?.name;
+
+  return (
+    <div
+      className={classNames(css.ModFileRow, className)}
+      data-testid="ModFileRow"
+    >
+      <p>
+        {modName || file.name} {modInfo?.version}
+      </p>
+    </div>
+  );
+};
 
 export { ModFileRow };

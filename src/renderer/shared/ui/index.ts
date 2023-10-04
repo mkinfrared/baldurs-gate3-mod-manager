@@ -1,9 +1,5 @@
 export { default as Button } from "./Button";
 
-export { default as Card } from "./Card";
-
-export type { CardProps } from "./Card";
-
 export { default as Checkbox } from "./Checkbox";
 
 export type { CheckboxProps } from "./Checkbox";

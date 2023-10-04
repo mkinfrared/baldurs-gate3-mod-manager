@@ -1,1 +1,1 @@
-export { AppRoutesMock as AppRoutes } from "./AppRoutes.mock";
+export { default } from "./AppRoutes.mock";

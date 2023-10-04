@@ -2,8 +2,6 @@ import { renderWithRouter } from "renderer/shared/lib/helpers/testUtils";
 
 import { AppRoutes } from "./AppRoutes";
 
-jest.mock("renderer/pages");
-
 describe("<AppRoutes />", () => {
   const Component = <AppRoutes />;
 

@@ -1,6 +1,6 @@
 {
-  "name": "baldurs-gate3-mod-manager",
-  "version": "1.0.2",
+  "name": "example-app-korotkov",
+  "version": "0.2.3",
   "description": "A foundation for scalable desktop apps",
   "keywords": [
     "Baldur's Gate 3",
@@ -27,7 +27,7 @@
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
     "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && pnpm run build:dll",
-    "package": "ts-node ./.erb/scripts/clean.js dist && pnpm run build && electron-builder build -m --publish never && pnpm run build:dll",
+    "package": "ts-node ./.erb/scripts/clean.js dist && pnpm run build && electron-builder build -mw --publish never && pnpm run build:dll",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
     "start": "ts-node ./.erb/scripts/check-port-in-use.js && pnpm run start:renderer",
     "start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
@@ -50,22 +50,17 @@
     "@trpc/client": "^10.38.5",
     "@trpc/react-query": "^10.38.5",
     "@trpc/server": "^10.38.5",
-    "cheerio": "1.0.0-rc.12",
     "comlink": "^4.4.1",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^6.1.4",
     "lodash-es": "^4.17.21",
-    "node-stream-zip": "^1.15.0",
-    "node-unrar-js": "^2.0.0",
-    "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "react-router-typesafe-routes": "^1.2.1",
     "react-use": "^17.4.0",
     "superjson": "^1.13.3",
-    "uuid": "^9.0.1",
     "yup": "^1.3.2",
     "zod": "^3.22.2"
   },
@@ -80,7 +75,6 @@
     "@storybook/addon-interactions": "^7.4.5",
     "@storybook/addon-links": "^7.4.5",
     "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/addon-styling-webpack": "^0.0.4",
     "@storybook/blocks": "^7.4.5",
     "@storybook/react": "^7.4.5",
     "@storybook/react-webpack5": "^7.4.5",
@@ -96,7 +90,6 @@
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
     "@types/react-test-renderer": "^18.0.3",
-    "@types/uuid": "^9.0.4",
     "@types/webpack-bundle-analyzer": "^4.6.1",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
@@ -112,7 +105,7 @@
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "detect-port": "^1.5.1",
-    "electron": "26.3.0",
+    "electron": "26.2.2",
     "electron-builder": "^24.6.4",
     "electron-devtools-installer": "^3.2.0",
     "electronmon": "^2.0.2",
@@ -141,6 +134,7 @@
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.1.4",
+    "prettier": "^3.0.3",
     "react-app-polyfill": "^3.0.0",
     "react-refresh": "^0.14.0",
     "react-test-renderer": "^18.2.0",
@@ -196,9 +190,9 @@
     ]
   },
   "build": {
-    "productName": "Baldur's Gate 3 Mod Manager",
-    "appId": "com.erb.bg3modmanager",
-    "buildVersion": "1.0.2",
+    "productName": "example app by korotkov",
+    "appId": "com.erb.exampleappbykorotkov",
+    "buildVersion": "0.4.0",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
@@ -207,6 +201,7 @@
       "node_modules",
       "package.json"
     ],
+    "afterSign": ".erb/scripts/notarize.js",
     "mac": {
       "target": [
         {
@@ -273,11 +268,7 @@
       "provider": "github",
       "owner": "mkinfrared",
       "repo": "baldurs-gate3-mod-manager"
-    },
-    "beforeBuild": "./config/build/beforeBuild.js",
-    "afterPack": "./config/build/afterPack.js",
-    "afterSign": "./config/build/afterSign.js",
-    "afterAllArtifactBuild": "./config/build/afterAllArtifactBuild.js"
+    }
   },
   "devEngines": {
     "node": ">=14.x",
