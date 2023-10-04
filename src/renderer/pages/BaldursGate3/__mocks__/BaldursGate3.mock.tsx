@@ -4,4 +4,4 @@ const BaldursGate3Mock = (props: BaldursGate3Props) => (
   <div data-testid="BaldursGate3">{JSON.stringify(props)}</div>
 );
 
-export { BaldursGate3Mock };
+export default BaldursGate3Mock;

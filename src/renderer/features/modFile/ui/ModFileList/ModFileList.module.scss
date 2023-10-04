@@ -1,18 +1,4 @@
 .ModFileList {
-  display: flex;
+  background-color: cornflowerblue;
   flex: 1;
-  flex-direction: column;
-
-  &.isLoading {
-    cursor: progress;
-  }
-
-  .header {
-    font-weight: 500;
-
-    *:last-child {
-      pointer-events: none;
-      visibility: hidden;
-    }
-  }
 }

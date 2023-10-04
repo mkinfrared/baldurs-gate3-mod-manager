@@ -1,51 +1,50 @@
-import { InstalledMod } from "renderer/features/modSettingsFile/ui/InstalledMod";
-import { classNames, trpc } from "renderer/shared/lib/helpers";
-import { Heading } from "renderer/shared/ui";
+import { createColumnHelper } from "@tanstack/react-table";
+// import { suspend } from "suspend-react";
 
-import { EmptyList } from "../EmptyList";
+import {
+  InstalledModInfo,
+  ModFileToggle,
+  // getInstalledMods,
+} from "renderer/entities/modSettingsFile";
+import { DataTable } from "renderer/shared/components";
+import { classNames } from "renderer/shared/lib/helpers";
 
 import css from "./InstalledModsList.module.scss";
 import { InstalledModsListProps } from "./InstalledModsList.type";
 
+const columnHelper = createColumnHelper<InstalledModInfo>();
+
+const columns = [
+  columnHelper.accessor("isActive", {
+    header: "Active",
+    cell: ({ getValue, row }) => {
+      const { uuid, name } = row.original;
+
+      return (
+        <ModFileToggle isActive={getValue()} modName={name} modUUID={uuid} />
+      );
+    },
+  }),
+  columnHelper.accessor("name", {
+    header: "Name",
+  }),
+  columnHelper.accessor("version", {
+    header: "Version",
+    cell: (info) => info.getValue() || "N/A",
+  }),
+];
+
 const InstalledModsList = ({ className }: InstalledModsListProps) => {
-  const { data } = trpc.mod.getInstalledMods.useQuery();
-  const activeMods = data?.filter(({ isActive }) => isActive);
+  // TODO fix when getInstalledMods is refactored
+  // const installedMods = suspend(getInstalledMods);
+  const installedMods: any[] = [];
 
   return (
     <div
       className={classNames(css.InstalledModsList, className)}
       data-testid="InstalledModsList"
     >
-      <div>
-        <Heading variant="h3">Active Mods</Heading>
-        {activeMods?.length ? (
-          activeMods.map((mod) => (
-            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
-          ))
-        ) : (
-          <EmptyList>
-            <Heading variant="h4">
-              Activate the mods from the Installed Mods list below using
-              Activate button and they will appear here
-            </Heading>
-          </EmptyList>
-        )}
-      </div>
-      <div>
-        <Heading variant="h3">Installed Mods</Heading>
-        {data?.length ? (
-          data?.map((mod) => (
-            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
-          ))
-        ) : (
-          <EmptyList>
-            <Heading variant="h4">
-              You haven't installed any mods yet. Use the panel on the right to
-              install mods
-            </Heading>
-          </EmptyList>
-        )}
-      </div>
+      <DataTable className={css.table} columns={columns} data={installedMods} />
     </div>
   );
 };

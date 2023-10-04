@@ -1,4 +1,4 @@
-import { renderWithRouter } from "renderer/shared/lib/helpers/testUtils";
+import { render } from "@testing-library/react";
 
 import { AppNavBar } from "./AppNavBar";
 
@@ -10,13 +10,13 @@ describe("<AppNavBar />", () => {
   });
 
   it("should match the snapshot", () => {
-    const { container } = renderWithRouter(<AppNavBar />);
+    const { container } = render(Component);
 
     expect(container).toMatchSnapshot();
   });
 
   it("should contain a data test id", () => {
-    const { getByTestId } = renderWithRouter(Component);
+    const { getByTestId } = render(Component);
     const element = getByTestId("AppNavBar");
 
     expect(element).toBeDefined();

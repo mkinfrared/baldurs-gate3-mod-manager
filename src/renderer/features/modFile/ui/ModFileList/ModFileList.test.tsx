@@ -1,7 +1,5 @@
 import { render } from "@testing-library/react";
 
-import { withQueryProvider } from "renderer/shared/lib/helpers/testUtils";
-
 import { ModFileList } from "./ModFileList";
 
 describe("<ModFileList />", () => {
@@ -12,8 +10,15 @@ describe("<ModFileList />", () => {
   });
 
   it("should match the snapshot", () => {
-    const { container } = render(withQueryProvider(Component));
+    const { container } = render(Component);
 
     expect(container).toMatchSnapshot();
+  });
+
+  it("should contain a data test id", () => {
+    const { getByTestId } = render(Component);
+    const element = getByTestId("ModFileList");
+
+    expect(element).toBeDefined();
   });
 });

@@ -2,8 +2,6 @@ import { render } from "@testing-library/react";
 
 import { ModFileSection } from "./ModFileSection";
 
-jest.mock("renderer/features/modFile");
-
 describe("<ModFileSection />", () => {
   const Component = <ModFileSection />;
 

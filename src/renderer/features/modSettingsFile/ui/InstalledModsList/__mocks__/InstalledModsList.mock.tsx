@@ -4,4 +4,4 @@ const InstalledModsListMock = (props: InstalledModsListProps) => (
   <div data-testid="InstalledModsList">{JSON.stringify(props)}</div>
 );
 
-export { InstalledModsListMock };
+export default InstalledModsListMock;

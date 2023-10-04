@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter as Router } from "react-router-dom";
 
 import { AppRoutes } from "renderer/routes";
-import { trpc, trpcClient } from "renderer/shared/lib/helpers";
+import { createTrpcClient, trpc } from "renderer/shared/lib/helpers";
 import { AppNavBar } from "renderer/widgets/ui";
 
 import css from "./App.module.scss";
@@ -19,6 +19,7 @@ const queryClient = new QueryClient({
  * https://trpc.io/docs/v9/react
  * https://github.com/awohletz/electron-prisma-trpc-example/blob/main/src/client/renderer.ts
  */
+const trpcClient = createTrpcClient();
 
 const App = () => (
   <trpc.Provider client={trpcClient} queryClient={queryClient}>
