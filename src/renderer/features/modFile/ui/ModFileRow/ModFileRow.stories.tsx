@@ -13,7 +13,10 @@ const meta = {
 
 const Default: Story = {
   args: {
-    file: null as any,
+    modVersion: "v3.4.5",
+    modName: "Marklar",
+    modFilePath: "/foo/bar",
+    currentModVersion: "v3.4.4",
   },
   render: (args) => (
     <div className={css.Story}>
