@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss"
+  ],
+  "plugins": ["stylelint-order", "stylelint-no-unsupported-browser-features"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "block-no-empty": null,
+    "color-hex-length": "long",
+    "comment-whitespace-inside": "always",
+    "comment-empty-line-before": "always",
+    "comment-no-empty": null,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "font-family-name-quotes": "always-where-recommended",
+    "function-calc-no-unspaced-operator": true,
+    "function-linear-gradient-no-nonstandard-direction": true,
+    "function-url-quotes": "never",
+    "keyframe-declaration-no-important": null,
+    "max-nesting-depth": 3,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": true,
+    "no-empty-source": null,
+    "no-invalid-double-slash-comments": null,
+    "no-unknown-animations": true,
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-alphabetical-order": true,
+    "scss/at-import-partial-extension": null,
+    "selector-attribute-quotes": "always",
+    "selector-class-pattern": null,
+    "selector-pseudo-element-colon-notation": "double",
+    "shorthand-property-no-redundant-values": true
+  }
+}

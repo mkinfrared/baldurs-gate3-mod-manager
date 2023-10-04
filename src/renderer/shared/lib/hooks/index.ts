@@ -1,0 +1,1 @@
+export { useTrpcClient } from "./useTrpcClient";

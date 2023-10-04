@@ -1,0 +1,43 @@
+name: Test
+
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Node.js and NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: |
+          pnpm install
+
+      - name: Check Types and Build
+        run: |
+          pnpm exec tsc
+          pnpm build
+
+      - name: Lint
+        run: |
+          pnpm lint
+
+      - name: Test
+        run: |
+          pnpm test

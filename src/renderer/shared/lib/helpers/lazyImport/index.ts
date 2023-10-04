@@ -1,0 +1,1 @@
+export { lazyImport } from "./lazyImport";

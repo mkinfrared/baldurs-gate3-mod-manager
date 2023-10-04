@@ -1,0 +1,69 @@
+.storybook-page {
+  color: #333333;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 48px 20px;
+}
+
+.storybook-page h2 {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 4px;
+  vertical-align: top;
+}
+
+.storybook-page p {
+  margin: 1em 0;
+}
+
+.storybook-page a {
+  color: #1ea7fd;
+  text-decoration: none;
+}
+
+.storybook-page ul {
+  margin: 1em 0;
+  padding-left: 30px;
+}
+
+.storybook-page li {
+  margin-bottom: 8px;
+}
+
+.storybook-page .tip {
+  background: #e7fdd8;
+  border-radius: 1em;
+  color: #66bf3c;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 12px;
+  margin-right: 10px;
+  padding: 4px 12px;
+  vertical-align: top;
+}
+
+.storybook-page .tip-wrapper {
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.storybook-page .tip-wrapper svg {
+  display: inline-block;
+  height: 12px;
+  margin-right: 4px;
+  margin-top: 3px;
+  vertical-align: top;
+  width: 12px;
+}
+
+.storybook-page .tip-wrapper svg path {
+  fill: #1ea7fd;
+}
