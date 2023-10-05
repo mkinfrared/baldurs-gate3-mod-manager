@@ -3,11 +3,33 @@
 .Button {
   @extend %button-base;
 
+  &.loading {
+    .content {
+      opacity: 0;
+    }
+
+    .spinner {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
   .content {
     align-items: center;
     display: inline-flex;
     gap: 1rem;
     max-height: var(--text-height);
     white-space: nowrap;
+  }
+
+  .spinner {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .content,
+  .spinner {
+    transition: opacity 2500ms ease-in-out;
   }
 }

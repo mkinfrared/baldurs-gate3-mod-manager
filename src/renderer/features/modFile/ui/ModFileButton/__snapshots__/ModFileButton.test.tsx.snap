@@ -15,7 +15,7 @@ exports[`<ModFileButton /> should match the snapshot 1`] = `
     <span
       class="content"
     >
-      Install
+      Upgrade
     </span>
   </button>
 </div>

@@ -1,7 +1,5 @@
-export { appState } from "./appState";
+export { getCurrentAppData } from "./getCurrentAppData";
 
-export type {
-  AppData,
-  AppDataInstalledModInfo,
-  AppDataInstalledMods,
-} from "./appState.type";
+export { saveAppData } from "./saveAppData";
+
+export type { InstalledModInfo } from "./getCurrentAppData";

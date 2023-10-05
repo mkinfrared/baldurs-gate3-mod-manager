@@ -38,34 +38,16 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install
-          pnpm postinstall
-
-      - name: Import Certificate
-        run: |
-          echo "${{ secrets.APPLE_CERT_BASE64 }}" | base64 --decode > certificate.p12
-          security create-keychain -p actions build.keychain
-          security default-keychain -s build.keychain
-          security import certificate.p12 -k build.keychain -P "${{ secrets.CSC_KEY_PASSWORD }}" -T /usr/bin/codesign
-          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k actions build.keychain
 
       - name: Build
         run: |
+          pnpm install
+          pnpm postinstall
           pnpm build
-          CSC_FOR_PULL_REQUEST=true pnpm package
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          path: release/build/*.dmg
-
-      - name: Create Release Notes File
-        id: var
-        run: |
-          node ./.github/scripts/createReleaseNotes.js
+          pnpm package
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: "./release/build/*.@(exe|dmg|zip)"
-          body_path: ${{ github.workspace }}/RELEASE.txt

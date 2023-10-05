@@ -92,10 +92,15 @@ exports[`<App/> should match the snapshot 1`] = `
                 Version
               </span>
               <button
-                class="Button contained primary"
-                data-testid="Button"
+                class="Button ModFileButton contained primary"
+                data-testid="ModFileButton"
                 type="button"
               >
+                <svg
+                  class="Spinner spinner"
+                >
+                  bars.svg
+                </svg>
                 <span
                   class="content"
                 >
@@ -118,6 +123,11 @@ exports[`<App/> should match the snapshot 1`] = `
                 data-testid="Button"
                 type="button"
               >
+                <svg
+                  class="Spinner spinner"
+                >
+                  bars.svg
+                </svg>
                 <span
                   class="content"
                 >

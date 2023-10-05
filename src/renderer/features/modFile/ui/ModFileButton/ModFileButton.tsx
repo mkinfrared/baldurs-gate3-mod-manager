@@ -4,22 +4,33 @@ import { Button } from "renderer/shared/ui";
 import css from "./ModFileButton.module.scss";
 import { ModFileButtonProps } from "./ModFileButton.type";
 
-const ModFileButton = ({ className, modPath }: ModFileButtonProps) => {
-  const utils = trpc.useContext();
-
-  const { mutateAsync, isLoading, isSuccess } =
-    trpc.mod.installMods.useMutation({
-      onSuccess: () => {
-        utils.mod.getInstalledMods.invalidate();
-      },
-    });
+const ModFileButton = ({
+  className,
+  currentModVersion,
+  modPath,
+  modVersion,
+}: ModFileButtonProps) => {
+  const { mutateAsync, isLoading } = trpc.mod.installMods.useMutation();
 
   const getText = () => {
-    if (isSuccess) {
-      return "Installed";
+    if (!currentModVersion || !modVersion) {
+      return "Install";
     }
 
-    return "Install";
+    const cv = currentModVersion.toString();
+    const mv = modVersion.toString();
+    const result = cv.localeCompare(mv);
+
+    switch (result) {
+      case 1:
+        return "Downgrade";
+      case 0:
+        return "Installed";
+      case -1:
+        return "Upgrade";
+      default:
+        return "N/A";
+    }
   };
 
   const handleClick = () => {
@@ -32,7 +43,6 @@ const ModFileButton = ({ className, modPath }: ModFileButtonProps) => {
       data-testid="ModFileButton"
       loading={isLoading}
       onClick={handleClick}
-      disabled={isSuccess || isLoading}
     >
       {getText()}
     </Button>
