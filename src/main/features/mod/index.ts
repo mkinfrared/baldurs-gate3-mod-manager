@@ -1,3 +1,5 @@
+export { deleteModsHandler } from "./deleteModsHandler";
+
 export { getInstalledModsHandler } from "./getInstalledModsHandler";
 
 export { installModsHandler } from "./installModsHandler";

@@ -99,7 +99,9 @@ exports[`<App/> should match the snapshot 1`] = `
                 </span>
               </button>
               <input
+                accept="zip"
                 id="file"
+                multiple=""
                 type="file"
               />
             </div>

@@ -1,5 +1,7 @@
 import { render } from "@testing-library/react";
 
+import { withQueryProvider } from "renderer/shared/lib/helpers/testUtils";
+
 import { InstalledMod } from "./InstalledMod";
 import { InstalledModProps } from "./InstalledMod.type";
 
@@ -20,7 +22,7 @@ describe("<InstalledMod />", () => {
   });
 
   it("should match the snapshot", () => {
-    const { container } = render(Component);
+    const { container } = render(withQueryProvider(Component));
 
     expect(container).toMatchSnapshot();
   });

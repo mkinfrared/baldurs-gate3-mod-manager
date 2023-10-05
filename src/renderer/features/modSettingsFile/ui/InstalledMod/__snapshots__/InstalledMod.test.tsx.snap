@@ -6,7 +6,9 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
     class="Card InstalledMod"
     data-testid="Card"
   >
-    <span>
+    <span
+      title="Marklar"
+    >
       foobar
     </span>
     <span>
