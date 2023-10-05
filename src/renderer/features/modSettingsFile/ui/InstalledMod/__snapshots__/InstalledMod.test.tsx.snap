@@ -7,10 +7,10 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
     data-testid="Card"
   >
     <span>
-      modName || modFilePath
+      foobar
     </span>
     <span>
-      modVersion
+      v3.4.7
     </span>
     <button
       class="Button contained primary"

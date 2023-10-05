@@ -4,14 +4,14 @@ import { Button, Card } from "renderer/shared/ui";
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
-const InstalledMod = ({ className }: InstalledModProps) => (
+const InstalledMod = ({ className, mod }: InstalledModProps) => (
   <Card
     className={classNames(css.InstalledMod, className)}
     data-testid="InstalledMod"
   >
-    <span>modName || modFilePath</span>
-    <span>modVersion</span>
-    <Button>Activate</Button>
+    <span>{mod.name}</span>
+    <span>{mod.version}</span>
+    <Button>{mod.isActive ? "Deactivate" : "Activate"}</Button>
     <Button>Delete</Button>
   </Card>
 );
