@@ -1,11 +1,13 @@
 import { v4 } from "uuid";
 
-import { InstalledModInfo, saveAppData } from "main/entities/appData";
-import { InstalledMods } from "main/entities/appData/getCurrentAppData";
+import {
+  AppDataInstalledModInfo,
+  AppDataInstalledMods,
+  saveAppData,
+} from "main/entities/appData";
 import { getModInfo } from "main/entities/mod";
-import { addModsToSettings } from "main/features/mod/installModsHandler/lib/helpers/addModsToSettings";
 
-import { extractContents } from "./lib/helpers";
+import { addModsToSettings, extractContents } from "./lib/helpers";
 
 const installModsHandler = async (filePaths: string[]) => {
   // TODO before extract check which mods are already installed
@@ -36,7 +38,7 @@ const installModsHandler = async (filePaths: string[]) => {
       id = modInfo?.uuid || id;
     }
 
-    const installedMod: InstalledModInfo = {
+    const installedMod: AppDataInstalledModInfo = {
       id,
       pakFiles,
     };
@@ -44,7 +46,7 @@ const installModsHandler = async (filePaths: string[]) => {
     return installedMod;
   });
 
-  const saveData: InstalledMods = {};
+  const saveData: AppDataInstalledMods = {};
 
   installResults.forEach(({ id, pakFiles }) => {
     saveData[id] = { id, pakFiles };

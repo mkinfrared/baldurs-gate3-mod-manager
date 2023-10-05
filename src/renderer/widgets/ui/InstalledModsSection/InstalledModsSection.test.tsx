@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 
 import { InstalledModsSection } from "./InstalledModsSection";
 
+jest.mock("renderer/features/modSettingsFile/ui/InstalledModsList");
+
 describe("<InstalledModsSection />", () => {
   const Component = <InstalledModsSection />;
 
