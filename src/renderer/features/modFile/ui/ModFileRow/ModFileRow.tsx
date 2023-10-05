@@ -1,11 +1,13 @@
+import { ModFileButton } from "renderer/features/modFile/ui/ModFileButton";
 import { classNames } from "renderer/shared/lib/helpers";
-import { Button, Card } from "renderer/shared/ui";
+import { Card } from "renderer/shared/ui";
 
 import css from "./ModFileRow.module.scss";
 import { ModFileRowProps } from "./ModFileRow.type";
 
 const ModFileRow = ({
   className,
+  currentModVersion,
   modName,
   modVersion,
   modFilePath,
@@ -16,7 +18,11 @@ const ModFileRow = ({
   >
     <span>{modName || modFilePath}</span>
     <span>{modVersion}</span>
-    <Button>Install</Button>
+    <ModFileButton
+      modPath={modFilePath}
+      currentModVersion={currentModVersion}
+      modVersion={modVersion}
+    />
   </Card>
 );
 
