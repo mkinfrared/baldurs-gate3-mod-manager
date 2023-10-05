@@ -4,18 +4,27 @@ import { Button } from "renderer/shared/ui";
 import css from "./ToggleActiveModButton.module.scss";
 import { ToggleActiveModButtonProps } from "./ToggleActiveModButton.type";
 
+/**
+ *
+ *       {mod.uuid ? (
+ *         <Button title={getDeleteButtonTitle()}>
+ *           {mod.isActive ? "Deactivate" : "Activate"}
+ *         </Button>
+ *       ) : (
+ *         <div />
+ *       )}
+ * @param className
+ * @param isActive
+ * @param modUUID
+ * @constructor
+ */
+
 const ToggleActiveModButton = ({
   className,
   isActive,
   modUUID,
 }: ToggleActiveModButtonProps) => {
-  const utils = trpc.useContext();
-
-  const { mutateAsync, isLoading } = trpc.mod.toggleActiveMod.useMutation({
-    onSuccess: () => {
-      utils.mod.getInstalledMods.invalidate();
-    },
-  });
+  const { mutateAsync, isLoading } = trpc.mod.toggleActiveMod.useMutation();
 
   if (!modUUID) {
     return <div />;
