@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InstalledMod /> should match the snapshot 1`] = `
+<div>
+  <div
+    class="Card InstalledMod"
+    data-testid="Card"
+  >
+    <span>
+      modName || modFilePath
+    </span>
+    <span>
+      modVersion
+    </span>
+    <button
+      class="Button contained primary"
+      data-testid="Button"
+      type="button"
+    >
+      <span
+        class="content"
+      >
+        Activate
+      </span>
+    </button>
+    <button
+      class="Button contained primary"
+      data-testid="Button"
+      type="button"
+    >
+      <span
+        class="content"
+      >
+        Delete
+      </span>
+    </button>
+  </div>
+</div>
+`;
