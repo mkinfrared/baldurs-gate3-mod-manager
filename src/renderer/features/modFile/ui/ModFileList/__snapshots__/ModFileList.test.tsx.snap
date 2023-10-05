@@ -5,6 +5,59 @@ exports[`<ModFileList /> should match the snapshot 1`] = `
   <div
     class="ModFileList"
     data-testid="ModFileList"
-  />
+  >
+    <div
+      class="Card ModFileRow header"
+      data-testid="Card"
+    >
+      <span>
+        Modification Name
+      </span>
+      <span>
+        Version
+      </span>
+      <button
+        class="Button contained primary"
+        data-testid="Button"
+        type="button"
+      >
+        <span
+          class="content"
+        >
+          Install
+        </span>
+      </button>
+    </div>
+    <div
+      class="Card EmptyList"
+      data-testid="Card"
+    >
+      <h4
+        class="Heading header"
+        data-testid="Heading"
+      >
+        Drag and drop you zip or rar files here or
+      </h4>
+      <button
+        class="Button contained primary"
+        data-testid="Button"
+        type="button"
+      >
+        <span
+          class="content"
+        >
+          <label
+            for="file"
+          >
+            Click this button to select files
+          </label>
+        </span>
+      </button>
+      <input
+        id="file"
+        type="file"
+      />
+    </div>
+  </div>
 </div>
 `;
