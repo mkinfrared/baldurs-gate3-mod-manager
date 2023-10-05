@@ -15,7 +15,7 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
       v3.4.7
     </span>
     <button
-      class="Button contained primary"
+      class="Button ToggleActiveModButton contained primary"
       data-testid="Button"
       type="button"
     >
@@ -31,7 +31,7 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
       </span>
     </button>
     <button
-      class="Button contained primary"
+      class="Button contained secondary"
       data-testid="Button"
       type="button"
     >
