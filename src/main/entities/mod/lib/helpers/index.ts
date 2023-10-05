@@ -1,3 +1,5 @@
+export * from "./activateMod";
+
 export * from "./deactivateMod";
 
 export * from "./getModData";
