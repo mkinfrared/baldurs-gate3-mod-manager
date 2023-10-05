@@ -21,7 +21,9 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
       <div>
         <Heading variant="h3">Active Mods</Heading>
         {activeMods?.length ? (
-          activeMods.map((mod) => <InstalledMod key={mod.uuid} mod={mod} />)
+          activeMods.map((mod) => (
+            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
+          ))
         ) : (
           <EmptyList>
             <Heading variant="h4">
@@ -34,7 +36,9 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
       <div>
         <Heading variant="h3">Installed Mods</Heading>
         {data?.length ? (
-          data?.map((mod) => <InstalledMod key={mod.uuid} mod={mod} />)
+          data?.map((mod) => (
+            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
+          ))
         ) : (
           <EmptyList>
             <Heading variant="h4">
