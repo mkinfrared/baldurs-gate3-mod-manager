@@ -12,7 +12,16 @@ const meta = {
 } satisfies Meta<typeof InstalledMod>;
 
 const Default: Story = {
-  args: {},
+  args: {
+    mod: {
+      folder: "Marklar",
+      isActive: false,
+      md5: "md5",
+      name: "foobar",
+      uuid: "uuid",
+      version: "v3.4.7",
+    },
+  },
   render: (args) => (
     <div className={css.Story}>
       <InstalledMod {...args} />

@@ -6,14 +6,18 @@ import { APP_DATA_PATH } from "main/shared/config";
 
 import {
   AppData,
-  InstalledMods,
+  AppDataInstalledMods,
   getCurrentAppData,
 } from "../getCurrentAppData";
 
-const saveAppData = async (key: keyof AppData, values: InstalledMods) => {
+const saveAppData = async (
+  key: keyof AppData,
+  values: AppDataInstalledMods,
+) => {
   const currentData = await getCurrentAppData();
+  const keyData = currentData[key] ?? {};
 
-  currentData[key] = values;
+  currentData[key] = { ...keyData, ...values };
 
   const formattedData = await prettier.format(JSON.stringify(currentData), {
     printWidth: 80,
