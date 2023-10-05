@@ -1,11 +1,9 @@
 import { v4 } from "uuid";
 
-import {
-  AppDataInstalledModInfo,
-  AppDataInstalledMods,
-  saveAppData,
-} from "main/entities/appData";
+import { AppDataInstalledModInfo, appState } from "main/entities/appData";
 import { getModInfo } from "main/entities/mod";
+
+import { deleteModsHandler } from "../deleteModsHandler";
 
 import { addModsToSettings, extractContents } from "./lib/helpers";
 
@@ -17,6 +15,8 @@ const installModsHandler = async (filePaths: string[]) => {
    * to make sure no redundant files keep piling up e.g
    * a new version of mod is using a different pak file name
    */
+  await deleteModsHandler(filePaths);
+
   const extractResults = await Promise.all(filePaths.map(extractContents));
 
   const modInfos = extractResults.map(({ data }) => {
@@ -46,13 +46,13 @@ const installModsHandler = async (filePaths: string[]) => {
     return installedMod;
   });
 
-  const saveData: AppDataInstalledMods = {};
+  const gameData = appState.getSection("bg3");
 
   installResults.forEach(({ id, pakFiles }) => {
-    saveData[id] = { id, pakFiles };
+    gameData[id] = { id, pakFiles };
   });
 
-  await saveAppData("bg3", saveData);
+  await appState.saveData();
 };
 
 export { installModsHandler };
