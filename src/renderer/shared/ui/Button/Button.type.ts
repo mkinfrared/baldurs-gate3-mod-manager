@@ -10,6 +10,7 @@ export type ButtonOwnProps = {
    */
   className?: string;
   color?: ButtonColors;
+  loading?: boolean;
   /*
     variant to use
    */

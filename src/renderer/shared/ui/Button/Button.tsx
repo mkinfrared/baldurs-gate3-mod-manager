@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import { classNames } from "renderer/shared/lib/helpers";
+import Spinner from "renderer/shared/ui/Spinner";
 
 import css from "./Button.module.scss";
 import { ButtonColors, ButtonProps, ButtonVariants } from "./Button.type";
@@ -16,6 +17,7 @@ const Button = ({
   className,
   color = "primary",
   disabled = false,
+  loading = false,
   type = "button",
   variant = "contained",
   ...rest
@@ -42,6 +44,10 @@ const Button = ({
     getButtonColor(color),
   ];
 
+  if (loading) {
+    classes.push(css.loading);
+  }
+
   return (
     <button
       className={classNames(...classes)}
@@ -51,6 +57,7 @@ const Button = ({
       type={type}
       {...rest}
     >
+      <Spinner className={css.spinner} type="bars" />
       <span className={css.content}>{children}</span>
     </button>
   );

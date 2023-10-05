@@ -1,6 +1,6 @@
 name: Test
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [macos-latest, windows-latest, ubuntu-latest]
 
     steps:
       - name: Check out Git repository
