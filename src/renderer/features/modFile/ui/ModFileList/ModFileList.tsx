@@ -2,6 +2,7 @@ import { DragEventHandler, useState } from "react";
 
 import { classNames, trpc } from "renderer/shared/lib/helpers";
 
+import { EmptyList } from "../EmptyList";
 import { ModFileRow } from "../ModFileRow";
 
 import css from "./ModFileList.module.scss";
@@ -35,21 +36,33 @@ const ModFileList = ({ className }: ModFileListProps) => {
 
   return (
     <div
-      className={classNames(css.ModFileList, className)}
+      className={classNames(
+        css.ModFileList,
+        className,
+        readFilesMutation.isLoading && css.isLoading,
+      )}
       data-testid="ModFileList"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      {readFilesMutation.isLoading
-        ? "Loading..."
-        : zipFiles?.map(({ filePath, info }, index) => (
-            <ModFileRow
-              key={info?.uuid ?? index}
-              modFilePath={filePath}
-              modName={info?.name}
-              modVersion={info?.version}
-            />
-          ))}
+      <ModFileRow
+        className={css.header}
+        modFilePath=""
+        modName="Modification Name"
+        modVersion="Version"
+      />
+      {zipFiles?.length ? (
+        zipFiles?.map(({ filePath, info }, index) => (
+          <ModFileRow
+            key={info?.uuid ?? index}
+            modFilePath={filePath}
+            modName={info?.name}
+            modVersion={info?.version}
+          />
+        ))
+      ) : (
+        <EmptyList />
+      )}
     </div>
   );
 };

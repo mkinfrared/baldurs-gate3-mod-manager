@@ -23,35 +23,48 @@ exports[`<App/> should match the snapshot 1`] = `
           class="InstalledModsSection"
           data-testid="InstalledModsSection"
         >
-          <h3
-            class="Heading"
-            data-testid="Heading"
-          >
-            Installed Mods
-          </h3>
           <div
             class="InstalledModsList"
             data-testid="InstalledModsList"
           >
-            <table
-              class="Table DataTable table"
-              data-testid="Table"
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Active
-                  </th>
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Version
-                  </th>
-                </tr>
-              </thead>
-              <tbody />
-            </table>
+            <div>
+              <h3
+                class="Heading"
+                data-testid="Heading"
+              >
+                Active Mods
+              </h3>
+              <div
+                class="Card EmptyList"
+                data-testid="Card"
+              >
+                <h4
+                  class="Heading"
+                  data-testid="Heading"
+                >
+                  Activate the mods from the Installed Mods list below using Activate button and they will appear here
+                </h4>
+              </div>
+            </div>
+            <div>
+              <h3
+                class="Heading"
+                data-testid="Heading"
+              >
+                Installed Mods
+              </h3>
+              <div
+                class="Card EmptyList"
+                data-testid="Card"
+              >
+                <h4
+                  class="Heading"
+                  data-testid="Heading"
+                >
+                  You haven't installed any mods yet. Use the panel on the right to install mods
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -67,7 +80,60 @@ exports[`<App/> should match the snapshot 1`] = `
           <div
             class="ModFileList"
             data-testid="ModFileList"
-          />
+          >
+            <div
+              class="Card ModFileRow header"
+              data-testid="Card"
+            >
+              <span>
+                Modification Name
+              </span>
+              <span>
+                Version
+              </span>
+              <button
+                class="Button contained primary"
+                data-testid="Button"
+                type="button"
+              >
+                <span
+                  class="content"
+                >
+                  Install
+                </span>
+              </button>
+            </div>
+            <div
+              class="Card EmptyList"
+              data-testid="Card"
+            >
+              <h4
+                class="Heading header"
+                data-testid="Heading"
+              >
+                Drag and drop you zip or rar files here or
+              </h4>
+              <button
+                class="Button contained primary"
+                data-testid="Button"
+                type="button"
+              >
+                <span
+                  class="content"
+                >
+                  <label
+                    for="file"
+                  >
+                    Click this button to select files
+                  </label>
+                </span>
+              </button>
+              <input
+                id="file"
+                type="file"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>
