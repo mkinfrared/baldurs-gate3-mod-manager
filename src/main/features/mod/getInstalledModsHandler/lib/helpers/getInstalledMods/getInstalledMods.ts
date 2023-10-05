@@ -1,5 +1,7 @@
 import { getCurrentSettings } from "main/entities/modSettingsFile";
 
+import { getSelfActivatedMods } from "../getSelfActivatedMods";
+
 import { InstalledMod, ModData } from "./getInstalledMods.type";
 
 const modInfoMapper = (data: ModData) => {
@@ -66,7 +68,11 @@ const getInstalledMods = async () => {
     return info;
   });
 
-  return installedMods.filter(({ name }) => !name?.includes("Gustav"));
+  const selfActivatedMods = getSelfActivatedMods(installedMods, "bg3");
+
+  return installedMods
+    .concat(selfActivatedMods)
+    .filter(({ name }) => !name?.includes("Gustav"));
 };
 
 export { getInstalledMods };

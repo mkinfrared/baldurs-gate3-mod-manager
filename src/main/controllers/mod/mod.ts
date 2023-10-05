@@ -1,4 +1,5 @@
 import {
+  deleteModsHandler,
   getInstalledModsHandler,
   installModsHandler,
   readModsHandler,
@@ -19,7 +20,13 @@ const installMods = t.procedure.input(filesValidation).mutation((opts) => {
   return installModsHandler(input);
 });
 
+const deleteMods = t.procedure.input(filesValidation).mutation((opts) => {
+  const { input } = opts;
+
+  return deleteModsHandler(input);
+});
+
 const getInstalledMods = t.procedure.query(() => getInstalledModsHandler());
-const modController = { readMods, installMods, getInstalledMods };
+const modController = { readMods, installMods, getInstalledMods, deleteMods };
 
 export { modController };
