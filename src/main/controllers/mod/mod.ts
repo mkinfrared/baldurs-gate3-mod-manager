@@ -3,30 +3,46 @@ import {
   getInstalledModsHandler,
   installModsHandler,
   readModsHandler,
+  toggleActiveModHandler,
 } from "main/features/mod";
 import { t } from "main/shared/lib/helpers";
 
-import { filesValidation } from "./validation";
+import { stringArrayValidation, stringValidation } from "./validation";
 
-const readMods = t.procedure.input(filesValidation).mutation((opts) => {
+const readMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
   const { input } = opts;
 
   return readModsHandler(input);
 });
 
-const installMods = t.procedure.input(filesValidation).mutation((opts) => {
-  const { input } = opts;
+const installMods = t.procedure
+  .input(stringArrayValidation)
+  .mutation((opts) => {
+    const { input } = opts;
 
-  return installModsHandler(input);
-});
+    return installModsHandler(input);
+  });
 
-const deleteMods = t.procedure.input(filesValidation).mutation((opts) => {
+const deleteMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
   const { input } = opts;
 
   return deleteModsHandler(input);
 });
 
+const toggleActiveMod = t.procedure.input(stringValidation).mutation((opts) => {
+  const { input } = opts;
+
+  return toggleActiveModHandler(input);
+});
+
 const getInstalledMods = t.procedure.query(() => getInstalledModsHandler());
-const modController = { readMods, installMods, getInstalledMods, deleteMods };
+
+const modController = {
+  readMods,
+  installMods,
+  getInstalledMods,
+  deleteMods,
+  toggleActiveMod,
+};
 
 export { modController };

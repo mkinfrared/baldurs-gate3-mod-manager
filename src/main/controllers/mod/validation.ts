@@ -1,5 +1,6 @@
 import z from "zod";
 
-const filesValidation = z.array(z.string());
+const stringArrayValidation = z.array(z.string());
+const stringValidation = z.string();
 
-export { filesValidation };
+export { stringArrayValidation, stringValidation };

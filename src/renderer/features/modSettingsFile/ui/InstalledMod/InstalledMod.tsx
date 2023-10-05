@@ -1,6 +1,8 @@
 import { classNames, trpc } from "renderer/shared/lib/helpers";
 import { Button, Card } from "renderer/shared/ui";
 
+import { ToggleActiveModButton } from "../ToggleActiveModButton";
+
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
@@ -12,14 +14,6 @@ const InstalledMod = ({ className, mod }: InstalledModProps) => {
     mutateAsync([mod.uuid ?? mod.name ?? ""]);
   };
 
-  const getDeleteButtonTitle = () => {
-    if (mod.uuid) {
-      return;
-    }
-
-    return "This mod can only be deleted. It is automatically activated on installation";
-  };
-
   return (
     <Card
       className={classNames(css.InstalledMod, className)}
@@ -27,14 +21,13 @@ const InstalledMod = ({ className, mod }: InstalledModProps) => {
     >
       <span title="Marklar">{mod.name}</span>
       <span>{mod.version}</span>
-      {mod.uuid ? (
-        <Button title={getDeleteButtonTitle()}>
-          {mod.isActive ? "Deactivate" : "Activate"}
-        </Button>
-      ) : (
-        <div />
-      )}
-      <Button onClick={handleDelete} loading={isLoading} disabled={isSuccess}>
+      <ToggleActiveModButton isActive={mod.isActive} modUUID={mod.uuid} />
+      <Button
+        onClick={handleDelete}
+        loading={isLoading}
+        disabled={isSuccess}
+        color="secondary"
+      >
         Delete
       </Button>
     </Card>
