@@ -1,10 +1,10 @@
 .Card {
   @layer base {
-    --background: var(--surface-2);
-    --border-color: var(--primary-3);
+    --background: var(--surface-1);
+    --border-color: var(--primary-2);
 
     @media (prefers-color-scheme: light) {
-      --background: var(--surface-1);
+      --border-color: var(--primary-3);
     }
 
     background-color: var(--background);
