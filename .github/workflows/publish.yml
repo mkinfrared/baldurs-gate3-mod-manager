@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     tags:
-      - '**'
+      - "**"
     branches:
       - master
 
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [18.x]
         os: [macos-latest]
 
     steps:
@@ -50,4 +50,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: './release/build/*.@(exe|dmg|zip)'
+          files: "./release/build/*.@(exe|dmg|zip)"

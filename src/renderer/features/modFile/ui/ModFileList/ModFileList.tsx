@@ -1,4 +1,4 @@
-import { DragEventHandler, useState } from "react";
+import { ChangeEventHandler, DragEventHandler, useState } from "react";
 
 import { classNames, trpc } from "renderer/shared/lib/helpers";
 
@@ -18,19 +18,34 @@ const ModFileList = ({ className }: ModFileListProps) => {
     event.preventDefault();
   };
 
-  const handleDrop: DragEventHandler = async (event) => {
+  const submitFiles = async (files: FileList) => {
     try {
-      event.stopPropagation();
-
-      event.preventDefault();
-
-      const { files } = event.dataTransfer;
       const filePaths = [...files].map(({ path }) => path);
       const result = await readFilesMutation.mutateAsync(filePaths);
 
       setZipFiles(result);
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const handleDrop: DragEventHandler = (event) => {
+    event.stopPropagation();
+
+    event.preventDefault();
+
+    const { files } = event.dataTransfer;
+
+    submitFiles(files);
+  };
+
+  const handleFilesSelect: ChangeEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+
+    const { files } = event.target;
+
+    if (files) {
+      submitFiles(files);
     }
   };
 
@@ -56,12 +71,12 @@ const ModFileList = ({ className }: ModFileListProps) => {
           <ModFileRow
             key={info?.uuid ?? index}
             modFilePath={filePath}
-            modName={info?.name}
+            modName={info?.name ?? undefined}
             modVersion={info?.version}
           />
         ))
       ) : (
-        <EmptyList />
+        <EmptyList onFilesSelect={handleFilesSelect} />
       )}
     </div>
   );
