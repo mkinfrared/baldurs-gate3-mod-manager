@@ -1,1 +1,1 @@
-export { installModsHandler } from "main/features/mod/installModsHandler/installModsHandler";
+export { installModsHandler } from "./installModsHandler";

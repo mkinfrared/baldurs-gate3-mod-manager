@@ -1,10 +1,10 @@
-export type InstalledModInfo = {
+export type AppDataInstalledModInfo = {
   id: string;
   pakFiles: string[];
 };
 
-export type InstalledMods = Record<string, InstalledModInfo>;
+export type AppDataInstalledMods = Record<string, AppDataInstalledModInfo>;
 
 export type AppData = {
-  bg3: InstalledMods;
+  bg3: AppDataInstalledMods;
 };
