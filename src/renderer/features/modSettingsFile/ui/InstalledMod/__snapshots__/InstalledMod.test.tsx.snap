@@ -6,24 +6,17 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
     class="Card InstalledMod"
     data-testid="Card"
   >
-    <span
-      title="Marklar"
-    >
-      foobar
+    <span>
+      modName || modFilePath
     </span>
     <span>
-      v3.4.7
+      modVersion
     </span>
     <button
-      class="Button ToggleActiveModButton contained primary"
+      class="Button contained primary"
       data-testid="Button"
       type="button"
     >
-      <svg
-        class="Spinner spinner"
-      >
-        bars.svg
-      </svg>
       <span
         class="content"
       >
@@ -31,15 +24,10 @@ exports[`<InstalledMod /> should match the snapshot 1`] = `
       </span>
     </button>
     <button
-      class="Button contained secondary"
+      class="Button contained primary"
       data-testid="Button"
       type="button"
     >
-      <svg
-        class="Spinner spinner"
-      >
-        bars.svg
-      </svg>
       <span
         class="content"
       >

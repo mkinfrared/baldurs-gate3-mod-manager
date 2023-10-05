@@ -1,2 +1,17 @@
 .ModFileRow {
+  align-items: center;
+  display: grid;
+  font-size: 1.6rem;
+  gap: 1%;
+  grid-template-columns: 44% 34% 20%;
+  white-space: nowrap;
+
+  + .ModFileRow {
+    border-top: none;
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -1,44 +1,19 @@
-import { classNames, trpc } from "renderer/shared/lib/helpers";
+import { classNames } from "renderer/shared/lib/helpers";
 import { Button, Card } from "renderer/shared/ui";
-
-import { ToggleActiveModButton } from "../ToggleActiveModButton";
 
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
-const InstalledMod = ({ className, mod }: InstalledModProps) => {
-  const utils = trpc.useContext();
-
-  const { mutateAsync, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation(
-    {
-      onSuccess: () => {
-        utils.mod.getInstalledMods.invalidate();
-      },
-    },
-  );
-
-  const handleDelete = () => {
-    mutateAsync([mod.uuid ?? mod.name ?? ""]);
-  };
-
-  return (
-    <Card
-      className={classNames(css.InstalledMod, className)}
-      data-testid="InstalledMod"
-    >
-      <span title="Marklar">{mod.name}</span>
-      <span>{mod.version}</span>
-      <ToggleActiveModButton isActive={mod.isActive} modUUID={mod.uuid} />
-      <Button
-        onClick={handleDelete}
-        loading={isLoading}
-        disabled={isSuccess}
-        color="secondary"
-      >
-        Delete
-      </Button>
-    </Card>
-  );
-};
+const InstalledMod = ({ className }: InstalledModProps) => (
+  <Card
+    className={classNames(css.InstalledMod, className)}
+    data-testid="InstalledMod"
+  >
+    <span>modName || modFilePath</span>
+    <span>modVersion</span>
+    <Button>Activate</Button>
+    <Button>Delete</Button>
+  </Card>
+);
 
 export { InstalledMod };
