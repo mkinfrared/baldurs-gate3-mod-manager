@@ -1,8 +1,6 @@
 import path from "path";
 import { URL } from "url";
 
-import { appPaths } from "../appPaths";
-
 const resolveHtmlPath = (htmlFileName: string) => {
   if (process.env.NODE_ENV === "development") {
     const port = process.env.PORT || 1212;
@@ -13,7 +11,7 @@ const resolveHtmlPath = (htmlFileName: string) => {
     return url.href;
   }
 
-  return `file://${path.resolve(appPaths.renderer, htmlFileName)}`;
+  return `file://${path.resolve(__dirname, "../renderer/", htmlFileName)}`;
 };
 
 export { resolveHtmlPath };
