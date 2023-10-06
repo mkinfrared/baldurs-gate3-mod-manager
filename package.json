@@ -1,6 +1,6 @@
 {
   "name": "baldurs-gate3-mod-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A foundation for scalable desktop apps",
   "keywords": [
     "Baldur's Gate 3",
@@ -198,7 +198,7 @@
   "build": {
     "productName": "Baldur's Gate 3 Mod Manager",
     "appId": "com.erb.bg3modmanager",
-    "buildVersion": "1.0.0",
+    "buildVersion": "1.0.1",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
