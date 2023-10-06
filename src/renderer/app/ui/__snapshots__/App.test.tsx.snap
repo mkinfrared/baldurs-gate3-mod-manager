@@ -83,7 +83,7 @@ exports[`<App/> should match the snapshot 1`] = `
                 class="Heading header"
                 data-testid="Heading"
               >
-                Drag and drop you zip or rar files here or
+                Drag and drop you zip files here or
               </h4>
               <button
                 class="Button contained primary"
