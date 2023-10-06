@@ -7,8 +7,6 @@ import { EmptyList } from "../EmptyList";
 import css from "./InstalledModsList.module.scss";
 import { InstalledModsListProps } from "./InstalledModsList.type";
 
-// TODO fix when getInstalledMods is refactored
-// const installedMods = suspend(getInstalledMods);
 const InstalledModsList = ({ className }: InstalledModsListProps) => {
   const { data } = trpc.mod.getInstalledMods.useQuery();
   const activeMods = data?.filter(({ isActive }) => isActive);
