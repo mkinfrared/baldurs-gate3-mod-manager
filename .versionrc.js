@@ -1,8 +1,13 @@
 ﻿const path = require("path");
 
-const mainPackageJson = {
+const buildVersionPackageJson = {
   filename: "./package.json",
   updater: require("./versionBumper.js"),
+};
+
+const mainPackageJson = {
+  filename: "./package.json",
+  type: "json",
 };
 
 const appPackageJson = {
@@ -16,6 +21,11 @@ const appPackageLock = {
 };
 
 module.exports = {
-  bumpFiles: [mainPackageJson, appPackageJson, appPackageLock],
+  bumpFiles: [
+    mainPackageJson,
+    appPackageJson,
+    appPackageLock,
+    buildVersionPackageJson,
+  ],
   packageFiles: [mainPackageJson],
 };
