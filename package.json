@@ -27,7 +27,7 @@
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
     "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && pnpm run build:dll",
-    "package": "ts-node ./.erb/scripts/clean.js dist && pnpm run build && electron-builder build -mw --publish never && pnpm run build:dll",
+    "package": "ts-node ./.erb/scripts/clean.js dist && pnpm run build && electron-builder build -m --publish never && pnpm run build:dll",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
     "start": "ts-node ./.erb/scripts/check-port-in-use.js && pnpm run start:renderer",
     "start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
@@ -112,7 +112,7 @@
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "detect-port": "^1.5.1",
-    "electron": "26.2.2",
+    "electron": "26.3.0",
     "electron-builder": "^24.6.4",
     "electron-devtools-installer": "^3.2.0",
     "electronmon": "^2.0.2",
@@ -196,8 +196,8 @@
     ]
   },
   "build": {
-    "productName": "example app by korotkov",
-    "appId": "com.erb.exampleappbykorotkov",
+    "productName": "Baldur's Gate 3 Mod Manager",
+    "appId": "com.erb.bg3modmanager",
     "buildVersion": "0.4.0",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "asar": true,
