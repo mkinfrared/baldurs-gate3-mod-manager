@@ -1,6 +1,6 @@
 # Baldur's Gate 3 Mod Manager macOS
 
-In pursuit of a more personalized and enjoyable gaming experience, many gamers turn towards mods to tailor their experience to their unique preferences. However, for macOS users playing Baldur's Gate 3, managing these mods was a daunting task due to the lack of a suitable mod manager. This inconvenience impelled the creation of the Mod Manager. 
+In pursuit of a more personalized and enjoyable gaming experience, many gamers turn towards mods to tailor their experience to their unique preferences. However, for macOS users playing Baldur's Gate 3, managing these mods was a daunting task due to the lack of a suitable mod manager. This inconvenience impelled the creation of the Mod Manager. You can download it from [here](https://github.com/mkinfrared/baldurs-gate3-mod-manager/releases).
 
 ## Features and Usage
 
