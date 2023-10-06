@@ -7,8 +7,15 @@ import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
 const InstalledMod = ({ className, mod }: InstalledModProps) => {
-  const { mutateAsync, isLoading, isSuccess } =
-    trpc.mod.deleteMods.useMutation();
+  const utils = trpc.useContext();
+
+  const { mutateAsync, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation(
+    {
+      onSuccess: () => {
+        utils.mod.getInstalledMods.invalidate();
+      },
+    },
+  );
 
   const handleDelete = () => {
     mutateAsync([mod.uuid ?? mod.name ?? ""]);

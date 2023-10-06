@@ -1,5 +1,10 @@
 .App {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 12rem 1fr;
   min-height: 100dvh;
+
+  > aside {
+    display: flex;
+    flex-direction: column;
+  }
 }
