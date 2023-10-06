@@ -46,8 +46,14 @@ jobs:
           pnpm build
           pnpm package
 
+      - name: Create Release Notes File
+        id: var
+        run: |
+          node ./.github/scripts/createReleaseNotes.js
+
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: "./release/build/*.@(exe|dmg|zip)"
+          body_path: ${{ github.workspace }}/RELEASE.txt
