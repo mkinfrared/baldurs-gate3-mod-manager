@@ -56,4 +56,3 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: "./release/build/*.@(exe|dmg|zip)"
-          body_path: ${{ github.workspace }}/RELEASE.txt
