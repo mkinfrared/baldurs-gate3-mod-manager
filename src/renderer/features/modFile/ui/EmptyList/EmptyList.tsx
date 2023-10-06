@@ -13,7 +13,7 @@ const EmptyList = ({ className, onFilesSelect }: EmptyListProps) => {
       data-testid="EmptyList"
     >
       <Heading variant="h4" className={css.header}>
-        Drag and drop you zip or rar files here or
+        Drag and drop you zip files here or
       </Heading>
       <Button type="button">
         <label htmlFor="file">Click this button to select files</label>
