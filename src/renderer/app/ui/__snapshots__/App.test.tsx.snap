@@ -11,7 +11,14 @@ exports[`<App/> should match the snapshot 1`] = `
         class="AppNavBar"
         data-testid="AppNavBar"
       >
-        AppNavBar works!!
+        <a
+          href="/baldurs-gate-3"
+        >
+          <img
+            alt="Baldur's Gate 3 Logo"
+            src="BG3-logo.png"
+          />
+        </a>
       </div>
     </aside>
     <main>

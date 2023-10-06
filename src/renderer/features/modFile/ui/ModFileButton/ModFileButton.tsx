@@ -5,8 +5,14 @@ import css from "./ModFileButton.module.scss";
 import { ModFileButtonProps } from "./ModFileButton.type";
 
 const ModFileButton = ({ className, modPath }: ModFileButtonProps) => {
+  const utils = trpc.useContext();
+
   const { mutateAsync, isLoading, isSuccess } =
-    trpc.mod.installMods.useMutation();
+    trpc.mod.installMods.useMutation({
+      onSuccess: () => {
+        utils.mod.getInstalledMods.invalidate();
+      },
+    });
 
   const getText = () => {
     if (isSuccess) {
