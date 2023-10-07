@@ -207,7 +207,6 @@
       "node_modules",
       "package.json"
     ],
-    "afterSign": ".erb/scripts/notarize.js",
     "mac": {
       "target": [
         {
@@ -274,7 +273,11 @@
       "provider": "github",
       "owner": "mkinfrared",
       "repo": "baldurs-gate3-mod-manager"
-    }
+    },
+    "beforeBuild": "./config/build/beforeBuild.js",
+    "afterPack": "./config/build/afterPack.js",
+    "afterSign": "./config/build/afterSign.js",
+    "afterAllArtifactBuild": "./config/build/afterAllArtifactBuild.js"
   },
   "devEngines": {
     "node": ">=14.x",
