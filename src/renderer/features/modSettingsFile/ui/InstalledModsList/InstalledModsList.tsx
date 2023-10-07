@@ -10,18 +10,17 @@ import { InstalledModsListProps } from "./InstalledModsList.type";
 
 const InstalledModsList = ({ className }: InstalledModsListProps) => {
   const { data } = trpc.mod.getInstalledMods.useQuery();
-  const activeMods = data?.filter(({ isActive }) => isActive);
 
   return (
     <div
       className={classNames(css.InstalledModsList, className)}
       data-testid="InstalledModsList"
     >
-      <ModsOrder mods={activeMods} />
+      <ModsOrder mods={data?.activeMods} />
       <div>
         <Heading variant="h3">Installed Mods</Heading>
-        {data?.length ? (
-          data?.map((mod) => (
+        {data?.installedMods.length ? (
+          data?.installedMods.map((mod) => (
             <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
           ))
         ) : (

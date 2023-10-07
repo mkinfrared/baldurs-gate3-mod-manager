@@ -16,11 +16,45 @@ import { InstalledMod } from "../InstalledMod";
 import css from "./ModsOrder.module.scss";
 import { ModsOrderProps } from "./ModsOrder.type";
 
-const ModsOrder = ({ className, mods }: ModsOrderProps) => {
+const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
   const utils = trpc.useContext();
 
   const { mutate } = trpc.mod.reorderActiveMods.useMutation({
     onSuccess: () => utils.mod.getInstalledMods.invalidate(),
+
+    // When mutate is called:
+    onMutate: async (values) => {
+      // Cancel any outgoing refetches
+      // (so they don't overwrite our optimistic update)
+      await utils.mod.getInstalledMods.cancel();
+
+      // Snapshot the previous value
+      const previousData = utils.mod.getInstalledMods.getData();
+
+      // Optimistically update to the new value
+      utils.mod.getInstalledMods.setData(undefined, (oldData) => {
+        const installedMods = oldData?.installedMods ?? [];
+        const activeMods = oldData?.activeMods ?? [];
+
+        const newActiveMods = values
+          .map((value) => activeMods.find(({ uuid }) => uuid === value))
+          .filter(Boolean);
+
+        return { installedMods, activeMods: newActiveMods };
+      });
+
+      // Return a context object with the snapshotted value
+      return { previousData };
+    },
+    // If the mutation fails,
+    // use the context returned from onMutate to roll back
+    onError: (_, __, context) => {
+      utils.mod.getInstalledMods.setData(undefined, context?.previousData);
+    },
+    // Always refetch after error or success:
+    onSettled: () => {
+      utils.mod.getInstalledMods.invalidate();
+    },
   });
 
   const getItemStyle = (
