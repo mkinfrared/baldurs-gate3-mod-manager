@@ -9,6 +9,7 @@ Installation
 Step 1: [Download](https://github.com/mkinfrared/baldurs-gate3-mod-manager/releases/latest) and Install Download the application.
 Step 2: Go to your Applications folder, find the installed app, and try to open it. You'll likely get a security warning that the app can't be opened because it is from an unidentified developer (I am not enrolled in Apple Developer Program).
 Step 3: Use the following steps to bypass this security warning:
+
 1. Open System Preferences
 2. Click on Security & Privacy
 3. At the bottom of the window, you will see a message "baldurs-gate3-mod-manager- was blocked from opening because it is not from an identified developer." Click on Open Anyway.
@@ -26,6 +27,8 @@ Step 4: Open the Application
 **Mod Deletion**: The tool gives you the ability to delete previously installed mods entirely from your computer, just make sure you installed the mods using the manager. Mods installed manually are not supported for deletion.
 
 **Mod Deactivation**: It is important to note that removing a mod from the `ModOrder` list will not deactivate the mod and the game will continue to load it. This is an issue in need of further clarification. I will try to check the Larian's release notes on that or give me a hint if you have some knowlegde.
+
+**Mod Order**: You can drag mods in `Mod Order` list to change their order. Please note, that you can only drag mods which contain `info.json` file.
 
 ## Issues and Suggestions
 

@@ -6,4 +6,6 @@ export { installModsHandler } from "./installModsHandler";
 
 export { readModsHandler } from "./readModsHandler";
 
+export { reorderActiveModsHandler } from "./reorderActiveModsHandler";
+
 export { toggleActiveModHandler } from "./toggleActiveModHandler";

@@ -18,7 +18,7 @@ const getSelfActivatedMods = (
 
     const mod: InstalledMod = {
       folder: null,
-      isActive: true,
+      isActive: false,
       uuid: null,
       version: null,
       name: pakFiles.at(0) ?? null,

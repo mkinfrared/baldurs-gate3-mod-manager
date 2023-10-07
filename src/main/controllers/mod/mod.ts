@@ -3,6 +3,7 @@ import {
   getInstalledModsHandler,
   installModsHandler,
   readModsHandler,
+  reorderActiveModsHandler,
   toggleActiveModHandler,
 } from "main/features/mod";
 import { t } from "main/shared/lib/helpers";
@@ -35,6 +36,14 @@ const toggleActiveMod = t.procedure.input(stringValidation).mutation((opts) => {
   return toggleActiveModHandler(input);
 });
 
+const reorderActiveMods = t.procedure
+  .input(stringArrayValidation)
+  .mutation((opts) => {
+    const { input } = opts;
+
+    return reorderActiveModsHandler(input);
+  });
+
 const getInstalledMods = t.procedure.query(() => getInstalledModsHandler());
 
 const modController = {
@@ -42,6 +51,7 @@ const modController = {
   installMods,
   getInstalledMods,
   deleteMods,
+  reorderActiveMods,
   toggleActiveMod,
 };
 
