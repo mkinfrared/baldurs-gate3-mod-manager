@@ -54,7 +54,9 @@ const getInstalledMods = async () => {
     modData.push(data as ModData);
   });
 
-  const installedMods = modData.map((data) => {
+  const modsMap = new Map<string, InstalledMod>();
+
+  modData.forEach((data) => {
     const info = modInfoMapper(data);
 
     if (!info.uuid) {
@@ -65,14 +67,26 @@ const getInstalledMods = async () => {
       info.isActive = true;
     }
 
-    return info;
+    modsMap.set(info.uuid, info);
   });
 
-  const selfActivatedMods = getSelfActivatedMods(installedMods, "bg3");
+  const allMods = [...modsMap.values()];
+  const selfActivatedMods = getSelfActivatedMods(allMods, "bg3");
+  const activeMods: InstalledMod[] = [];
 
-  return installedMods
+  for (const activeUUID of activeNodeUUID) {
+    const node = modsMap.get(activeUUID);
+
+    if (node) {
+      activeMods.push(node);
+    }
+  }
+
+  const installedMods = allMods
     .concat(selfActivatedMods)
     .filter(({ name }) => !name?.includes("Gustav"));
+
+  return { installedMods, activeMods };
 };
 
 export { getInstalledMods };
