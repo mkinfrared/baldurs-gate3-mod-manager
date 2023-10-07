@@ -7,4 +7,5 @@ export type InstalledModsListProps = {
   className?: string;
 };
 
-export type InstalledMod = RouterOutputs["mod"]["getInstalledMods"][number];
+export type InstalledMod =
+  RouterOutputs["mod"]["getInstalledMods"]["installedMods"][number];
