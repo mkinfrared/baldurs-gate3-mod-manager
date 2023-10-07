@@ -17,14 +17,13 @@
 html {
   --surface-1: var(--primary-1);
   --surface-2: var(--primary-10);
-  --scrollbar-track-color: var(--gray-58);
+  --scrollbar-track-color: var(--secondary-4);
   --scrollbar-width: 0.5rem;
   --primary-text-1: var(--primary-10);
   --primary-text-2: var(--primary-1);
   --secondary-text-1: var(--secondary-6);
   --secondary-text-2: var(--secondary-4);
 
-  background-color: chocolate;
   color: var(--primary-text-1);
   font-family: Roboto, sans-serif;
   font-size: 10px;
