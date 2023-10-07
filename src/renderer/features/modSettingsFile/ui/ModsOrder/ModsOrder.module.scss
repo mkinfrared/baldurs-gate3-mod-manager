@@ -1,0 +1,13 @@
+.ModsOrder {
+  .droppable {
+    background-color: var(--danger-2);
+
+    &.isOver {
+      background-color: var(--success-2);
+    }
+  }
+
+  .modWrapper {
+    user-select: none;
+  }
+}

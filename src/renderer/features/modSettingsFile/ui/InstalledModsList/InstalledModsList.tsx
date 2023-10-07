@@ -1,4 +1,5 @@
 import { InstalledMod } from "renderer/features/modSettingsFile/ui/InstalledMod";
+import { ModsOrder } from "renderer/features/modSettingsFile/ui/ModsOrder";
 import { classNames, trpc } from "renderer/shared/lib/helpers";
 import { Heading } from "renderer/shared/ui";
 
@@ -16,21 +17,7 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
       className={classNames(css.InstalledModsList, className)}
       data-testid="InstalledModsList"
     >
-      <div>
-        <Heading variant="h3">Active Mods</Heading>
-        {activeMods?.length ? (
-          activeMods.map((mod) => (
-            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
-          ))
-        ) : (
-          <EmptyList>
-            <Heading variant="h4">
-              Activate the mods from the Installed Mods list below using
-              Activate button and they will appear here
-            </Heading>
-          </EmptyList>
-        )}
-      </div>
+      <ModsOrder mods={activeMods} />
       <div>
         <Heading variant="h3">Installed Mods</Heading>
         {data?.length ? (

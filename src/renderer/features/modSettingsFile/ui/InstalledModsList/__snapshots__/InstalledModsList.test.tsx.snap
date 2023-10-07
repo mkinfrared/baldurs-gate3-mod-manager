@@ -6,12 +6,15 @@ exports[`<InstalledModsList /> should match the snapshot 1`] = `
     class="InstalledModsList"
     data-testid="InstalledModsList"
   >
-    <div>
+    <div
+      class="ModsOrder"
+      data-testid="ModsOrder"
+    >
       <h3
         class="Heading"
         data-testid="Heading"
       >
-        Active Mods
+        Mod Order
       </h3>
       <div
         class="Card EmptyList"
