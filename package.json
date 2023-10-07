@@ -1,6 +1,6 @@
 {
   "name": "baldurs-gate3-mod-manager",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A foundation for scalable desktop apps",
   "keywords": [
     "Baldur's Gate 3",
@@ -198,7 +198,7 @@
   "build": {
     "productName": "Baldur's Gate 3 Mod Manager",
     "appId": "com.erb.bg3modmanager",
-    "buildVersion": "1.0.1",
+    "buildVersion": "1.0.2",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
@@ -207,7 +207,6 @@
       "node_modules",
       "package.json"
     ],
-    "afterSign": ".erb/scripts/notarize.js",
     "mac": {
       "target": [
         {
@@ -274,7 +273,11 @@
       "provider": "github",
       "owner": "mkinfrared",
       "repo": "baldurs-gate3-mod-manager"
-    }
+    },
+    "beforeBuild": "./config/build/beforeBuild.js",
+    "afterPack": "./config/build/afterPack.js",
+    "afterSign": "./config/build/afterSign.js",
+    "afterAllArtifactBuild": "./config/build/afterAllArtifactBuild.js"
   },
   "devEngines": {
     "node": ">=14.x",
