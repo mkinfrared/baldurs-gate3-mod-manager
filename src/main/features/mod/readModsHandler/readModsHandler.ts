@@ -8,7 +8,7 @@ const readModsHandler = async (filePaths: string[]) => {
   try {
     const modsData = await Promise.all(filePaths.map(getModData));
 
-    const modsInfo = modsData.map(({ filePath, data }) => {
+    const modsInfo = modsData.map(({ filePath, modData, pakFiles }) => {
       const defaultInfo = {
         folder: null,
         md5: null,
@@ -20,10 +20,11 @@ const readModsHandler = async (filePaths: string[]) => {
       const result: ReadModResult = {
         filePath,
         info: defaultInfo,
+        pakFiles,
       };
 
-      if (data) {
-        result.info = getModInfo(data) ?? defaultInfo;
+      if (modData) {
+        result.info = getModInfo(modData) ?? defaultInfo;
       }
 
       return result;
