@@ -3,11 +3,10 @@ import { deactivateMod } from "main/entities/mod";
 
 import { removeModFromSettings, removePakFiles } from "./lib/helpers";
 
-const deleteModsHandler = async (mods: string[]) => {
-  // remove bak files
+const deleteModsHandler = async (uuidsOrNames: string[]) => {
   const gameData = appState.getSection("bg3");
 
-  for (const mod of mods) {
+  for (const mod of uuidsOrNames) {
     if (gameData[mod]) {
       const { pakFiles } = gameData[mod];
 
@@ -34,9 +33,9 @@ const deleteModsHandler = async (mods: string[]) => {
 
   await appState.saveData();
 
-  await Promise.all(mods.map(deactivateMod));
+  await Promise.all(uuidsOrNames.map(deactivateMod));
 
-  await Promise.all(mods.map(removeModFromSettings));
+  await Promise.all(uuidsOrNames.map(removeModFromSettings));
 };
 
 export { deleteModsHandler };

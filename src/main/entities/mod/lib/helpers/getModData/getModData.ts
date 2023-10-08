@@ -1,13 +1,18 @@
 /* eslint-disable new-cap */
 import StreamZip from "node-stream-zip";
 
-import { isJson } from "renderer/shared/lib/helpers/fileExtension";
+import { isJson, isPak } from "renderer/shared/lib/helpers/fileExtension";
+import { memoizeTtl } from "renderer/shared/lib/helpers/memoizeTtl";
 
-import { isModData } from "./getModData.type";
+import { ModData, isModData } from "./getModData.type";
 
 const getModDataFromZip = async (zipFilePath: string) => {
   const zip = new StreamZip.async({ file: zipFilePath, storeEntries: true });
   const entries = await zip.entries();
+
+  let modData: ModData | undefined;
+
+  const pakFiles: string[] = [];
 
   for (const entry of Object.values(entries)) {
     if (!entry.isFile) {
@@ -20,20 +25,26 @@ const getModDataFromZip = async (zipFilePath: string) => {
       const data = JSON.parse(contents);
 
       if (isModData(data)) {
-        await zip.close();
-
-        return data;
+        modData = data;
       }
+    }
+
+    if (isPak(entry.name)) {
+      pakFiles.push(entry.name);
     }
   }
 
-  await zip.close(); // Close zip in case if there were no entries matching your criteria/condition.
+  await zip.close();
+
+  return { modData, pakFiles };
 };
 
 const getModData = async (filePath: string) => {
-  const data = await getModDataFromZip(filePath);
+  const { modData, pakFiles } = await getModDataFromZip(filePath);
 
-  return { data, filePath };
+  return { modData, filePath, pakFiles };
 };
 
-export { getModData };
+const getModDataMemoized = memoizeTtl(getModData);
+
+export { getModDataMemoized as getModData };
