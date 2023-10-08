@@ -4,11 +4,10 @@ import {
   installModsHandler,
   readModsHandler,
   reorderActiveModsHandler,
-  toggleActiveModHandler,
 } from "main/features/mod";
 import { t } from "main/shared/lib/helpers";
 
-import { stringArrayValidation, stringValidation } from "./validation";
+import { stringArrayValidation } from "./validation";
 
 const readMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
   const { input } = opts;
@@ -30,12 +29,6 @@ const deleteMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
   return deleteModsHandler(input);
 });
 
-const toggleActiveMod = t.procedure.input(stringValidation).mutation((opts) => {
-  const { input } = opts;
-
-  return toggleActiveModHandler(input);
-});
-
 const reorderActiveMods = t.procedure
   .input(stringArrayValidation)
   .mutation((opts) => {
@@ -52,7 +45,6 @@ const modController = {
   getInstalledMods,
   deleteMods,
   reorderActiveMods,
-  toggleActiveMod,
 };
 
 export { modController };

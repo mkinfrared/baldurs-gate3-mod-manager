@@ -1,6 +1,6 @@
 import { CheerioAPI } from "cheerio";
 
-import { ModInfo } from "main/entities/mod";
+import { ModInfo, createModNodeOrder } from "main/entities/mod";
 import {
   getCurrentSettings,
   saveModSettings,
@@ -22,14 +22,17 @@ const exists = (currentSettings: CheerioAPI, mod: ModInfo) => {
 };
 
 const upsertModData = (currentSettings: CheerioAPI, modInfo?: ModInfo) => {
-  if (!modInfo) {
+  if (!modInfo || !modInfo.uuid) {
     return;
   }
 
   if (!exists(currentSettings, modInfo)) {
     const node = createModNode(modInfo);
+    const nodeOrder = createModNodeOrder(modInfo.uuid);
 
     currentSettings("#Mods children").append(node);
+
+    currentSettings("#ModOrder children").append(nodeOrder);
 
     return;
   }

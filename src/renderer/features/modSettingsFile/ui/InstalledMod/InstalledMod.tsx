@@ -1,8 +1,6 @@
 import { classNames, trpc } from "renderer/shared/lib/helpers";
 import { Button, Card } from "renderer/shared/ui";
 
-import { ToggleActiveModButton } from "../ToggleActiveModButton";
-
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
@@ -28,7 +26,6 @@ const InstalledMod = ({ className, mod }: InstalledModProps) => {
     >
       <span title="Marklar">{mod.name}</span>
       <span>{mod.version}</span>
-      <ToggleActiveModButton isActive={mod.isActive} modUUID={mod.uuid} />
       <Button
         onClick={handleDelete}
         loading={isLoading}
