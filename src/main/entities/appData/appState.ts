@@ -22,25 +22,46 @@ class AppState {
       this.#data = values || this.#defaultValues;
     } catch (e) {
       this.#data = this.#defaultValues;
+    } finally {
+      this.#removeEmptyEntries();
     }
   }
 
-  getSection(key: keyof AppData) {
+  #removeEmptyEntries = async () => {
+    const dataKeys = Object.keys(this.#data);
+
+    dataKeys.forEach((dataKey) => {
+      const obj = this.#data[dataKey as keyof AppData];
+      const keys = Object.keys(obj);
+
+      keys.forEach((key) => {
+        const { pakFiles } = obj[key];
+
+        if (!pakFiles || pakFiles?.length === 0) {
+          delete obj[key];
+        }
+      });
+    });
+
+    await this.saveData();
+  };
+
+  getSection = (key: keyof AppData) => {
     if (!this.#data[key]) {
       this.#data[key] = {};
     }
 
     return this.#data[key];
-  }
+  };
 
-  async saveData() {
+  saveData = async () => {
     const formattedData = await prettier.format(JSON.stringify(this.#data), {
       printWidth: 80,
       parser: "json",
     });
 
     fs.writeFileSync(APP_DATA_PATH, formattedData);
-  }
+  };
 }
 
 const appState = new AppState();
