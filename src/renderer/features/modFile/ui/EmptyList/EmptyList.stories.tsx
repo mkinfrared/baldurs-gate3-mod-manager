@@ -12,7 +12,9 @@ const meta = {
 } satisfies Meta<typeof EmptyList>;
 
 const Default: Story = {
-  args: {},
+  args: {
+    acceptedFileTypes: ["zip"],
+  },
   render: (args) => (
     <div className={css.Story}>
       <EmptyList {...args} />
