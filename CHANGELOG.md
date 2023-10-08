@@ -1,7 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## 1.2.1 (2023-10-08)
+
+
+### Bug Fixes
+
+* incorrect mod type check ([#43](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/43)) ([162bed9](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/162bed94de18483e0ff06d43fe1deaaac0a76f19))
 
 ## 1.2.0 (2023-10-08)
 
