@@ -1,39 +1,13 @@
-/* eslint-disable new-cap */
-import StreamZip from "node-stream-zip";
+import { memoizeTtl } from "renderer/shared/lib/helpers/memoizeTtl";
 
-import { isJson } from "renderer/shared/lib/helpers/fileExtension";
-
-import { isModData } from "./getModData.type";
-
-const getModDataFromZip = async (zipFilePath: string) => {
-  const zip = new StreamZip.async({ file: zipFilePath, storeEntries: true });
-  const entries = await zip.entries();
-
-  for (const entry of Object.values(entries)) {
-    if (!entry.isFile) {
-      continue;
-    }
-
-    if (isJson(entry.name)) {
-      const entryData = await zip.entryData(entry.name);
-      const contents = entryData.toString();
-      const data = JSON.parse(contents);
-
-      if (isModData(data)) {
-        await zip.close();
-
-        return data;
-      }
-    }
-  }
-
-  await zip.close(); // Close zip in case if there were no entries matching your criteria/condition.
-};
+import { getModDataFromArchive } from "./lib";
 
 const getModData = async (filePath: string) => {
-  const data = await getModDataFromZip(filePath);
+  const { modData, pakFiles } = await getModDataFromArchive(filePath);
 
-  return { data, filePath };
+  return { modData, filePath, pakFiles };
 };
 
-export { getModData };
+const getModDataMemoized = memoizeTtl(getModData);
+
+export { getModDataMemoized as getModData };

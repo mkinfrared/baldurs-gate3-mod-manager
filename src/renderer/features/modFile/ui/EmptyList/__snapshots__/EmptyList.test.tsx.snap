@@ -10,7 +10,9 @@ exports[`<EmptyList /> should match the snapshot 1`] = `
       class="Heading header"
       data-testid="Heading"
     >
-      Drag and drop you zip files here or
+      Drag and drop you 
+      zip, rar
+       files here or
     </h4>
     <button
       class="Button contained primary"
@@ -33,7 +35,7 @@ exports[`<EmptyList /> should match the snapshot 1`] = `
       </span>
     </button>
     <input
-      accept="zip"
+      accept="zip,rar"
       id="file"
       multiple=""
       type="file"

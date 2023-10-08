@@ -130,7 +130,11 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
                         {...dragHandleProps}
                         style={getItemStyle(draggableProps.style)}
                       >
-                        <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
+                        <InstalledMod
+                          className={css.installedMod}
+                          key={mod.uuid ?? mod.name}
+                          mod={mod}
+                        />
                       </div>
                     )}
                   </Draggable>

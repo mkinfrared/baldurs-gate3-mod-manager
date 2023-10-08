@@ -8,6 +8,8 @@ export { getNodeText } from "./getNodeText";
 
 export { lazyImport } from "./lazyImport";
 
+export { memoizeTtl } from "./memoizeTtl";
+
 export { mergeRefs } from "./mergeRefs";
 
 export * from "./typeGuards";

@@ -1,6 +1,6 @@
 {
   "name": "baldurs-gate3-mod-manager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A foundation for scalable desktop apps",
   "keywords": [
     "Baldur's Gate 3",
@@ -55,9 +55,8 @@
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^6.1.4",
+    "libarchive-wasm": "^1.1.0",
     "lodash-es": "^4.17.21",
-    "node-stream-zip": "^1.15.0",
-    "node-unrar-js": "^2.0.0",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
@@ -200,7 +199,7 @@
   "build": {
     "productName": "Baldur's Gate 3 Mod Manager",
     "appId": "com.erb.bg3modmanager",
-    "buildVersion": "1.1.0",
+    "buildVersion": "1.2.0",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",

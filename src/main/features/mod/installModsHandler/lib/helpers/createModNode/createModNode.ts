@@ -23,7 +23,6 @@ const createModNode = (modInfo: ModInfo) => {
 
   const template = `
     <node id="ModuleShortDesc">
-      <!-- ${modInfo.uuid} -->
       <attribute id="Folder" type="LSString" value="${modInfo.folder}" />
       <attribute id="MD5" type="LSString" value="${modInfo.md5}" />
       <attribute id="Name" type="LSString" value="${modInfo.name}" />
