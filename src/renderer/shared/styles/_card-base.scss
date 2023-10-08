@@ -1,0 +1,14 @@
+%card-base {
+  @layer base {
+    --background: var(--surface-1);
+    --border-color: var(--primary-2);
+
+    @media (prefers-color-scheme: light) {
+      --border-color: var(--primary-3);
+    }
+
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+}
