@@ -9,7 +9,6 @@ import css from "./ModFileList.module.scss";
 import { ModFileListProps, ReadModResult } from "./ModFileList.type";
 
 const ModFileList = ({ className }: ModFileListProps) => {
-  const acceptedFileTypes = ["zip", "rar", "7z"];
   const [zipFiles, setZipFiles] = useState<ReadModResult>([]);
   const readFilesMutation = trpc.mod.readMods.useMutation();
 
@@ -21,16 +20,7 @@ const ModFileList = ({ className }: ModFileListProps) => {
 
   const submitFiles = async (files: FileList) => {
     try {
-      const filePaths = [...files]
-        .map(({ path }) => path)
-        .filter((path) =>
-          acceptedFileTypes.some((type) => {
-            const regex = new RegExp(`.${type}$`, "i");
-
-            return regex.test(path);
-          }),
-        );
-
+      const filePaths = [...files].map(({ path }) => path);
       const result = await readFilesMutation.mutateAsync(filePaths);
 
       setZipFiles(result);
@@ -86,10 +76,7 @@ const ModFileList = ({ className }: ModFileListProps) => {
           />
         ))
       ) : (
-        <EmptyList
-          acceptedFileTypes={acceptedFileTypes}
-          onFilesSelect={handleFilesSelect}
-        />
+        <EmptyList onFilesSelect={handleFilesSelect} />
       )}
     </div>
   );

@@ -4,14 +4,7 @@ import { EmptyList } from "./EmptyList";
 
 describe("<EmptyList />", () => {
   const onFileSelect = jest.fn();
-  const acceptedFileTypes = ["zip", "rar"];
-
-  const Component = (
-    <EmptyList
-      acceptedFileTypes={acceptedFileTypes}
-      onFilesSelect={onFileSelect}
-    />
-  );
+  const Component = <EmptyList onFilesSelect={onFileSelect} />;
 
   it("should be defined", () => {
     expect(EmptyList).toBeDefined();

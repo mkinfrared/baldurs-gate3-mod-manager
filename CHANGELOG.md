@@ -2,18 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## 1.2.1 (2023-10-08)
-
-
-### Bug Fixes
-
-* incorrect mod type check ([#43](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/43)) ([162bed9](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/162bed94de18483e0ff06d43fe1deaaac0a76f19))
-
-## 1.2.0 (2023-10-08)
+## 1.2.2 (2023-10-09)
 
 ### Features
 
-- Add `.rar` and `.7z` support. You can now install mods that use those archives. ([#39](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/39)) ([5e82fe1](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/5e82fe10e1bca652353b08253aa9ddb8e420b2cd))
+- Revert support for `.rar` and `.7z` files as libarchive is not working in production build. Further investigations are in plain.
 - Remove activate button, as it only confused people including me. Initially as I thought adding mod to `ModOrder` meant
   activating that mod and removing was deactivating. As it turned out it doesn't work that way, it only determines the
   load order of the mods. So from now all the mods you install and if they have a proper `info.json` will be added

@@ -1,1 +1,0 @@
-export { getModDataFromArchive } from "./getModDataFromArchive";
