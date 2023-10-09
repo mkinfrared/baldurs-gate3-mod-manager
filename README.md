@@ -18,7 +18,7 @@ Step 4: Open the Application
 
 ## Features and Usage
 
-**Mod Installation**: The application facilitates easy mod installation. Simply `drag & drop` your `zip`, `rar`, `7z` file into the application window or use a button select files via a dialog window, click `Install`, and you have your mod installed.
+**Mod Installation**: The application facilitates easy mod installation. Simply `drag & drop` the zip file into the application window or use a button select files via a dialog window, click `Install`, and you have your mod installed. Just don't forget to click `Activate` to enable your mod. Currently only `zip` formats are supported, `rar` archives will be added later.
 
 **Mod Support**: The application only supports mods installed in the `Mods` folder and does not support mods that require placement in the game's main directory. For now, only the default `Mods` directory (`Documents/Larian Studios/Baldur's Gate 3/Mods`) is supported.
 
