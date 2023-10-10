@@ -1,10 +1,10 @@
 import { CheerioAPI } from "cheerio";
 
-import { ModInfo, createModNodeOrder } from "main/entities/mod";
+import { ModInfo, createModNodeOrder } from "@main/entities/mod";
 import {
   getCurrentSettings,
   saveModSettings,
-} from "main/entities/modSettingsFile";
+} from "@main/entities/modSettingsFile";
 
 import { createModNode } from "../createModNode";
 

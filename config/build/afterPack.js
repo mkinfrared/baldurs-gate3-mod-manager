@@ -5,9 +5,10 @@ const { promisify } = require("util");
 const exec = promisify(require("child_process").exec);
 
 const afterPack = async (context) => {
+  console.log("after pack");
   const appName = '"Baldur\'s Gate 3 Mod Manager.app"'; // added double-quotes
   const rootDir = path.resolve(__dirname, "../..");
-  const buildDir = path.join(rootDir, "./release/build");
+  const buildDir = path.join(rootDir, "./dist");
   const mac = "mac";
   const arm = "mac-arm64";
   const platforms = [mac, arm];

@@ -1,4 +1,4 @@
-import { getCurrentSettings } from "main/entities/modSettingsFile";
+import { getCurrentSettings } from "@main/entities/modSettingsFile";
 
 import { getSelfActivatedMods } from "../getSelfActivatedMods";
 

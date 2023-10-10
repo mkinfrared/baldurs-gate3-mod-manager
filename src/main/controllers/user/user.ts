@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { t } from "main/shared/lib/helpers";
+import { t } from "@main/shared/lib/helpers";
 
 import { createUserValidation } from "./validation";
 

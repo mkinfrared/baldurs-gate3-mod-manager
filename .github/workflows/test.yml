@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-latest]
 
     steps:
       - name: Check out Git repository
@@ -50,14 +50,13 @@ jobs:
       - name: Build
         if: matrix.os == 'macos-latest'
         run: |
-          pnpm build
-          CSC_FOR_PULL_REQUEST=true pnpm package
+          CSC_FOR_PULL_REQUEST=true pnpm build:mac -- --arm64
 
       - name: Upload Artifacts
         if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v2
         with:
-          path: release/build/*.dmg
+          path: dist/*.dmg
 
       - name: Lint
         run: |

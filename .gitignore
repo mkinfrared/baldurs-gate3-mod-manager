@@ -18,22 +18,19 @@ pids
 coverage
 .eslintcache
 
-# Dependency directory
+### Dependency
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# OSX
-.DS_Store
 
 ### Generated Code
 ## Build
-release/app/dist
-release/build
-.erb/dll
-storybook-static
+dist
+out
+*.log*
 
-.idea
-npm-debug.log.*
-*.css.d.ts
-*.sass.d.ts
-*.scss.d.ts
+## Cache
+.*cache
+
+# OSX
+.DS_Store

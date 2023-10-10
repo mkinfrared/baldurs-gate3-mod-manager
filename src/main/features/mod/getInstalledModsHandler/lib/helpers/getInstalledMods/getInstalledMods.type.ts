@@ -1,4 +1,4 @@
-import { ModInfo } from "main/entities/mod";
+import { ModInfo } from "@main/entities/mod";
 
 export type ModData = {
   folder: string;

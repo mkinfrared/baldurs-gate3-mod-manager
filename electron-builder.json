@@ -1,0 +1,62 @@
+{
+  "productName": "Baldur's Gate 3 Mod Manager",
+  "appId": "com.erb.bg3modmanager",
+  "buildVersion": "2.0.1",
+  "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+  "asar": true,
+  "asarUnpack": ["resources/**", "**\\*.{node,dll}"],
+  "files": [
+    "out",
+    "node_modules/**/*",
+    "package.json"
+  ],
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": [
+          "arm64",
+          "x64"
+        ]
+      },
+      {
+        "target": "zip",
+        "arch": [
+          "arm64",
+          "x64"
+        ]
+      }
+    ],
+    "type": "distribution",
+    "hardenedRuntime": true,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "gatekeeperAssess": false
+  },
+  "win": {
+    "target": [
+      {
+        "target": "portable",
+        "arch": ["arm64", "x64"]
+      }
+    ]
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "category": "Development"
+  },
+  "directories": {
+    "buildResources": "build"
+  },
+  "extraResources": ["./assets/**"],
+  "publish": {
+    "provider": "github",
+    "owner": "mkinfrared",
+    "repo": "baldurs-gate3-mod-manager"
+  },
+  "npmRebuild": false,
+  "beforeBuild": "./config/build/beforeBuild.js",
+  "afterPack": "./config/build/afterPack.js",
+  "afterSign": "./config/build/afterSign.js",
+  "afterAllArtifactBuild": "./config/build/afterAllArtifactBuild.js"
+}

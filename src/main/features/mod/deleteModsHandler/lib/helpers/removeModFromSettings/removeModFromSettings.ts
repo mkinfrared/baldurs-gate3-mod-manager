@@ -1,7 +1,7 @@
 import {
   getCurrentSettings,
   saveModSettings,
-} from "main/entities/modSettingsFile";
+} from "@main/entities/modSettingsFile";
 
 const removeModFromSettings = async (modUUID: string) => {
   const settings = await getCurrentSettings();
