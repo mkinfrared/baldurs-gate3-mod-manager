@@ -1,46 +1,16 @@
-/* eslint-disable no-console */
-// import { parentPort } from "node:worker_threads";
-
 import { parentPort } from "worker_threads";
 
 import { expose } from "comlink";
 import nodeEndpoint from "comlink/dist/umd/node-adapter";
 
-export class HelperWorker {
-  calc = (time: string, index: number) => {
-    console.log(time);
+import { getModData } from "@main/entities/mod/lib/helpers/getModData/getModData";
 
-    const label = `${index}. calc-${time}`;
+export class ReadDataWorker {
+  startGetModData = async (path: string) => {
+    const { modData, pakFiles, filePath } = await getModData(path);
 
-    console.time(label);
-
-    let n = 0;
-
-    for (let i = 0; i <= 1000000000; i += 1) {
-      n += Number(i);
-    }
-
-    console.timeEnd(label);
-
-    return n;
+    return { modData, pakFiles, filePath };
   };
 }
 
-// parentPort?.on("message", ({ index, time }: any) => {
-//   const result = calc(time, index);
-//
-//   parentPort?.postMessage(result);
-// });
-
-// const getModDataWorker = (someObject: object) => {
-//     console.log("from worker");
-//
-//     return getModData(someObject as any);
-// }
-//
-// export {
-//     calc,
-//     getModDataWorker
-// };
-
-expose(new HelperWorker(), nodeEndpoint(parentPort!));
+expose(new ReadDataWorker(), nodeEndpoint(parentPort!));

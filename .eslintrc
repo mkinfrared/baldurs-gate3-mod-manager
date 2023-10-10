@@ -57,6 +57,7 @@
     "import/extensions": "off",
     "import/group-exports": "error",
     "import/no-absolute-path": "off",
+    "import/no-duplicates": ["error", {"considerQueryString": true}],
     "import/no-extraneous-dependencies": "off",
     // typescript already handles that issue
     "import/no-unresolved": "off",

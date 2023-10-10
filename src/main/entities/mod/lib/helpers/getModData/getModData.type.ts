@@ -31,6 +31,12 @@ export type Mod = ModInfoV1 | ModInfoV2;
 
 export type ModData = ModDataV1 | ModDataV2;
 
+export type ModDataResult = {
+  modData: ModData | undefined;
+  filePath: string;
+  pakFiles: string[];
+};
+
 const isModInfoV1 = (value: any): value is ModInfoV1 => {
   const props = ["Author", "Name", "Folder", "UUID"];
 
