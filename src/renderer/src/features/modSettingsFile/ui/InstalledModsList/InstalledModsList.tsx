@@ -1,7 +1,7 @@
 import { InstalledMod } from "@renderer/features/modSettingsFile/ui/InstalledMod";
 import { ModsOrder } from "@renderer/features/modSettingsFile/ui/ModsOrder";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
-import { Heading } from "@renderer/shared/ui";
+import { Heading, StickyBlock } from "@renderer/shared/ui";
 
 import { EmptyList } from "../EmptyList";
 
@@ -18,7 +18,9 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
     >
       <ModsOrder mods={data?.activeMods} />
       <div>
-        <Heading variant="h3">Installed Mods</Heading>
+        <StickyBlock>
+          <Heading variant="h3">Installed Mods</Heading>
+        </StickyBlock>
         {data?.installedMods.length ? (
           data?.installedMods.map((mod) => (
             <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />

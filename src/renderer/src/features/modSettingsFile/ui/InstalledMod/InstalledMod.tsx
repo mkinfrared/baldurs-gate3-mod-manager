@@ -30,7 +30,7 @@ const InstalledMod = ({ className, mod }: InstalledModProps) => {
         onClick={handleDelete}
         loading={isLoading}
         disabled={isSuccess}
-        color="secondary"
+        color="primary"
       >
         Delete
       </Button>

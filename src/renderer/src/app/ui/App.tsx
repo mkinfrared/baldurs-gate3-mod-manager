@@ -26,7 +26,7 @@ const App = () => (
       <Router>
         <div className={css.App} data-testid="App">
           <aside>
-            <AppNavBar />
+            <AppNavBar className={css.navBar} />
           </aside>
           <main>
             <AppRoutes />

@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<StickyBlock /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="StickyBlock"
+    data-testid="StickyBlock"
+  />
+</div>
+`;

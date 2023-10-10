@@ -6,12 +6,17 @@ exports[`<ModFileSection /> > should match the snapshot 1`] = `
     class="ModFileSection"
     data-testid="ModFileSection"
   >
-    <h3
-      class="Heading"
-      data-testid="Heading"
+    <div
+      class="StickyBlock"
+      data-testid="StickyBlock"
     >
-      Modification Files
-    </h3>
+      <h3
+        class="Heading"
+        data-testid="Heading"
+      >
+        Modification Files
+      </h3>
+    </div>
   </div>
 </div>
 `;
