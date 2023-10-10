@@ -4,7 +4,10 @@
   min-height: 100dvh;
 
   > aside {
+    align-self: start;
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0;
   }
 }

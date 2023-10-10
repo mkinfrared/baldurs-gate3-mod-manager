@@ -1,6 +1,6 @@
 import { ModFileList } from "@renderer/features/modFile";
 import { classNames } from "@renderer/shared/lib/helpers";
-import { Heading } from "@renderer/shared/ui";
+import { Heading, StickyBlock } from "@renderer/shared/ui";
 
 import css from "./ModFileSection.module.scss";
 import { ModFileSectionProps } from "./ModFileSection.type";
@@ -10,7 +10,9 @@ const ModFileSection = ({ className }: ModFileSectionProps) => (
     className={classNames(css.ModFileSection, className)}
     data-testid="ModFileSection"
   >
-    <Heading>Modification Files</Heading>
+    <StickyBlock>
+      <Heading>Modification Files</Heading>
+    </StickyBlock>
     <ModFileList />
   </div>
 );

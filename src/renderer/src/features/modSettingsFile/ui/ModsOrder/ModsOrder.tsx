@@ -8,7 +8,7 @@ import {
 } from "react-beautiful-dnd";
 
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
-import { Heading } from "@renderer/shared/ui";
+import { Heading, StickyBlock } from "@renderer/shared/ui";
 
 import { EmptyList } from "../EmptyList";
 import { InstalledMod } from "../InstalledMod";
@@ -103,7 +103,9 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
       className={classNames(css.ModsOrder, className)}
       data-testid="ModsOrder"
     >
-      <Heading variant="h3">Mod Order</Heading>
+      <StickyBlock>
+        <Heading variant="h3">Mod Order</Heading>
+      </StickyBlock>
       {mods?.length ? (
         <DragDropContext onDragEnd={onDragDropContextDragEnd}>
           <Droppable droppableId="modOrderDroppable">

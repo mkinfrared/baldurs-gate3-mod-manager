@@ -34,6 +34,10 @@ export type { SelectProps } from "./Select";
 
 export { default as Spinner } from "./Spinner";
 
+export { default as StickyBlock } from "./StickyBlock";
+
+export type { StickyBlockProps } from "./StickyBlock";
+
 export { default as Table } from "./Table";
 
 export type { TableProps } from "./Table";

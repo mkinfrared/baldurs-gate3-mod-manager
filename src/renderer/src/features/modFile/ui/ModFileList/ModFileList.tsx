@@ -1,6 +1,7 @@
 import { ChangeEventHandler, DragEventHandler, useState } from "react";
 
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
+import { Button } from "@renderer/shared/ui";
 
 import { EmptyList } from "../EmptyList";
 import { ModFileRow } from "../ModFileRow";
@@ -59,6 +60,10 @@ const ModFileList = ({ className }: ModFileListProps) => {
     }
   };
 
+  const handleClearClick = () => {
+    setZipFiles([]);
+  };
+
   return (
     <div
       className={classNames(
@@ -90,6 +95,11 @@ const ModFileList = ({ className }: ModFileListProps) => {
           acceptedFileTypes={acceptedFileTypes}
           onFilesSelect={handleFilesSelect}
         />
+      )}
+      {!!zipFiles?.length && (
+        <Button className={css.clear} onClick={handleClearClick}>
+          Clear
+        </Button>
       )}
     </div>
   );

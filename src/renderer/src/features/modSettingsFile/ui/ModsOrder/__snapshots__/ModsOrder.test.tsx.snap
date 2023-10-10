@@ -6,12 +6,17 @@ exports[`<ModsOrder /> > should match the snapshot 1`] = `
     class="ModsOrder"
     data-testid="ModsOrder"
   >
-    <h3
-      class="Heading"
-      data-testid="Heading"
+    <div
+      class="StickyBlock"
+      data-testid="StickyBlock"
     >
-      Mod Order
-    </h3>
+      <h3
+        class="Heading"
+        data-testid="Heading"
+      >
+        Mod Order
+      </h3>
+    </div>
     <div
       class="Card EmptyList"
       data-testid="Card"
