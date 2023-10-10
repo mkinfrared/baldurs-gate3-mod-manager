@@ -4,7 +4,7 @@ import { Button, Card } from "@renderer/shared/ui";
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
-const InstalledMod = ({ className, mod }: InstalledModProps) => {
+const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
   const utils = trpc.useContext();
 
   const { mutateAsync, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation(
@@ -24,6 +24,7 @@ const InstalledMod = ({ className, mod }: InstalledModProps) => {
       className={classNames(css.InstalledMod, className)}
       data-testid="InstalledMod"
     >
+      <span>{position && `${position}.`}</span>
       <span title="Marklar">{mod.name}</span>
       <span>{mod.version}</span>
       <Button

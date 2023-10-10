@@ -1,14 +1,22 @@
-import { LRUCache } from "lru-cache";
+const memoizeTtl = <T extends (...args: any[]) => any>(
+  func: T,
+  ttl = 60000,
+): T => {
+  const cache = new Map<string, ReturnType<T>>();
 
-const cache = new LRUCache<string, any>({
-  max: 500,
-  ttl: 60000,
-  updateAgeOnGet: true,
-  updateAgeOnHas: true,
-});
+  let timeoutId: NodeJS.Timeout | null = null;
 
-const memoizeTtl = <T extends (...args: any[]) => any>(func: T): T =>
-  ((...args: Parameters<T>): ReturnType<T> => {
+  const resetTtl = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
+      cache.clear();
+    }, ttl);
+  };
+
+  return ((...args: Parameters<T>): ReturnType<T> => {
     const key = JSON.stringify(args);
 
     if (cache.has(key)) {
@@ -19,7 +27,10 @@ const memoizeTtl = <T extends (...args: any[]) => any>(func: T): T =>
 
     cache.set(key, result);
 
+    resetTtl();
+
     return result;
   }) as T;
+};
 
 export { memoizeTtl };

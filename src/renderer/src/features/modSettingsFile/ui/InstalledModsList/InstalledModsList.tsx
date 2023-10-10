@@ -22,8 +22,12 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
           <Heading variant="h3">Installed Mods</Heading>
         </StickyBlock>
         {data?.installedMods.length ? (
-          data?.installedMods.map((mod) => (
-            <InstalledMod key={mod.uuid ?? mod.name} mod={mod} />
+          data?.installedMods.map((mod, index) => (
+            <InstalledMod
+              key={mod.uuid ?? mod.name}
+              mod={mod}
+              position={index + 1}
+            />
           ))
         ) : (
           <EmptyList>

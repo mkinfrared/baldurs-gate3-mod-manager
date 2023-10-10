@@ -16,7 +16,8 @@ describe("<InstalledMod />", () => {
     version: "v3.4.7",
   };
 
-  const Component = <InstalledMod mod={mod} />;
+  const position = 42;
+  const Component = <InstalledMod mod={mod} position={position} />;
 
   it("should be defined", () => {
     expect(InstalledMod).toBeDefined();

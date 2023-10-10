@@ -63,7 +63,6 @@
     "electron-updater": "^6.1.4",
     "libarchive-wasm": "^1.1.0",
     "lodash-es": "^4.17.21",
-    "lru-cache": "^10.0.1",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",

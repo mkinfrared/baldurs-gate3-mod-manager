@@ -5,26 +5,16 @@
   "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
   "asar": true,
   "asarUnpack": ["resources/**", "**\\*.{node,dll}"],
-  "files": [
-    "out",
-    "node_modules/**/*",
-    "package.json"
-  ],
+  "files": ["out", "node_modules/**/*", "package.json"],
   "mac": {
     "target": [
       {
         "target": "dmg",
-        "arch": [
-          "arm64",
-          "x64"
-        ]
+        "arch": ["arm64", "x64"]
       },
       {
         "target": "zip",
-        "arch": [
-          "arm64",
-          "x64"
-        ]
+        "arch": ["arm64", "x64"]
       }
     ],
     "type": "distribution",
@@ -49,11 +39,6 @@
     "buildResources": "build"
   },
   "extraResources": ["./assets/**"],
-  "publish": {
-    "provider": "github",
-    "owner": "mkinfrared",
-    "repo": "baldurs-gate3-mod-manager"
-  },
   "npmRebuild": false,
   "beforeBuild": "./config/build/beforeBuild.js",
   "afterPack": "./config/build/afterPack.js",
