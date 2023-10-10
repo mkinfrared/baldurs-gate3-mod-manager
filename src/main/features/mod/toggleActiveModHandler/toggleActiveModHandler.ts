@@ -1,4 +1,4 @@
-import { activateMod, deactivateMod } from "main/entities/mod";
+import { activateMod, deactivateMod } from "@main/entities/mod";
 
 import { isActiveMod } from "./lib/helpers";
 

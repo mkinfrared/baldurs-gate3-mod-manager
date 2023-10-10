@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<EmptyList /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="Card EmptyList"
+    data-testid="Card"
+  >
+    <h4
+      class="Heading header"
+      data-testid="Heading"
+    >
+      Drag and drop you 
+      zip, rar
+       files here or
+    </h4>
+    <button
+      class="Button contained primary"
+      data-testid="Button"
+      type="button"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <span
+        class="content"
+      >
+        <label
+          for="file"
+        >
+          Click this button to select files
+        </label>
+      </span>
+    </button>
+    <input
+      accept="zip,rar"
+      id="file"
+      multiple=""
+      type="file"
+    />
+  </div>
+</div>
+`;

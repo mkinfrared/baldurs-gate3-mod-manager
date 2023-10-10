@@ -1,6 +1,6 @@
 import path from "path";
 
-import { getModData, getModInfo } from "main/entities/mod";
+import { getModData, getModInfo } from "@main/entities/mod";
 
 import { ReadModResult } from "./readModsHandler.type";
 

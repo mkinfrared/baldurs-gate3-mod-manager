@@ -4,8 +4,8 @@ import {
   installModsHandler,
   readModsHandler,
   reorderActiveModsHandler,
-} from "main/features/mod";
-import { t } from "main/shared/lib/helpers";
+} from "@main/features/mod";
+import { t } from "@main/shared/lib/helpers";
 
 import { stringArrayValidation } from "./validation";
 

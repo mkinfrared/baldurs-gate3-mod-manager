@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 
-import { BALDURS_GATE3 } from "main/shared/config";
+import { BALDURS_GATE3 } from "@main/shared/config";
 
 const copyPakFile = (fileName: string, content: Buffer) => {
   /*

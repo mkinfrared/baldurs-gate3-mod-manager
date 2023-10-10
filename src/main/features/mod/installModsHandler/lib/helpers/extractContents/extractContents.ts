@@ -1,46 +1,55 @@
-/* eslint-disable new-cap */
-import StreamZip from "node-stream-zip";
+import { readFile } from "node:fs/promises";
+import path from "path";
 
-import { ModData, isModData } from "main/entities/mod";
-import { isJson, isPak } from "renderer/shared/lib/helpers/fileExtension";
+import { ArchiveReader, libarchiveWasm } from "libarchive-wasm";
+
+import { ModData, isModData } from "@main/entities/mod";
+import { isJson, isPak } from "@main/shared/lib/helpers/fileExtension";
 
 import { copyPakFile } from "../copyPakFile";
 
-const extractContents = async (zipFilePath: string) => {
-  const zip = new StreamZip.async({ file: zipFilePath, storeEntries: true });
-  const entries = await zip.entries();
+const extractContents = async (filePath: string) => {
+  const data = await readFile(filePath);
+  const mod = await libarchiveWasm();
+  const reader = new ArchiveReader(mod, new Int8Array(data));
   const pakFiles: string[] = [];
 
-  let data: ModData | undefined;
+  let modData: ModData | undefined;
 
-  for (const entry of Object.values(entries)) {
-    if (!entry.isFile) {
+  for (const entry of reader.entries()) {
+    const pathname = entry.getPathname();
+    const fileType = entry.getFiletype(); // File or Directory
+
+    if (pathname.includes("MACOSX") || fileType === "Directory") {
       continue;
     }
 
-    if (isPak(entry.name)) {
-      const entryData = await zip.entryData(entry.name);
+    if (isPak(pathname)) {
+      const entryData = entry.readData();
+      const fileName = path.basename(pathname);
 
-      await copyPakFile(entry.name, entryData);
+      if (entryData) {
+        await copyPakFile(fileName, Buffer.from(entryData));
+      }
 
-      pakFiles.push(entry.name);
+      pakFiles.push(fileName);
     }
 
-    if (isJson(entry.name)) {
-      const entryData = await zip.entryData(entry.name);
+    if (isJson(pathname)) {
+      const entryData = new TextDecoder().decode(entry.readData());
       const contentData = JSON.parse(entryData.toString());
 
       if (isModData(contentData)) {
-        data = contentData;
+        modData = contentData;
       }
     }
   }
 
-  await zip.close(); // Close zip in case if there were no entries matching your criteria/condition.
+  reader.free();
 
   return {
     pakFiles,
-    data,
+    data: modData,
   };
 };
 

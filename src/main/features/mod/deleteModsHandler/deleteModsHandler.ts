@@ -1,5 +1,5 @@
-import { appState } from "main/entities/appData";
-import { deactivateMod } from "main/entities/mod";
+import { appState } from "@main/entities/appData";
+import { deactivateMod } from "@main/entities/mod";
 
 import { removeModFromSettings, removePakFiles } from "./lib/helpers";
 

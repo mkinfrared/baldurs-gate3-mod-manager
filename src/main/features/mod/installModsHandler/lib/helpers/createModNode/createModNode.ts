@@ -1,4 +1,4 @@
-import { ModInfo } from "main/entities/mod";
+import { ModInfo } from "@main/entities/mod";
 
 const getVersion = (value: number | string | null) => {
   const version = value === null ? 0 : +value;

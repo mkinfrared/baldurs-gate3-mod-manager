@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<NoImage /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="NoImage"
+    data-testid="NoImage"
+  >
+    <svg
+      class="cross"
+    >
+      cross-circle.svg
+    </svg>
+  </div>
+</div>
+`;
