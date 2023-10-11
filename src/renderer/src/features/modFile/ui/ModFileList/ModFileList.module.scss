@@ -1,7 +1,7 @@
 .ModFileList {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  min-height: 75dvh;
 
   &.isLoading {
     cursor: progress;

@@ -1,55 +1,46 @@
-import { readFile } from "node:fs/promises";
-import path from "path";
-
-import { ArchiveReader, libarchiveWasm } from "libarchive-wasm";
+/* eslint-disable new-cap */
+import StreamZip from "node-stream-zip";
 
 import { ModData, isModData } from "@main/entities/mod";
 import { isJson, isPak } from "@main/shared/lib/helpers/fileExtension";
 
 import { copyPakFile } from "../copyPakFile";
 
-const extractContents = async (filePath: string) => {
-  const data = await readFile(filePath);
-  const mod = await libarchiveWasm();
-  const reader = new ArchiveReader(mod, new Int8Array(data));
+const extractContents = async (zipFilePath: string) => {
+  const zip = new StreamZip.async({ file: zipFilePath, storeEntries: true });
+  const entries = await zip.entries();
   const pakFiles: string[] = [];
 
-  let modData: ModData | undefined;
+  let data: ModData | undefined;
 
-  for (const entry of reader.entries()) {
-    const pathname = entry.getPathname();
-    const fileType = entry.getFiletype(); // File or Directory
-
-    if (pathname.includes("MACOSX") || fileType === "Directory") {
+  for (const entry of Object.values(entries)) {
+    if (!entry.isFile) {
       continue;
     }
 
-    if (isPak(pathname)) {
-      const entryData = entry.readData();
-      const fileName = path.basename(pathname);
+    if (isPak(entry.name)) {
+      const entryData = await zip.entryData(entry.name);
 
-      if (entryData) {
-        await copyPakFile(fileName, Buffer.from(entryData));
-      }
+      await copyPakFile(entry.name, entryData);
 
-      pakFiles.push(fileName);
+      pakFiles.push(entry.name);
     }
 
-    if (isJson(pathname)) {
-      const entryData = new TextDecoder().decode(entry.readData());
+    if (isJson(entry.name)) {
+      const entryData = await zip.entryData(entry.name);
       const contentData = JSON.parse(entryData.toString());
 
       if (isModData(contentData)) {
-        modData = contentData;
+        data = contentData;
       }
     }
   }
 
-  reader.free();
+  await zip.close(); // Close zip in case if there were no entries matching your criteria/condition.
 
   return {
     pakFiles,
-    data: modData,
+    data,
   };
 };
 
