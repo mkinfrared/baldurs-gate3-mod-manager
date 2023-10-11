@@ -4,10 +4,10 @@ In pursuit of a more personalized and enjoyable gaming experience, many gamers t
 
 ## Installation
 
-Installation
-
 Step 1: [Download](https://github.com/mkinfrared/baldurs-gate3-mod-manager/releases/latest) and Install Download the application.
+
 Step 2: Go to your Applications folder, find the installed app, and try to open it. You'll likely get a security warning that the app can't be opened because it is from an unidentified developer (I am not enrolled in Apple Developer Program).
+
 Step 3: Use the following steps to bypass this security warning:
 
 1. Open System Preferences
