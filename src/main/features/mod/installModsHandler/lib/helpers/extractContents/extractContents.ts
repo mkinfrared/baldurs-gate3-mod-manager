@@ -1,8 +1,8 @@
 /* eslint-disable new-cap */
 import StreamZip from "node-stream-zip";
 
-import { ModData, isModData } from "main/entities/mod";
-import { isJson, isPak } from "renderer/shared/lib/helpers/fileExtension";
+import { ModData, isModData } from "@main/entities/mod";
+import { isJson, isPak } from "@main/shared/lib/helpers/fileExtension";
 
 import { copyPakFile } from "../copyPakFile";
 

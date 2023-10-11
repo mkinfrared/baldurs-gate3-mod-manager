@@ -18,7 +18,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    //    "project": "./tsconfig.json",
+    "project": "./tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -57,6 +57,7 @@
     "import/extensions": "off",
     "import/group-exports": "error",
     "import/no-absolute-path": "off",
+    "import/no-duplicates": ["error", {"considerQueryString": true}],
     "import/no-extraneous-dependencies": "off",
     // typescript already handles that issue
     "import/no-unresolved": "off",
@@ -226,7 +227,7 @@
       // use <root>/tsconfig.json
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "src"]
+        "moduleDirectory": ["node_modules"]
       },
       "typescript": {
         "alwaysTryTypes": true

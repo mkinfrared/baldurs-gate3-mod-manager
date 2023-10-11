@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<DataTable /> > should match the snapshot 1`] = `
+<div>
+  <table
+    class="Table DataTable"
+    data-testid="Table"
+  >
+    <thead>
+      <tr />
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

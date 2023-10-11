@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Spinner /> > should match the snapshot 1`] = `
+<div>
+  <svg
+    class="Spinner"
+  >
+    oval.svg
+  </svg>
+</div>
+`;

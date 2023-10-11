@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 
-import { AppDataInstalledModInfo, appState } from "main/entities/appData";
-import { getModInfo } from "main/entities/mod";
+import { AppDataInstalledModInfo, appState } from "@main/entities/appData";
+import { getModInfo } from "@main/entities/mod";
 
 import { deleteModsHandler } from "../deleteModsHandler";
 import { readModsHandler } from "../readModsHandler";
@@ -15,50 +15,54 @@ const installModsHandler = async (filePaths: string[]) => {
    * to make sure no redundant files keep piling up e.g
    * a new version of mod is using a different pak file name
    */
-  const readResults = await readModsHandler(filePaths);
+  try {
+    const readResults = await readModsHandler(filePaths);
 
-  const uuidsOrNames = readResults?.flatMap(
-    ({ info, pakFiles }) => info.uuid ?? pakFiles,
-  );
+    const uuidsOrNames = readResults?.flatMap(
+      ({ info, pakFiles }) => info.uuid ?? pakFiles
+    );
 
-  await deleteModsHandler(uuidsOrNames ?? []);
+    await deleteModsHandler(uuidsOrNames ?? []);
 
-  const extractResults = await Promise.all(filePaths.map(extractContents));
+    const extractResults = await Promise.all(filePaths.map(extractContents));
 
-  const modInfos = extractResults.map(({ data }) => {
-    if (!data) {
-      return;
-    }
+    const modInfos = extractResults.map(({ data }) => {
+      if (!data) {
+        return;
+      }
 
-    return getModInfo(data);
-  });
+      return getModInfo(data);
+    });
 
-  await addModsToSettings(modInfos);
+    await addModsToSettings(modInfos);
 
-  const installResults = extractResults.map(({ data, pakFiles }) => {
-    let id = v4();
+    const installResults = extractResults.map(({ data, pakFiles }) => {
+      let id = v4();
 
-    if (data) {
-      const modInfo = getModInfo(data);
+      if (data) {
+        const modInfo = getModInfo(data);
 
-      id = modInfo?.uuid || id;
-    }
+        id = modInfo?.uuid || id;
+      }
 
-    const installedMod: AppDataInstalledModInfo = {
-      id,
-      pakFiles,
-    };
+      const installedMod: AppDataInstalledModInfo = {
+        id,
+        pakFiles
+      };
 
-    return installedMod;
-  });
+      return installedMod;
+    });
 
-  const gameData = appState.getSection("bg3");
+    const gameData = appState.getSection("bg3");
 
-  installResults.forEach(({ id, pakFiles }) => {
-    gameData[id] = { id, pakFiles };
-  });
+    installResults.forEach(({ id, pakFiles }) => {
+      gameData[id] = { id, pakFiles };
+    });
 
-  await appState.saveData();
+    await appState.saveData();
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export { installModsHandler };

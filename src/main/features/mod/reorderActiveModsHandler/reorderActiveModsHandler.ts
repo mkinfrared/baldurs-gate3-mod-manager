@@ -1,8 +1,8 @@
-import { createModNodeOrder } from "main/entities/mod";
+import { createModNodeOrder } from "@main/entities/mod";
 import {
   getCurrentSettings,
   saveModSettings,
-} from "main/entities/modSettingsFile";
+} from "@main/entities/modSettingsFile";
 
 const reorderActiveModsHandler = async (modsUUID: string[]) => {
   const settings = await getCurrentSettings();

@@ -1,4 +1,4 @@
-import { getCurrentSettings } from "main/entities/modSettingsFile";
+import { getCurrentSettings } from "@main/entities/modSettingsFile";
 
 const isActiveMod = async (modUUID: string) => {
   const settings = await getCurrentSettings();

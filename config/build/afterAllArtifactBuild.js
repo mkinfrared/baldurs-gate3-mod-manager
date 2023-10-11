@@ -5,7 +5,7 @@ const { promisify } = require("util");
 const exec = promisify(require("child_process").exec);
 
 const afterAllArtifactBuild = (context) => {
-  console.log("afterAllArtifactBuild");
+  console.log("after all artifact build");
 };
 
 exports.default = afterAllArtifactBuild;

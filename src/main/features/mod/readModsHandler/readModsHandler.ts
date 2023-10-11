@@ -1,12 +1,19 @@
 import path from "path";
 
-import { getModData, getModInfo } from "main/entities/mod";
+import { getModInfo } from "@main/entities/mod";
+import { WorkerManager } from "@main/shared/lib/helpers";
 
 import { ReadModResult } from "./readModsHandler.type";
+import { ReadDataWorker } from "./worker";
+import createWorker from "./worker?nodeWorker";
+
+const manager = new WorkerManager<ReadDataWorker>(createWorker, 1);
 
 const readModsHandler = async (filePaths: string[]) => {
   try {
-    const modsData = await Promise.all(filePaths.map(getModData));
+    const modsData = await Promise.all(
+      filePaths.map(manager.worker.startGetModData),
+    );
 
     const modsInfo = modsData.map(({ filePath, modData, pakFiles }) => {
       const defaultInfo = {

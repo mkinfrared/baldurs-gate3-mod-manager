@@ -2,7 +2,7 @@ import fs from "fs/promises";
 
 import prettier from "prettier";
 
-import { BALDURS_GATE3 } from "main/shared/config";
+import { BALDURS_GATE3 } from "@main/shared/config";
 
 const saveModSettings = async (content: string) => {
   const formattedContent = await prettier.format(content, {

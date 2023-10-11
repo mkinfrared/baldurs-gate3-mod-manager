@@ -1,0 +1,14 @@
+.App {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  min-height: 100dvh;
+
+  > aside {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+}

@@ -1,4 +1,4 @@
-import { AppData, appState } from "main/entities/appData";
+import { AppData, appState } from "@main/entities/appData";
 
 import { InstalledMod } from "../getInstalledMods/getInstalledMods.type";
 

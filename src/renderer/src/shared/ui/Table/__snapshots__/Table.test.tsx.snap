@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Table /> > should match the snapshot 1`] = `
+<div>
+  <table
+    class="Table"
+    data-testid="Table"
+  />
+</div>
+`;

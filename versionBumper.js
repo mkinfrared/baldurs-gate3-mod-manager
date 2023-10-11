@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires,import/group-exports,no-unsafe-optional-chaining,padding-line-between-statements */
 module.exports.readVersion = (contents) => {
   try {
-    const packageJson = JSON.parse(contents);
+    const config = JSON.parse(contents);
 
-    return packageJson.build.buildVersion;
+    return config.buildVersion;
   } catch (e) {
     console.error(e);
   }
 };
 
 module.exports.writeVersion = (contents, version) => {
-  const packageJson = JSON.parse(contents);
+  const config = JSON.parse(contents);
 
-  packageJson.build.buildVersion = version;
+  config.buildVersion = version;
 
-  return JSON.stringify(packageJson);
+  return JSON.stringify(config);
 };

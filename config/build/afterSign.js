@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const afterSign = () => {
-  console.log("afterSign");
+  console.log("after sign");
 };
 
 exports.default = afterSign;

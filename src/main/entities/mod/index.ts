@@ -6,5 +6,6 @@ export {
   deactivateMod,
   getModInfo,
   getModData,
+  getModDataFromArchive,
   isModData,
 } from "./lib/helpers";

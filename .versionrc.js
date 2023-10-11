@@ -1,7 +1,5 @@
-﻿const path = require("path");
-
-const buildVersionPackageJson = {
-  filename: "./package.json",
+﻿const electronBuilderJson = {
+  filename: "./electron-builder.json",
   updater: require("./versionBumper.js"),
 };
 
@@ -10,22 +8,7 @@ const mainPackageJson = {
   type: "json",
 };
 
-const appPackageJson = {
-  filename: "./release/app/package.json",
-  type: "json",
-};
-
-const appPackageLock = {
-  filename: "./release/app/package-lock.json",
-  type: "json",
-};
-
 module.exports = {
-  bumpFiles: [
-    mainPackageJson,
-    appPackageJson,
-    appPackageLock,
-    buildVersionPackageJson,
-  ],
+  bumpFiles: [mainPackageJson, electronBuilderJson],
   packageFiles: [mainPackageJson],
 };

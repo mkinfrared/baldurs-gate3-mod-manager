@@ -1,0 +1,35 @@
+@import "../../../../shared/styles/card-base.scss";
+
+.ModsOrder {
+  --allowed: var(--success-8);
+  --not-allowed: var(--danger-8);
+
+  @media (prefers-color-scheme: light) {
+    --allowed: var(--success-2);
+    --not-allowed: var(--danger-2);
+  }
+
+  .droppable {
+    background-color: var(--danger-8);
+    transition: background-color 350ms linear;
+
+    &.isOver {
+      background-color: var(--success-8);
+    }
+  }
+
+  .modWrapper {
+    user-select: none;
+
+    @extend %card-base;
+
+    + .modWrapper {
+      border-top: none;
+    }
+  }
+
+  .installedMod {
+    border: none;
+    padding: 0;
+  }
+}

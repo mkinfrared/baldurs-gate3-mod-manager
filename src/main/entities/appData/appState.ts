@@ -2,7 +2,7 @@ import fs from "fs";
 
 import prettier from "prettier";
 
-import { APP_DATA_PATH } from "main/shared/config";
+import { APP_DATA_PATH } from "@main/shared/config";
 
 import { AppData } from "./appState.type";
 

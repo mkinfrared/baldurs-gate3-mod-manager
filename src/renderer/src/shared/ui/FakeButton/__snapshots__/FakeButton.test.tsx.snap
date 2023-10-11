@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<FakeButton /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="FakeButton"
+    data-testid="FakeButton"
+    role="button"
+    tabindex="0"
+  />
+</div>
+`;
