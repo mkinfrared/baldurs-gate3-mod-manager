@@ -1,5 +1,11 @@
 .AppNavBar {
-  border-right: 1px solid var(--primary-2);
+  --border-color: var(--primary-2);
+
+  @media (prefers-color-scheme: light) {
+    --border-color: var(--primary-3);
+  }
+
+  border-right: 1px solid var(--border-color);
   display: flex;
   flex: 1;
   flex-direction: column;
