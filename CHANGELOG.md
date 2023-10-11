@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.3.0 (2023-10-11)
+
+
+### Features
+
+* Add `rar` and `7z` support, you can now install mods by adding these archives to the list ([#39](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/39)) ([5e82fe1](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/5e82fe10e1bca652353b08253aa9ddb8e420b2cd))
+* Add `Clear` button to empty list of `Modification Files` ([#56](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/56)) ([3dee89a](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/3dee89a7703cdf8e793d657e84aa9477903795d2))
+
 ## 1.2.2 (2023-10-09)
 
 ### Features
