@@ -121,7 +121,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
                 {mods.map((mod, index) => (
                   <Draggable
                     key={mod.uuid}
-                    draggableId={mod.uuid ?? index.toString()}
+                    draggableId={mod.uuid!}
                     index={index}
                   >
                     {({ draggableProps, dragHandleProps, innerRef }) => (
@@ -134,8 +134,8 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
                       >
                         <InstalledMod
                           className={css.installedMod}
-                          key={mod.uuid ?? mod.name}
                           mod={mod}
+                          position={index + 1}
                         />
                       </div>
                     )}
