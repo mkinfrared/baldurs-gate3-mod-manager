@@ -3,6 +3,7 @@ import { MemoryRouter as Router } from "react-router-dom";
 
 import { AppRoutes } from "@renderer/routes";
 import { trpc, trpcClient } from "@renderer/shared/lib/helpers";
+import { Heading } from "@renderer/shared/ui";
 import { AppNavBar } from "@renderer/widgets/ui";
 
 import css from "./App.module.scss";
@@ -29,6 +30,9 @@ const App = () => (
             <AppNavBar className={css.navBar} />
           </aside>
           <main>
+            <div className={css.version}>
+              <Heading variant="h4">{APP_VERSION}</Heading>
+            </div>
             <AppRoutes />
           </main>
         </div>
