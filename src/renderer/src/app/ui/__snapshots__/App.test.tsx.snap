@@ -23,6 +23,16 @@ exports[`<App/> > should match the snapshot 1`] = `
     </aside>
     <main>
       <div
+        class="version"
+      >
+        <h4
+          class="Heading"
+          data-testid="Heading"
+        >
+          9.9.9
+        </h4>
+      </div>
+      <div
         class="BaldursGate3"
         data-testid="BaldursGate3"
       >

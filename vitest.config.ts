@@ -42,6 +42,9 @@ export default defineConfig({
       "@renderer": resolve("src/renderer/src"),
     },
   },
+  define: {
+    APP_VERSION: JSON.stringify("9.9.9"), // use a fixed version to avoid constant snapshots mismatch
+  },
   test: {
     css: {
       modules: {
