@@ -32,6 +32,7 @@ const ToggleActiveModButton = ({
       loading={isLoading}
       disabled={isLoading}
       onClick={handleClick}
+      color={isActive ? "error" : "secondary"}
     >
       {isActive ? "Deactivate" : "Activate"}
     </Button>
