@@ -1,6 +1,6 @@
-import { ModInfo } from "@main/entities/mod";
+import { ModInfo } from "../getModInfo";
 
-const createModNode = (modInfo: ModInfo) => {
+const createModNode = (mod: ModInfo) => {
   const {
     folder = "",
     version = "",
@@ -8,10 +8,11 @@ const createModNode = (modInfo: ModInfo) => {
     name = "",
     uuid = "",
     versionType = "",
-  } = modInfo;
+  } = mod;
 
   const template = `
     <node id="ModuleShortDesc">
+      <!--  ${name}  -->
       <attribute id="Folder" type="LSString" value="${folder}" />
       <attribute id="MD5" type="LSString" value="${md5}" />
       <attribute id="Name" type="LSString" value="${name}" />

@@ -18,6 +18,22 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
       v3.4.7
     </span>
     <button
+      class="Button ToggleActiveModButton contained primary"
+      data-testid="Button"
+      type="button"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <span
+        class="content"
+      >
+        Activate
+      </span>
+    </button>
+    <button
       class="Button contained primary"
       data-testid="Button"
       type="button"

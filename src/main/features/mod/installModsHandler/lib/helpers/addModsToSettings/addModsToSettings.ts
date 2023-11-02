@@ -1,12 +1,10 @@
 import { CheerioAPI } from "cheerio";
 
-import { ModInfo, createModNodeOrder } from "@main/entities/mod";
+import { ModInfo, createModNode, createModNodeOrder } from "@main/entities/mod";
 import {
   getCurrentSettings,
   saveModSettings,
 } from "@main/entities/modSettingsFile";
-
-import { createModNode } from "../createModNode";
 
 /**
  * Checks if a specific value exists in the current settings.
@@ -28,7 +26,7 @@ const upsertModData = (currentSettings: CheerioAPI, modInfo?: ModInfo) => {
 
   if (!exists(currentSettings, modInfo)) {
     const node = createModNode(modInfo);
-    const nodeOrder = createModNodeOrder(modInfo.uuid);
+    const nodeOrder = createModNodeOrder(modInfo);
 
     currentSettings("#Mods children").append(node);
 
