@@ -37,7 +37,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
         const activeMods = oldData?.activeMods ?? [];
 
         const newActiveMods = values
-          .map((value) => activeMods.find(({ uuid }) => uuid === value))
+          .map((value) => activeMods.find(({ uuid }) => uuid === value.uuid))
           .filter(Boolean);
 
         return { installedMods, activeMods: newActiveMods };
@@ -93,9 +93,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
       return;
     }
 
-    const uuids = items.map(({ uuid }) => uuid as string);
-
-    mutate(uuids);
+    mutate(items);
   };
 
   return (

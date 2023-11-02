@@ -1,7 +1,10 @@
-const createModNodeOrder = (modUUID: string) => {
+import { ModInfo } from "../getModInfo";
+
+const createModNodeOrder = (mod: ModInfo) => {
   const template = `
     <node id="Module">
-        <attribute id="UUID" value="${modUUID}" type="FixedString" /> 
+        <!--  ${mod.name ?? mod.fileName}  -->
+        <attribute id="UUID" value="${mod.uuid}" type="FixedString" /> 
     </node>
     `;
 

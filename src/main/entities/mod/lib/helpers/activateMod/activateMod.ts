@@ -3,14 +3,20 @@ import {
   saveModSettings,
 } from "@main/entities/modSettingsFile";
 
+import { createModNode } from "../createModNode";
 import { createModNodeOrder } from "../createModNodeOrder";
+import { ModInfo } from "../getModInfo";
 
-const activateMod = async (modUUID: string) => {
+const activateMod = async (mod: ModInfo) => {
   const settings = await getCurrentSettings();
-  const node = createModNodeOrder(modUUID);
-  const children = settings("#ModOrder children");
+  const orderNode = createModNodeOrder(mod);
+  const modNode = createModNode(mod);
+  const modOrder = settings("#ModOrder children");
+  const modList = settings("#Mods children");
 
-  children.append(node);
+  modOrder.append(orderNode);
+
+  modList.append(modNode);
 
   await saveModSettings(settings.xml());
 };
