@@ -3,17 +3,15 @@ import path from "path";
 
 import { ArchiveReader, libarchiveWasm } from "libarchive-wasm";
 
-import { isJson, isPak } from "@main/shared/lib/helpers/fileExtension";
+import { isPak } from "@main/shared/lib/helpers/fileExtension";
 
-import { ModData, isModData } from "../../getModData.type";
+import { PakFileData } from "./getPakFileDataFromArchive.type";
 
-const getModDataFromArchive = async (filePath: string) => {
+const getPakFileDataFromArchive = async (filePath: string) => {
   const data = await readFile(filePath);
   const mod = await libarchiveWasm();
   const reader = new ArchiveReader(mod, new Int8Array(data));
-  const pakFiles: string[] = [];
-
-  let modData: ModData | undefined;
+  const pakFiles: PakFileData[] = [];
 
   for (const entry of reader.entries()) {
     const pathname = entry.getPathname();
@@ -26,25 +24,13 @@ const getModDataFromArchive = async (filePath: string) => {
     if (isPak(pathname)) {
       const fileName = path.basename(pathname);
 
-      pakFiles.push(fileName);
-    }
-
-    if (isJson(pathname)) {
-      const entryData = new TextDecoder().decode(entry.readData());
-      const contentData = JSON.parse(entryData.toString());
-
-      if (isModData(contentData)) {
-        modData = contentData;
-      }
+      pakFiles.push({ fileName, data: entry.readData() });
     }
   }
 
   reader.free();
 
-  return {
-    pakFiles,
-    modData,
-  };
+  return pakFiles;
 };
 
-export { getModDataFromArchive };
+export { getPakFileDataFromArchive };

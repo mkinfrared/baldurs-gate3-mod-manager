@@ -14,6 +14,7 @@ describe("<InstalledMod />", () => {
     name: "foobar",
     uuid: "uuid",
     version: "v3.4.7",
+    fileName: "foobar",
   };
 
   const position = 42;

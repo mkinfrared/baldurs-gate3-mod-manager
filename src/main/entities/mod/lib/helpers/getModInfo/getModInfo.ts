@@ -1,39 +1,68 @@
-import { ModData, isModDataV1 } from "../getModData";
+import { rm, writeFile } from "fs/promises";
+import path from "path";
+
+import { load } from "cheerio";
+import { v4 } from "uuid";
+
+import { BALDURS_GATE3 } from "@main/shared/config";
+import { netConnection } from "@main/shared/lib/helpers";
 
 import { ModInfo } from "./getModInfo.type";
 
-const getModInfo = (modData: ModData) => {
-  if (isModDataV1(modData)) {
-    const { MD5, Mods } = modData;
-    const [mod] = Mods;
+const getModInfo = (fileName: string, base64?: string | null) => {
+  const modInfo: ModInfo = {
+    fileName,
+  };
 
-    if (!mod) {
-      return;
-    }
-
-    const modInfo: ModInfo = {
-      folder: mod.Folder,
-      md5: MD5,
-      name: mod.Name,
-      uuid: mod.UUID,
-      version: mod.Version,
-    };
-
+  if (!base64) {
     return modInfo;
   }
 
-  const { mods } = modData;
-  const [mod] = mods;
+  const content = Buffer.from(base64, "base64").toString("utf-8");
+  const cheerioAPI = load(content, { xmlMode: true, decodeEntities: false });
+  const moduleInfo = cheerioAPI("#ModuleInfo");
 
-  const modInfo: ModInfo = {
-    folder: mod.folderName,
-    md5: mod.MD5,
-    name: mod.modName,
-    uuid: mod.UUID,
-    version: mod.version,
-  };
+  modInfo.author = moduleInfo.find("#Author").attr("value");
+
+  modInfo.folder = moduleInfo.find("#Folder").attr("value");
+
+  modInfo.md5 = moduleInfo.find("#MD5").attr("value");
+
+  modInfo.name = moduleInfo.find("#Name").attr("value");
+
+  modInfo.uuid = moduleInfo.find("#UUID").attr("value");
+
+  modInfo.version = moduleInfo.find("#Version").attr("value");
+
+  modInfo.versionType = moduleInfo.find("#Version").attr("type");
 
   return modInfo;
 };
 
-export { getModInfo };
+const getModInfoFromFile = async (filePath: string) => {
+  const response = await netConnection.send("getPakInfoFromPath", filePath);
+  const fileName = path.basename(filePath);
+
+  return getModInfo(fileName, response);
+};
+
+const getModInfoFromBytes = async (fileData: Int8Array, fileName: string) => {
+  const tempFileName = path.resolve(
+    BALDURS_GATE3.MODS_DIRECTORY,
+    `temp-${v4()}.pak`,
+  );
+
+  try {
+    await writeFile(tempFileName, fileData);
+
+    const result = await getModInfoFromFile(tempFileName);
+
+    result.fileName = fileName;
+
+    return result;
+  } finally {
+    rm(tempFileName);
+  }
+};
+
+export { getModInfoFromBytes, getModInfoFromFile };

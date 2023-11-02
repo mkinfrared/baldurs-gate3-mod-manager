@@ -7,9 +7,9 @@ import { getModData } from "@main/entities/mod/lib/helpers/getModData/getModData
 
 export class ReadDataWorker {
   startGetModData = async (path: string) => {
-    const { filePath, modData, pakFiles } = await getModData(path);
+    const { filePath, pakFileData } = await getModData(path);
 
-    return { modData, pakFiles, filePath };
+    return { pakFileData, filePath };
   };
 }
 
