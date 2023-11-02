@@ -18,13 +18,16 @@ Step 4: Open the Application
 
 ## Features and Usage
 
-**Mod Installation**: The application facilitates easy mod installation. Simply `drag & drop` the `zip`, `rar` or `7z` file into the application window or use a button select files via a dialog window, click `Install`, and you have your mod installed.
+**Mod Installation**: The application facilitates easy mod installation. Simply `drag & drop` the `zip`, `rar` or `7z` file into the application window or use a button to select files via a dialog window, click `Install`, and you have your mod installed.
+
+**Mod Activation** You can activate/deactivate mod with the provided button. Please note that not all mods provide meta info (the containing `pak` file doesn't provide `meta.lsx` file) which is implied most of the time that mod doesn't need activation (no need to update `modsettings.lsx`).
+
+**Mod Order**: You can drag mods in `Mod Order` list to change their order. Please note, that you can only drag mods which contain `info.json` file.
 
 **Mod Support**: The application only supports mods installed in the `Mods` folder and does not support mods that require placement in the game's main directory. For now, only the default `Mods` directory (`Documents/Larian Studios/Baldur's Gate 3/Mods`) is supported.
 
-**Mod Deletion**: The tool gives you the ability to delete previously installed mods entirely from your computer, just make sure you installed the mods using the manager. Mods installed manually are not supported for deletion.
+**Mod Deletion**: The tool gives you the ability to delete previously installed mods entirely from your computer.
 
-**Mod Order**: You can drag mods in `Mod Order` list to change their order. Please note, that you can only drag mods which contain `info.json` file.
 
 ## Issues and Suggestions
 
