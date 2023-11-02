@@ -1,8 +1,8 @@
+import { randomUUID } from "crypto";
 import { rm, writeFile } from "fs/promises";
 import path from "path";
 
 import { load } from "cheerio";
-import { v4 } from "uuid-browser";
 
 import { BALDURS_GATE3 } from "@main/shared/config";
 import { netConnection } from "@main/shared/lib/helpers";
@@ -49,7 +49,7 @@ const getModInfoFromFile = async (filePath: string) => {
 const getModInfoFromBytes = async (fileData: Int8Array, fileName: string) => {
   const tempFileName = path.resolve(
     BALDURS_GATE3.MODS_DIRECTORY,
-    `temp-${v4()}.pak`,
+    `temp-${randomUUID()}.pak`,
   );
 
   try {
