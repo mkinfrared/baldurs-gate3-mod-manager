@@ -12,7 +12,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
+        dotnet: [ "7.0.x" ]
         os: [macos-latest]
 
     steps:
@@ -22,6 +23,11 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
 
       - name: Install Node.js and NPM
         uses: actions/setup-node@v3

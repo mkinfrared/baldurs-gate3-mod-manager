@@ -8,18 +8,42 @@
   "files": ["out", "node_modules/**/*", "package.json"],
   "mac": {
     "target": [
-      { "target": "dmg", "arch": ["arm64", "x64"] },
-      { "target": "zip", "arch": ["arm64", "x64"] }
+      {
+        "target": "dmg",
+        "arch": ["arm64", "x64"]
+      },
+      {
+        "target": "zip",
+        "arch": ["arm64", "x64"]
+      }
     ],
     "type": "distribution",
     "hardenedRuntime": true,
     "entitlements": "build/entitlements.mac.plist",
     "entitlementsInherit": "build/entitlements.mac.plist",
-    "gatekeeperAssess": false
+    "gatekeeperAssess": false,
+    "extraResources": [
+      {
+        "from": "PakReader/out/${arch}/PakReader",
+        "to": "bin/PakReader"
+      }
+    ]
   },
-  "win": { "target": [{ "target": "portable", "arch": ["arm64", "x64"] }] },
-  "linux": { "target": ["AppImage"], "category": "Development" },
-  "directories": { "buildResources": "build" },
+  "win": {
+    "target": [
+      {
+        "target": "portable",
+        "arch": ["arm64", "x64"]
+      }
+    ]
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "category": "Development"
+  },
+  "directories": {
+    "buildResources": "build"
+  },
   "extraResources": ["./assets/**"],
   "npmRebuild": false,
   "beforeBuild": "./config/build/beforeBuild.js",

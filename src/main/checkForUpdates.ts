@@ -1,6 +1,8 @@
 import { BrowserWindow, dialog } from "electron";
 import { autoUpdater } from "electron-updater";
 
+import { netConnection } from "@main/shared/lib/helpers";
+
 const checkForUpdates = (win: BrowserWindow) => {
   autoUpdater.autoDownload = false;
 
@@ -36,6 +38,8 @@ const checkForUpdates = (win: BrowserWindow) => {
   });
 
   autoUpdater.addListener("update-downloaded", () => {
+    netConnection.close();
+
     autoUpdater.quitAndInstall();
   });
 };

@@ -7,7 +7,7 @@ import icon from "../../resources/icon.png?asset";
 
 import { checkForUpdates } from "./checkForUpdates";
 import { appRouter } from "./router";
-import { ipcRequestHandler } from "./shared/lib/helpers";
+import { ipcRequestHandler, netConnection } from "./shared/lib/helpers";
 import { IpcRequest } from "./shared/types";
 
 const createWindow = () => {
@@ -87,6 +87,8 @@ app.whenReady().then(() => {
 // explicitly with Cmd + Q.
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
+    netConnection.close();
+
     app.quit();
   }
 });
