@@ -2,7 +2,7 @@ import { rm, writeFile } from "fs/promises";
 import path from "path";
 
 import { load } from "cheerio";
-import { v4 } from "uuid";
+import { v4 } from "uuid-browser";
 
 import { BALDURS_GATE3 } from "@main/shared/config";
 import { netConnection } from "@main/shared/lib/helpers";
