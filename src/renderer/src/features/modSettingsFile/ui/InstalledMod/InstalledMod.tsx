@@ -1,22 +1,22 @@
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
 import { Button, Card } from "@renderer/shared/ui";
 
+import { ToggleActiveModButton } from "../ToggleActiveModButton";
+
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
 const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
   const utils = trpc.useContext();
 
-  const { mutateAsync, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation(
-    {
-      onSuccess: () => {
-        utils.mod.getInstalledMods.invalidate();
-      },
+  const { mutate, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation({
+    onSuccess: () => {
+      utils.mod.getInstalledMods.invalidate();
     },
-  );
+  });
 
   const handleDelete = () => {
-    mutateAsync([mod.uuid ?? mod.name ?? ""]);
+    mutate([mod.fileName]);
   };
 
   return (
@@ -25,8 +25,13 @@ const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
       data-testid="InstalledMod"
     >
       <span>{position && `${position}.`}</span>
-      <span title="Marklar">{mod.name}</span>
+      <span title="Marklar">{mod.name || mod.fileName}</span>
       <span>{mod.version}</span>
+      <ToggleActiveModButton
+        fileName={mod.fileName}
+        isActive={mod.isActive}
+        uuid={mod.uuid}
+      />
       <Button
         onClick={handleDelete}
         loading={isLoading}

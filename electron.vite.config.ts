@@ -6,9 +6,11 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin({
-      exclude: ["prettier"]
-    })],
+    plugins: [
+      externalizeDepsPlugin({
+        exclude: ["prettier"],
+      }),
+    ],
     resolve: {
       alias: {
         "@common": resolve("src/common"),
@@ -40,6 +42,9 @@ export default defineConfig({
         "@preload": resolve("src/preload"),
         "@renderer": resolve("src/renderer/src"),
       },
+    },
+    define: {
+      APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
   },
 });

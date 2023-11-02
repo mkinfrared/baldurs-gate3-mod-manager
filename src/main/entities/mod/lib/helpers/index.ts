@@ -1,5 +1,7 @@
 export * from "./activateMod";
 
+export * from "./createModNode";
+
 export * from "./createModNodeOrder";
 
 export * from "./deactivateMod";

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unused-modules */
 /// <reference types="vite-plugin-svgr/client" />
 
 declare module "*.avif" {

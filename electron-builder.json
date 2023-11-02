@@ -1,7 +1,7 @@
 {
   "productName": "Baldur's Gate 3 Mod Manager",
   "appId": "com.erb.bg3modmanager",
-  "buildVersion": "1.3.0",
+  "buildVersion": "1.4.0",
   "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
   "asar": true,
   "asarUnpack": ["resources/**", "**\\*.{node,dll}"],
@@ -15,7 +15,10 @@
     "hardenedRuntime": true,
     "entitlements": "build/entitlements.mac.plist",
     "entitlementsInherit": "build/entitlements.mac.plist",
-    "gatekeeperAssess": false
+    "gatekeeperAssess": false,
+    "extraResources": [
+      { "from": "PakReader/out/${arch}/PakReader", "to": "bin/PakReader" }
+    ]
   },
   "win": { "target": [{ "target": "portable", "arch": ["arm64", "x64"] }] },
   "linux": { "target": ["AppImage"], "category": "Development" },

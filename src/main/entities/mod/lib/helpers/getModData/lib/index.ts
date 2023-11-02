@@ -1,1 +1,1 @@
-export { getModDataFromArchive } from "./getModDataFromArchive";
+export { getPakFileDataFromArchive } from "./getPakFileDataFromArchive";

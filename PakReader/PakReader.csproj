@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <NoWarn>*</NoWarn>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishTrimmed>true</PublishTrimmed>
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+        <SelfContained>true</SelfContained>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ElectronCgi.DotNet" Version="1.0.3" />
+        <PackageReference Include="lz4" Version="1.3.1.2" />
+        <PackageReference Include="lz4net" Version="1.0.15.93" />
+        <PackageReference Include="zlib.net-mutliplatform" Version="1.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootAssembly Include="ElectronCgi.DotNet" />
+    </ItemGroup>
+</Project>

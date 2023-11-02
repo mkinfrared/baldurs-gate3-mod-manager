@@ -34,3 +34,7 @@ out
 
 # OSX
 .DS_Store
+
+## .NET
+**/bin
+**/obj

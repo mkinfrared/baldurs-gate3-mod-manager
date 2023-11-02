@@ -86,7 +86,7 @@ const ModFileList = ({ className }: ModFileListProps) => {
           <ModFileRow
             key={info?.uuid ?? index}
             modFilePath={filePath}
-            modName={info?.name ?? undefined}
+            modName={info?.name}
             modVersion={info?.version}
           />
         ))
