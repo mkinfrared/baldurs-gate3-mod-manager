@@ -67,4 +67,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
-          files: "./dist/*.@(exe|dmg|zip)"
+          files: "./dist/*.@(exe|dmg|zip|yml)"
