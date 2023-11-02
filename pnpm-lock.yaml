@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@electron-toolkit/preload':
     specifier: ^2.0.0
-    version: 2.0.0(electron@26.2.4)
+    version: 2.0.0(electron@26.4.0)
   '@electron-toolkit/utils':
     specifier: ^2.0.1
-    version: 2.0.1(electron@26.2.4)
+    version: 2.0.1(electron@26.4.0)
   '@tanstack/react-query':
     specifier: ^4.36.1
     version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
@@ -44,6 +44,9 @@ dependencies:
   comlink:
     specifier: ^4.4.1
     version: 4.4.1
+  electron-cgi:
+    specifier: ^1.0.6
+    version: 1.0.6
   electron-debug:
     specifier: ^3.2.0
     version: 3.2.0
@@ -134,8 +137,8 @@ devDependencies:
     specifier: ^11.3.0
     version: 11.3.0
   electron:
-    specifier: 26.2.4
-    version: 26.2.4
+    specifier: 26.4.0
+    version: 26.4.0
   electron-builder:
     specifier: ^24.6.4
     version: 24.6.4
@@ -509,12 +512,12 @@ packages:
       ajv-keywords: 3.5.2(ajv@6.12.6)
     dev: true
 
-  /@electron-toolkit/preload@2.0.0(electron@26.2.4):
+  /@electron-toolkit/preload@2.0.0(electron@26.4.0):
     resolution: {integrity: sha512-zpZDzbqJTZQC5d4LRs2EKruKWnqah+T75s+niBYFemYLtiW5TTZcWi3Q8UxHqnwTudDMuWJb233aaS2yjx3Xiw==}
     peerDependencies:
       electron: '>=13.0.0'
     dependencies:
-      electron: 26.2.4
+      electron: 26.4.0
     dev: false
 
   /@electron-toolkit/tsconfig@1.0.1(@types/node@20.8.2):
@@ -525,12 +528,12 @@ packages:
       '@types/node': 20.8.2
     dev: true
 
-  /@electron-toolkit/utils@2.0.1(electron@26.2.4):
+  /@electron-toolkit/utils@2.0.1(electron@26.4.0):
     resolution: {integrity: sha512-3nnjd3D1NIjxdzNrvR5fkJ3kbJNbRkpHppv0/pSbMX6I0DaBzpPXeSfDYuJJKzZrAc3CmGcJa0MU4+AjEOlT4g==}
     peerDependencies:
       electron: '>=13.0.0'
     dependencies:
-      electron: 26.2.4
+      electron: 26.4.0
     dev: false
 
   /@electron/asar@3.2.7:
@@ -3105,6 +3108,12 @@ packages:
       - supports-color
     dev: true
 
+  /electron-cgi@1.0.6:
+    resolution: {integrity: sha512-QjhRZtWgokc6Ox/a7CTgUHclz/IX5jn9qxpmyqjaYkI28AShWM8Yw6TwG5jIxGTOmAYsZsRicZlSeXAKL7u4PQ==}
+    dependencies:
+      uuid: 3.4.0
+    dev: false
+
   /electron-debug@3.2.0:
     resolution: {integrity: sha512-7xZh+LfUvJ52M9rn6N+tPuDw6oRAjxUj9SoxAZfJ0hVCXhZCsdkrSt7TgXOiWiEOBgEV8qwUIO/ScxllsPS7ow==}
     dependencies:
@@ -3192,8 +3201,8 @@ packages:
       - supports-color
     dev: true
 
-  /electron@26.2.4:
-    resolution: {integrity: sha512-weMUSMyDho5E0DPQ3breba3D96IxwNvtYHjMd/4/wNN3BdI5s3+0orNnPVGJFcLhSvKoxuKUqdVonUocBPwlQA==}
+  /electron@26.4.0:
+    resolution: {integrity: sha512-FUEFwmIlflLxImRtTmDp8CWpH4KqlyAwga6vauaz6+882SmyC3bJRhgqOIT5s6rMbW25WezNiaqfKqHDJjz3pw==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
     requiresBuild: true
@@ -7409,6 +7418,12 @@ packages:
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /uuid@3.4.0:
+    resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
+    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    hasBin: true
+    dev: false
 
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}

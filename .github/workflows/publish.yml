@@ -29,6 +29,11 @@ jobs:
         with:
           version: 8
 
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
       - name: Install Node and NPM
         uses: actions/setup-node@v3
         with:
