@@ -5,9 +5,12 @@ import {
 
 const deactivateMod = async (modUUID: string) => {
   const settings = await getCurrentSettings();
-  const attribute = settings(`#ModOrder children [value="${modUUID}"]`);
+  const modOrderAttribute = settings(`#ModOrder children [value="${modUUID}"]`);
+  const modListAttribute = settings(`#Mods children [value="${modUUID}"]`);
 
-  attribute.parent().remove();
+  modOrderAttribute.parent().remove();
+
+  modListAttribute.parent().remove();
 
   await saveModSettings(settings.xml());
 };

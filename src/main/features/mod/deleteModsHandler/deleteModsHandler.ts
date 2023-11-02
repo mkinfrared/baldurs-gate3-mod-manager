@@ -1,41 +1,22 @@
-import { appState } from "@main/entities/appData";
-import { deactivateMod } from "@main/entities/mod";
+import fs from "fs/promises";
+import path from "path";
 
-import { removeModFromSettings, removePakFiles } from "./lib/helpers";
+import { deactivateMod, getModInfoFromFile } from "@main/entities/mod";
+import { BALDURS_GATE3 } from "@main/shared/config";
 
-const deleteModsHandler = async (uuidsOrNames: string[]) => {
-  const gameData = appState.getSection("bg3");
+const deleteModsHandler = async (fileNames: string[]) => {
+  await Promise.all(
+    fileNames.map(async (file) => {
+      const filePath = path.resolve(BALDURS_GATE3.MODS_DIRECTORY, file);
+      const modInfo = await getModInfoFromFile(filePath);
 
-  for (const mod of uuidsOrNames) {
-    if (gameData[mod]) {
-      const { pakFiles } = gameData[mod];
+      if (modInfo.uuid) {
+        await deactivateMod(modInfo.uuid);
+      }
 
-      await removePakFiles(pakFiles);
-
-      delete gameData[mod];
-    } else {
-      const modKeys = Object.keys(gameData);
-
-      await Promise.all(
-        modKeys.map(async (modKey) => {
-          const { pakFiles } = gameData[modKey];
-          const relevantFiles = pakFiles.filter((pakFile) => pakFile === mod);
-
-          if (relevantFiles.length) {
-            await removePakFiles(relevantFiles);
-
-            delete gameData[modKey];
-          }
-        }),
-      );
-    }
-  }
-
-  await appState.saveData();
-
-  await Promise.all(uuidsOrNames.map(deactivateMod));
-
-  await Promise.all(uuidsOrNames.map(removeModFromSettings));
+      await fs.rm(filePath);
+    }),
+  );
 };
 
 export { deleteModsHandler };
