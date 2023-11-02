@@ -7,16 +7,14 @@ import { InstalledModProps } from "./InstalledMod.type";
 const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
   const utils = trpc.useContext();
 
-  const { mutateAsync, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation(
-    {
-      onSuccess: () => {
-        utils.mod.getInstalledMods.invalidate();
-      },
+  const { mutate, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation({
+    onSuccess: () => {
+      utils.mod.getInstalledMods.invalidate();
     },
-  );
+  });
 
   const handleDelete = () => {
-    mutateAsync([mod.uuid ?? mod.name ?? ""]);
+    mutate([mod.fileName]);
   };
 
   return (
