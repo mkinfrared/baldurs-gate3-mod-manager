@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.4.0 (2023-11-02)
+
+
+### Features
+
+* Add support of `.pak` files. From this release the app will retrieve information from `meta.lsx` inside `pak` file ([#81](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/81)) ([701d6be](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/701d6be236f055cddaf6ff9fde1137738a4670d2))
+* Add auto update. After installing this version you will receive notifications about new updates. New updates will automatically install after prompt, it will also remove the burden of going through the Apple complains about unidentified developer  ([#78](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/78)) ([7827892](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/78278928efccbacffcb94ddf78b2cedb5d72b5b1))
+* Add active/deactivate mod. Return activate/deactivate button, it can now fully deactivate mod by removing it from `modsettings.lsx`. Please note that the `pak` file of the mod won't be deleted from the system, upon activation the mod meta will be retrieved from that file ([#84](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/84)) ([0cf8de3](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/0cf8de35008368e554e92d5b6c2f0473fc471ee2))
+* Add current app version display ([#79](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/79)) ([b4dd41b](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/b4dd41ba446f74272c0377ef3a319a568b042cbb))
+
+
 ## 1.3.0 (2023-10-11)
 
 
