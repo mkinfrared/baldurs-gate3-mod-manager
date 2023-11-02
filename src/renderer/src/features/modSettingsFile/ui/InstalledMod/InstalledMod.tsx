@@ -25,7 +25,7 @@ const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
       data-testid="InstalledMod"
     >
       <span>{position && `${position}.`}</span>
-      <span title="Marklar">{mod.name}</span>
+      <span title="Marklar">{mod.name || mod.fileName}</span>
       <span>{mod.version}</span>
       <Button
         onClick={handleDelete}

@@ -1,11 +1,10 @@
-export type { Mod, ModData, ModInfo } from "./lib/helpers";
+export type { ModInfo } from "./lib/helpers";
 
 export {
   activateMod,
   createModNodeOrder,
   deactivateMod,
-  getModInfo,
+  getModInfoFromFile,
+  getModInfoFromBytes,
   getModData,
-  getModDataFromArchive,
-  isModData,
 } from "./lib/helpers";

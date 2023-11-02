@@ -1,11 +1,10 @@
 import { memoizeTtl } from "@common/lib";
 
-import { ModDataResult } from "./getModData.type";
-import { getModDataFromArchive } from "./lib";
+import { getPakFileDataFromArchive } from "./lib";
 
 const getModData = async (filePath: string) => {
-  const { modData, pakFiles } = await getModDataFromArchive(filePath);
-  const result: ModDataResult = { modData, filePath, pakFiles };
+  const pakFileData = await getPakFileDataFromArchive(filePath);
+  const result = { filePath, pakFileData };
 
   return result;
 };

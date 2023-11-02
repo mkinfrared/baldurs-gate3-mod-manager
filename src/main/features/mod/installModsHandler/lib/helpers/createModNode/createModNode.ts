@@ -1,33 +1,22 @@
 import { ModInfo } from "@main/entities/mod";
 
-const getVersion = (value: number | string | null) => {
-  const version = value === null ? 0 : +value;
-
-  if (version === 0) {
-    return { version: "", type: "int64" };
-  }
-
-  if (Number.isInteger(version)) {
-    return { version, type: "int64" };
-  }
-
-  if (version === parseFloat(version.toString())) {
-    return { version, type: "float32" };
-  }
-
-  return { version: "", type: "int64" };
-};
-
 const createModNode = (modInfo: ModInfo) => {
-  const { version, type } = getVersion(modInfo.version);
+  const {
+    folder = "",
+    version = "",
+    md5 = "",
+    name = "",
+    uuid = "",
+    versionType = "",
+  } = modInfo;
 
   const template = `
     <node id="ModuleShortDesc">
-      <attribute id="Folder" type="LSString" value="${modInfo.folder}" />
-      <attribute id="MD5" type="LSString" value="${modInfo.md5}" />
-      <attribute id="Name" type="LSString" value="${modInfo.name}" />
-      <attribute id="UUID" type="FixedString" value="${modInfo.uuid}" />
-      <attribute id="Version64" type="${type}" value="${version}" />
+      <attribute id="Folder" type="LSString" value="${folder}" />
+      <attribute id="MD5" type="LSString" value="${md5}" />
+      <attribute id="Name" type="LSString" value="${name}" />
+      <attribute id="UUID" type="FixedString" value="${uuid}" />
+      <attribute id="Version64" type="${versionType}" value="${version}" />
     </node>
 `;
 

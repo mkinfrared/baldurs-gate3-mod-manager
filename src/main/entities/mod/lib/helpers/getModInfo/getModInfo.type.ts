@@ -1,7 +1,10 @@
 export type ModInfo = {
-  folder: string | null;
-  md5: string | null;
-  name: string | null;
-  uuid: string | null;
-  version: number | string | null;
+  author?: string;
+  fileName: string;
+  folder?: string;
+  md5?: string;
+  name?: string;
+  uuid?: string;
+  version?: string;
+  versionType?: string;
 };

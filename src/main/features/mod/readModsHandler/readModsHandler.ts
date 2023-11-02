@@ -1,6 +1,4 @@
-import path from "path";
-
-import { getModInfo } from "@main/entities/mod";
+import { getModInfoFromBytes } from "@main/entities/mod";
 import { WorkerManager } from "@main/shared/lib/helpers";
 
 import { ReadModResult } from "./readModsHandler.type";
@@ -15,27 +13,29 @@ const readModsHandler = async (filePaths: string[]) => {
       filePaths.map(manager.worker.startGetModData),
     );
 
-    const modsInfo = modsData.map(({ filePath, modData, pakFiles }) => {
-      const defaultInfo = {
-        folder: null,
-        md5: null,
-        name: path.basename(filePath),
-        uuid: null,
-        version: null,
-      };
+    const modsInfo = await Promise.all(
+      modsData.map(async ({ filePath, pakFileData }) => {
+        const result: ReadModResult = {
+          filePath,
+        };
 
-      const result: ReadModResult = {
-        filePath,
-        info: defaultInfo,
-        pakFiles,
-      };
+        // TODO assume one mod per archive
+        const [pakFile] = pakFileData;
 
-      if (modData) {
-        result.info = getModInfo(modData) ?? defaultInfo;
-      }
+        if (!pakFile?.data) {
+          return result;
+        }
 
-      return result;
-    });
+        const modInfo = await getModInfoFromBytes(
+          pakFile.data,
+          pakFile.fileName,
+        );
+
+        result.info = modInfo;
+
+        return result;
+      }),
+    );
 
     return modsInfo;
   } catch (e) {
