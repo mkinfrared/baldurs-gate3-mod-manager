@@ -18,8 +18,8 @@ const APP_DATA_PATH = path.join(
   "Larian Studios/Baldur's Gate 3/PlayerProfiles/Public/installedMods.json",
 );
 
-if (!fs.existsSync(APP_DATA_PATH)) {
-  fs.writeFileSync(APP_DATA_PATH, JSON.stringify({}));
+if (fs.existsSync(APP_DATA_PATH)) {
+  fs.rmSync(APP_DATA_PATH);
 }
 
 const PAK_READER_PATH = path.resolve(
