@@ -8,7 +8,7 @@ export default defineConfig({
   main: {
     plugins: [
       externalizeDepsPlugin({
-        exclude: ["prettier"],
+        exclude: ["prettier", "@prettier/plugin-xml"],
       }),
     ],
     resolve: {
