@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.4.1 (2023-11-03)
+
+
+### Bug Fixes
+
+* Fix missing children nodes. Some `modsettings.lsx` were missing children node in `#ModOrder` which prevented the app to update the data. ([#96](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/96)) ([e80870e](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/e80870efa36cd439f1e0485ddde0bd23c0bcf8d6)), closes [#77](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/77)
+
 ## 1.4.0 (2023-11-02)
 
 
