@@ -37,7 +37,7 @@ const App = () => {
             </aside>
             <main>
               <div className={css.version}>
-                <Heading variant="h4">{APP_VERSION}</Heading>
+                <Heading variant="h4">{APP_VERSION} - TEST</Heading>
               </div>
               <AppRoutes />
             </main>
