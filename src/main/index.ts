@@ -3,6 +3,8 @@ import { join } from "path";
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { BrowserWindow, app, ipcMain, shell } from "electron";
 
+import { verifyModSettings } from "@main/entities/modSettingsFile";
+
 import icon from "../../resources/icon.png?asset";
 
 import { checkForUpdates } from "./checkForUpdates";
@@ -72,6 +74,8 @@ app.whenReady().then(() => {
   });
 
   const win = createWindow();
+
+  win.on("focus", verifyModSettings);
 
   checkForUpdates(win);
 
