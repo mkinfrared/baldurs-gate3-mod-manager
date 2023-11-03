@@ -1,1 +1,5 @@
-export { getCurrentSettings, saveModSettings } from "./lib/helpers";
+export {
+  getCurrentSettings,
+  saveModSettings,
+  verifyModSettings,
+} from "./lib/helpers";
