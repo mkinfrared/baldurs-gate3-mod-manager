@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.4.2 (2023-11-03)
+
+
+### Bug Fixes
+
+* Fix incorrect repository for auto update ([#100](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/100)) ([27d52cf](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/27d52cf205318867b0696359ba53a03e52af533e))
+
 ## 1.4.1 (2023-11-03)
 
 
