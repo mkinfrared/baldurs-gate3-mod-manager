@@ -1,7 +1,7 @@
 {
   "productName": "Baldur's Gate 3 Mod Manager",
   "appId": "com.erb.bg3modmanager",
-  "buildVersion": "1.4.0",
+  "buildVersion": "1.4.2",
   "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
   "asar": true,
   "asarUnpack": ["resources/**", "**\\*.{node,dll}"],

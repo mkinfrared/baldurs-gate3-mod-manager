@@ -8,8 +8,8 @@ const checkForUpdates = (win: BrowserWindow) => {
 
   autoUpdater.setFeedURL({
     provider: "github",
-    repo: "electron-auto-update",
-    owner: "mkorotkov88",
+    repo: "baldurs-gate3-mod-manager",
+    owner: "mkinfrared",
     private: false,
     releaseType: "release",
   });
