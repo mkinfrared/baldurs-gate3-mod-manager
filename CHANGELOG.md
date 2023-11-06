@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.4.3 (2023-11-06)
+
+
+### Bug Fixes
+
+* Resolve the issue of an empty white/black screen. The application will now display an error message, aiding you in diagnosing and rectifying the problem. ([#108](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/108)) ([dee6ebd](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/dee6ebde59503162a58c4c3852f1629595961ccb))
+
+
 ## 1.4.2 (2023-11-03)
 
 
