@@ -1,22 +1,2 @@
 .ModFileList {
-  display: flex;
-  flex-direction: column;
-  min-height: 75dvh;
-
-  &.isLoading {
-    cursor: progress;
-  }
-
-  .header {
-    font-weight: 500;
-
-    *:last-child {
-      pointer-events: none;
-      visibility: hidden;
-    }
-  }
-
-  .clear {
-    margin-top: 2rem;
-  }
 }

@@ -29,6 +29,7 @@
     "typecheck": "pnpm typecheck:node && pnpm typecheck:web",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
+    "dev:debug": "pnpm run dev --sourcemap --remote-debugging-port=9222",
     "build": "pnpm build:clean && pnpm build:net pnpm typecheck && electron-vite build",
     "build:net": "node ./scripts/buildDotnet.js",
     "build:clean": "node ./scripts/clean.js",

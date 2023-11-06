@@ -39,9 +39,17 @@ exports[`<App/> > should match the snapshot 1`] = `
         <div
           class="InstalledModsSection"
           data-testid="InstalledModsSection"
+          style="height: 0px; overflow: hidden;"
         >
-          <div>
-            Loading..
+          <div
+            class="Loading"
+            style="height: 0px;"
+          >
+            <svg
+              class="Spinner spinner"
+            >
+              oval.svg
+            </svg>
           </div>
         </div>
         <div
@@ -60,8 +68,8 @@ exports[`<App/> > should match the snapshot 1`] = `
             </h3>
           </div>
           <div
-            class="ModFileList"
-            data-testid="ModFileList"
+            class="ModFileForm"
+            data-testid="ModFileForm"
           >
             <div
               class="Card ModFileRow header"
@@ -103,7 +111,7 @@ exports[`<App/> > should match the snapshot 1`] = `
                  files here or
               </h4>
               <button
-                class="Button contained primary"
+                class="Button button contained primary"
                 data-testid="Button"
                 type="button"
               >
