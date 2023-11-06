@@ -16,6 +16,10 @@ export { default as Heading } from "./Heading";
 
 export { default as LazyImage } from "./LazyImage";
 
+export { default as Loading } from "./Loading";
+
+export type { LoadingProps } from "./Loading";
+
 export { default as Link } from "./Link";
 
 export { default as Menu } from "./Menu";

@@ -1,0 +1,20 @@
+.Error {
+  --error-color: var(--danger-4);
+
+  color: var(--error-color);
+
+  @media (prefers-color-scheme: light) {
+    --error-color: var(--danger-7);
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  svg {
+    fill: var(--error-color);
+  }
+}
