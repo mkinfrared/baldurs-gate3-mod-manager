@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { MemoryRouter as Router } from "react-router-dom";
 
 import { AppRoutes } from "@renderer/routes";
+import ErrorBoundary from "@renderer/shared/components/ErrorBoundary";
 import { trpc, trpcClient } from "@renderer/shared/lib/helpers";
 import { Heading } from "@renderer/shared/ui";
 import { AppNavBar } from "@renderer/widgets/ui";
@@ -31,17 +32,19 @@ const App = () => {
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <Router>
-          <div className={css.App} data-testid="App">
-            <aside>
-              <AppNavBar className={css.navBar} />
-            </aside>
-            <main>
-              <div className={css.version}>
-                <Heading variant="h4">{APP_VERSION}</Heading>
-              </div>
-              <AppRoutes />
-            </main>
-          </div>
+          <ErrorBoundary>
+            <div className={css.App} data-testid="App">
+              <aside>
+                <AppNavBar className={css.navBar} />
+              </aside>
+              <main>
+                <div className={css.version}>
+                  <Heading variant="h4">{APP_VERSION}</Heading>
+                </div>
+                <AppRoutes />
+              </main>
+            </div>
+          </ErrorBoundary>
         </Router>
       </QueryClientProvider>
     </trpc.Provider>

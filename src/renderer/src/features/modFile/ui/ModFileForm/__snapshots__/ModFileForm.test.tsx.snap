@@ -1,0 +1,77 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ModFileForm /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="ModFileForm"
+    data-testid="ModFileForm"
+  >
+    <div
+      class="Card ModFileRow header"
+      data-testid="Card"
+    >
+      <span>
+        Modification Name
+      </span>
+      <span>
+        Version
+      </span>
+      <button
+        class="Button ModFileButton contained primary"
+        data-testid="ModFileButton"
+        type="button"
+      >
+        <svg
+          class="Spinner spinner"
+        >
+          bars.svg
+        </svg>
+        <span
+          class="content"
+        >
+          Install
+        </span>
+      </button>
+    </div>
+    <div
+      class="Card EmptyList"
+      data-testid="Card"
+    >
+      <h4
+        class="Heading header"
+        data-testid="Heading"
+      >
+        Drag and drop you 
+        zip, rar, 7z
+         files here or
+      </h4>
+      <button
+        class="Button button contained primary"
+        data-testid="Button"
+        type="button"
+      >
+        <svg
+          class="Spinner spinner"
+        >
+          bars.svg
+        </svg>
+        <span
+          class="content"
+        >
+          <label
+            for="file"
+          >
+            Click this button to select files
+          </label>
+        </span>
+      </button>
+      <input
+        accept="zip,rar,7z"
+        id="file"
+        multiple=""
+        type="file"
+      />
+    </div>
+  </div>
+</div>
+`;

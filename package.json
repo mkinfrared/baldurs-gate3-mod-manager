@@ -1,6 +1,6 @@
 {
   "name": "baldurs-gate3-mod-manager",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A foundation for scalable desktop apps",
   "keywords": [
     "Baldur's",
@@ -29,6 +29,7 @@
     "typecheck": "pnpm typecheck:node && pnpm typecheck:web",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
+    "dev:debug": "pnpm run dev --sourcemap --remote-debugging-port=9222",
     "build": "pnpm build:clean && pnpm build:net pnpm typecheck && electron-vite build",
     "build:net": "node ./scripts/buildDotnet.js",
     "build:clean": "node ./scripts/clean.js",
