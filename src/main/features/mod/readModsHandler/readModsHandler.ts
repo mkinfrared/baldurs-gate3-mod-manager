@@ -8,39 +8,32 @@ import createWorker from "./worker?nodeWorker";
 const manager = new WorkerManager<ReadDataWorker>(createWorker, 1);
 
 const readModsHandler = async (filePaths: string[]) => {
-  try {
-    const modsData = await Promise.all(
-      filePaths.map(manager.worker.startGetModData),
-    );
+  const modsData = await Promise.all(
+    filePaths.map(manager.worker.startGetModData),
+  );
 
-    const modsInfo = await Promise.all(
-      modsData.map(async ({ filePath, pakFileData }) => {
-        const result: ReadModResult = {
-          filePath,
-        };
+  const modsInfo = await Promise.all(
+    modsData.map(async ({ filePath, pakFileData }) => {
+      const result: ReadModResult = {
+        filePath,
+      };
 
-        // TODO assume one mod per archive
-        const [pakFile] = pakFileData;
+      // TODO assume one mod per archive
+      const [pakFile] = pakFileData;
 
-        if (!pakFile?.data) {
-          return result;
-        }
-
-        const modInfo = await getModInfoFromBytes(
-          pakFile.data,
-          pakFile.fileName,
-        );
-
-        result.info = modInfo;
-
+      if (!pakFile?.data) {
         return result;
-      }),
-    );
+      }
 
-    return modsInfo;
-  } catch (e) {
-    console.error(e);
-  }
+      const modInfo = await getModInfoFromBytes(pakFile.data, pakFile.fileName);
+
+      result.info = modInfo;
+
+      return result;
+    }),
+  );
+
+  return modsInfo;
 };
 
 export { readModsHandler };

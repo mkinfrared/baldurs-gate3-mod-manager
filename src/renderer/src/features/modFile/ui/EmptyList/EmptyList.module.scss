@@ -11,9 +11,18 @@
 
   .header {
     margin-bottom: 2rem;
+    place-self: center;
+  }
+
+  .button {
+    place-self: center;
   }
 
   > input {
     display: none;
+  }
+
+  .error {
+    padding-bottom: 5rem;
   }
 }

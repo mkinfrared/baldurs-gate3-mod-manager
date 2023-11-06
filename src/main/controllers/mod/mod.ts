@@ -1,3 +1,5 @@
+import { TRPCError } from "@trpc/server";
+
 import {
   deleteModsHandler,
   getInstalledModsHandler,
@@ -17,7 +19,15 @@ import {
 const readMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
   const { input } = opts;
 
-  return readModsHandler(input);
+  try {
+    return readModsHandler(input);
+  } catch (e: any) {
+    throw new TRPCError({
+      cause: e.cause,
+      code: "NOT_FOUND",
+      message: e.message,
+    });
+  }
 });
 
 const installMods = t.procedure
@@ -48,7 +58,19 @@ const toggleActiveMod = t.procedure.input(stringValidation).mutation((opts) => {
   return toggleActiveModHandler(input);
 });
 
-const getInstalledMods = t.procedure.query(() => getInstalledModsHandler());
+const getInstalledMods = t.procedure.query(async () => {
+  try {
+    const result = await getInstalledModsHandler();
+
+    return result;
+  } catch (e: any) {
+    throw new TRPCError({
+      cause: e.cause,
+      code: "BAD_REQUEST",
+      message: e.message,
+    });
+  }
+});
 
 const modController = {
   readMods,

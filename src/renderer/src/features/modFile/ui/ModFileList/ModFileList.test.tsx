@@ -1,12 +1,22 @@
 import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { withQueryProvider } from "@renderer/shared/lib/helpers/testUtils";
 
 import { ModFileList } from "./ModFileList";
 
 describe("<ModFileList />", () => {
-  const Component = <ModFileList />;
+  const acceptedFileTypes = ["zip", "rar"];
+  const onFilesSelect = vi.fn();
+  const zipFiles = null;
+
+  const Component = (
+    <ModFileList
+      acceptedFileTypes={acceptedFileTypes}
+      onFilesSelect={onFilesSelect}
+      zipFiles={zipFiles}
+    />
+  );
 
   it("should be defined", () => {
     expect(ModFileList).toBeDefined();

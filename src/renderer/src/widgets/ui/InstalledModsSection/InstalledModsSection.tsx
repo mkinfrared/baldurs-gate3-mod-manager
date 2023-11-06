@@ -1,20 +1,27 @@
-import { Suspense } from "react";
+// import { Suspense } from "react";
+
+import { useRef } from "react";
 
 import { InstalledModsList } from "@renderer/features/modSettingsFile";
+import { SuspenseError } from "@renderer/shared/components";
+import { classNames } from "@renderer/shared/lib/helpers";
+import { Loading } from "@renderer/shared/ui";
 
 import css from "./InstalledModsSection.module.scss";
 import { InstalledModsSectionProps } from "./InstalledModsSection.type";
 
 const InstalledModsSection = ({ className }: InstalledModsSectionProps) => {
-  const classNames = [css.InstalledModsSection, className]
-    .filter(Boolean)
-    .join(" ");
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={classNames} data-testid="InstalledModsSection">
-      <Suspense fallback={<div>Loading..</div>}>
+    <div
+      className={classNames(css.InstalledModsSection, className)}
+      data-testid="InstalledModsSection"
+      ref={ref}
+    >
+      <SuspenseError loadingFallback={<Loading />}>
         <InstalledModsList />
-      </Suspense>
+      </SuspenseError>
     </div>
   );
 };
