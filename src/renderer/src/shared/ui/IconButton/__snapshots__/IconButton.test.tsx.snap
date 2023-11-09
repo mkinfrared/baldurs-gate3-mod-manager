@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<IconButton /> > should match the snapshot 1`] = `
+<div>
+  <button
+    class="IconButton Button contained primary"
+    data-testid="IconButton"
+    type="button"
+  >
+    <svg
+      class="Spinner spinner"
+    >
+      bars.svg
+    </svg>
+  </button>
+</div>
+`;

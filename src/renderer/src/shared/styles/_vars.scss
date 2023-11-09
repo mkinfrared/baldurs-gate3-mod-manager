@@ -7,3 +7,15 @@
     outline-offset: 0;
   }
 }
+
+@mixin theme($value: "dark") {
+  @if $value == "light" {
+    @at-root [data-theme="light"] & {
+      @content;
+    }
+  } @else if $value == "dark" {
+    @at-root [data-theme="dark"] & {
+      @content;
+    }
+  }
+}

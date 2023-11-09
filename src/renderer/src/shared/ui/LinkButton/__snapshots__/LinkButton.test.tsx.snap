@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<LinkButton /> > should match the snapshot 1`] = `
+<div>
+  <a
+    class="LinkButton button contained primary"
+    data-testid="LinkButton"
+  />
+</div>
+`;

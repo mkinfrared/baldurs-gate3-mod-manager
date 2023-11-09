@@ -1,4 +1,4 @@
-export { default as Button } from "./Button";
+export { Button } from "./Button";
 
 export { default as Card } from "./Card";
 
@@ -14,7 +14,15 @@ export { default as FakeButton } from "./FakeButton";
 
 export { default as Heading } from "./Heading";
 
+export { IconButton } from "./IconButton";
+
+export type { IconButtonProps } from "./IconButton";
+
 export { default as LazyImage } from "./LazyImage";
+
+export { default as LinkButton } from "./LinkButton";
+
+export type { LinkButtonProps } from "./LinkButton";
 
 export { default as Loading } from "./Loading";
 

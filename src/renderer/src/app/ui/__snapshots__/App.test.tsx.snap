@@ -12,7 +12,7 @@ exports[`<App/> > should match the snapshot 1`] = `
         data-testid="AppNavBar"
       >
         <a
-          href="/baldurs-gate-3"
+          href="/BG3"
         >
           <img
             alt="Baldur's Gate 3 Logo"

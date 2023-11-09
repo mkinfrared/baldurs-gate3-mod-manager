@@ -6,12 +6,12 @@ import {
   ElementType,
 } from "react";
 
-import { ButtonOwnProps } from "@renderer/shared/ui/Button";
+import { ButtonProps } from "../Button";
 
 type AnchorAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type LinkOwnProps = AnchorAttributes &
-  Omit<ButtonOwnProps, "buttonRef"> & {
+  Omit<ButtonProps, "buttonRef"> & {
     type?: "button" | "text";
   };
 
