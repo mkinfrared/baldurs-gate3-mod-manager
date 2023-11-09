@@ -22,6 +22,14 @@ const getModInfo = (fileName: string, base64?: string | null) => {
   const cheerioAPI = load(content, { xmlMode: true, decodeEntities: false });
   const moduleInfo = cheerioAPI("#ModuleInfo");
 
+  const version =
+    moduleInfo.find("#Version").attr("value") ||
+    moduleInfo.find("#Version64").attr("value");
+
+  const versionType =
+    moduleInfo.find("#Version").attr("type") ||
+    moduleInfo.find("#Version64").attr("type");
+
   modInfo.author = moduleInfo.find("#Author").attr("value");
 
   modInfo.folder = moduleInfo.find("#Folder").attr("value");
@@ -32,9 +40,9 @@ const getModInfo = (fileName: string, base64?: string | null) => {
 
   modInfo.uuid = moduleInfo.find("#UUID").attr("value");
 
-  modInfo.version = moduleInfo.find("#Version").attr("value");
+  modInfo.version = version;
 
-  modInfo.versionType = moduleInfo.find("#Version").attr("type");
+  modInfo.versionType = versionType;
 
   return modInfo;
 };
