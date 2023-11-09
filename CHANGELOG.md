@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.4.4 (2023-11-09)
+
+
+### Bug Fixes
+
+* version and version type are empty ([#115](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/115)) ([d24ef53](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/d24ef537ce1281adf1f0bec445681814ba644f48))
+
+
 ## 1.4.3 (2023-11-06)
 
 
