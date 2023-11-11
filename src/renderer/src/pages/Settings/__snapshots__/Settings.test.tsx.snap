@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Settings /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="Settings"
+    data-testid="Settings"
+  >
+    Settings works!!
+  </div>
+</div>
+`;

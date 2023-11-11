@@ -11,8 +11,8 @@ import { ButtonProps } from "../Button";
 type AnchorAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type LinkOwnProps = AnchorAttributes &
-  Omit<ButtonProps, "buttonRef"> & {
-    type?: "button" | "text";
+  Omit<ButtonProps, "ref"> & {
+    as?: "button" | "text" | "icon";
   };
 
 export type DistributiveOmit<T, K extends keyof any> = T extends any

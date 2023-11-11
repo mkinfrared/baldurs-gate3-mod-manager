@@ -15,10 +15,10 @@ const Link: OverridableComponent<LinkTypeMap> = (props: LinkProps) => {
   const { component = "a", ...ownProps } = props as any;
 
   const {
+    as = "text",
     color = "primary",
     children,
     className,
-    type = "text",
     variant = "contained",
     ...rest
   } = ownProps as LinkOwnProps;
@@ -50,7 +50,7 @@ const Link: OverridableComponent<LinkTypeMap> = (props: LinkProps) => {
 
   const Component = component;
 
-  if (type === "text") {
+  if (as === "text") {
     return (
       <Component
         {...rest}
@@ -62,11 +62,15 @@ const Link: OverridableComponent<LinkTypeMap> = (props: LinkProps) => {
     );
   }
 
-  classes.push(css.button);
+  if (as === "icon") {
+    classes.push(css.icon);
+  } else {
+    classes.push(css.button);
+  }
 
   return (
     <Component {...rest} className={classNames(...classes)} data-testid="Link">
-      <span className={css.content}>{children}</span>
+      {children}
     </Component>
   );
 };

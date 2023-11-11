@@ -1,5 +1,5 @@
 import { classNames } from "@renderer/shared/lib/helpers";
-import { InstalledModsSection, ModFileSection } from "@renderer/widgets/ui";
+import { InstalledModsSection, ModFileSection } from "@renderer/widgets";
 
 import css from "./BaldursGate3.module.scss";
 import { BaldursGate3Props } from "./BaldursGate3.type";

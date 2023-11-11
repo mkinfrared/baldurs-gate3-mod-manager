@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<GameNavLink /> > should match the snapshot 1`] = `
+<div>
+  <a
+    class="Link GameNavLink outlined primary icon"
+    data-testid="Link"
+    href="/foobar"
+  >
+    <svg>
+      bell.svg
+    </svg>
+  </a>
+</div>
+`;
