@@ -24,7 +24,7 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
         {data?.installedMods.length ? (
           data?.installedMods.map((mod, index) => (
             <InstalledMod
-              key={mod.uuid ?? mod.name}
+              key={mod.uuid ?? (mod.name || index)}
               mod={mod}
               position={index + 1}
             />

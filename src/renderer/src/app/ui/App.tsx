@@ -6,8 +6,7 @@ import { AppRoutes } from "@renderer/routes";
 import ErrorBoundary from "@renderer/shared/components/ErrorBoundary";
 import { trpc, trpcClient } from "@renderer/shared/lib/helpers";
 import { useTheme } from "@renderer/shared/lib/hooks";
-import { Heading } from "@renderer/shared/ui";
-import { AppNavBar } from "@renderer/widgets/ui";
+import { AppNavBar, GameNavBar } from "@renderer/widgets";
 
 import css from "./App.module.scss";
 
@@ -41,9 +40,7 @@ const App = () => {
                 <AppNavBar className={css.navBar} />
               </aside>
               <main>
-                <div className={css.version}>
-                  <Heading variant="h4">{APP_VERSION}</Heading>
-                </div>
+                <GameNavBar className={css.gameNavBar} />
                 <AppRoutes />
               </main>
             </div>

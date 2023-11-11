@@ -1,15 +1,14 @@
 import { render } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
 
-import { BaldursGate3 } from "./BaldursGate3";
+import { GameNavBar } from "./GameNavBar";
 
-vi.mock("@renderer/widgets");
+vi.mock("./ui");
 
-describe("<BaldursGate3 />", () => {
-  const Component = <BaldursGate3 />;
+describe("<GameNavBar />", () => {
+  const Component = <GameNavBar />;
 
   it("should be defined", () => {
-    expect(BaldursGate3).toBeDefined();
+    expect(GameNavBar).toBeDefined();
   });
 
   it("should match the snapshot", () => {
@@ -20,7 +19,7 @@ describe("<BaldursGate3 />", () => {
 
   it("should contain a data test id", () => {
     const { getByTestId } = render(Component);
-    const element = getByTestId("BaldursGate3");
+    const element = getByTestId("GameNavBar");
 
     expect(element).toBeDefined();
   });
