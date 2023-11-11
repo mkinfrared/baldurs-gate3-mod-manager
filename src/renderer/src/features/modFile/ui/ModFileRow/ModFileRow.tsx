@@ -8,6 +8,7 @@ import { ModFileRowProps } from "./ModFileRow.type";
 const ModFileRow = ({
   className,
   currentModVersion,
+  game,
   modName,
   modVersion,
   modFilePath,
@@ -20,6 +21,7 @@ const ModFileRow = ({
     <span>{modVersion}</span>
     <ModFileButton
       modPath={modFilePath}
+      game={game}
       currentModVersion={currentModVersion}
       modVersion={modVersion}
     />

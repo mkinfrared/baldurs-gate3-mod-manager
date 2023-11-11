@@ -3,11 +3,12 @@ import path from "path";
 
 import { ArchiveReader, libarchiveWasm } from "libarchive-wasm";
 
+import { GameKey } from "@main/shared/config";
 import { isPak } from "@main/shared/lib/helpers/fileExtension";
 
 import { copyPakFile } from "../copyPakFile";
 
-const extractContents = async (filePath: string) => {
+const extractContents = async (filePath: string, key: GameKey) => {
   const data = await readFile(filePath);
   const mod = await libarchiveWasm();
   const reader = new ArchiveReader(mod, new Int8Array(data));
@@ -26,7 +27,7 @@ const extractContents = async (filePath: string) => {
       const fileName = path.basename(pathname);
 
       if (entryData) {
-        await copyPakFile(fileName, Buffer.from(entryData));
+        await copyPakFile(fileName, Buffer.from(entryData), key);
       }
 
       pakFiles.push(fileName);

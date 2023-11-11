@@ -18,7 +18,8 @@ describe("<InstalledMod />", () => {
   };
 
   const position = 42;
-  const Component = <InstalledMod mod={mod} position={position} />;
+  const game = "BG3";
+  const Component = <InstalledMod mod={mod} game={game} position={position} />;
 
   it("should be defined", () => {
     expect(InstalledMod).toBeDefined();

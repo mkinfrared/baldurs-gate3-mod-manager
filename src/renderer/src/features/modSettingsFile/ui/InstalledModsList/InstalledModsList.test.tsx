@@ -6,7 +6,8 @@ import { withQueryProvider } from "@renderer/shared/lib/helpers/testUtils";
 import { InstalledModsList } from "./InstalledModsList";
 
 describe("<InstalledModsList />", () => {
-  const Component = <InstalledModsList />;
+  const game = "BG3";
+  const Component = <InstalledModsList game={game} />;
 
   it("should be defined", () => {
     expect(InstalledModsList).toBeDefined();

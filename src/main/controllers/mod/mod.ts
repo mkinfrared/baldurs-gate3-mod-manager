@@ -9,18 +9,21 @@ import {
   toggleActiveModHandler,
 } from "@main/features/mod";
 import { t } from "@main/shared/lib/helpers";
+import { gameKeyValidation } from "@main/shared/lib/helpers/validation";
 
 import {
-  modInfoArrayValidation,
-  stringArrayValidation,
-  stringValidation,
+  deleteModsValidation,
+  installModsValidation,
+  readModsValidation,
+  reorderModsValidation,
+  toggleModsValidation,
 } from "./validation";
 
-const readMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
-  const { input } = opts;
+const readMods = t.procedure.input(readModsValidation).mutation((opts) => {
+  const { files, gameKey } = opts.input;
 
   try {
-    return readModsHandler(input);
+    return readModsHandler(files, gameKey);
   } catch (e: any) {
     throw new TRPCError({
       cause: e.cause,
@@ -31,46 +34,51 @@ const readMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
 });
 
 const installMods = t.procedure
-  .input(stringArrayValidation)
+  .input(installModsValidation)
   .mutation((opts) => {
-    const { input } = opts;
+    const { files, gameKey } = opts.input;
 
-    return installModsHandler(input);
+    return installModsHandler(files, gameKey);
   });
 
-const deleteMods = t.procedure.input(stringArrayValidation).mutation((opts) => {
-  const { input } = opts;
+const deleteMods = t.procedure.input(deleteModsValidation).mutation((opts) => {
+  const { files, gameKey } = opts.input;
 
-  return deleteModsHandler(input);
+  return deleteModsHandler(files, gameKey);
 });
 
 const reorderActiveMods = t.procedure
-  .input(modInfoArrayValidation)
+  .input(reorderModsValidation)
   .mutation((opts) => {
-    const { input } = opts;
+    const { mods, gameKey } = opts.input;
 
-    return reorderActiveModsHandler(input);
+    return reorderActiveModsHandler(mods, gameKey);
   });
 
-const toggleActiveMod = t.procedure.input(stringValidation).mutation((opts) => {
-  const { input } = opts;
+const toggleActiveMod = t.procedure
+  .input(toggleModsValidation)
+  .mutation((opts) => {
+    const { file, gameKey } = opts.input;
 
-  return toggleActiveModHandler(input);
-});
+    return toggleActiveModHandler(file, gameKey);
+  });
 
-const getInstalledMods = t.procedure.query(async () => {
-  try {
-    const result = await getInstalledModsHandler();
+const getInstalledMods = t.procedure
+  .input(gameKeyValidation)
+  .query(async (opts) => {
+    try {
+      const { input } = opts;
+      const result = await getInstalledModsHandler(input);
 
-    return result;
-  } catch (e: any) {
-    throw new TRPCError({
-      cause: e.cause,
-      code: "BAD_REQUEST",
-      message: e.message,
-    });
-  }
-});
+      return result;
+    } catch (e: any) {
+      throw new TRPCError({
+        cause: e.cause,
+        code: "BAD_REQUEST",
+        message: e.message,
+      });
+    }
+  });
 
 const modController = {
   readMods,

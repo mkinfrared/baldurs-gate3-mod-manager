@@ -5,7 +5,8 @@ import { withQueryProvider } from "@renderer/shared/lib/helpers/testUtils";
 import { ModFileForm } from "./ModFileForm";
 
 describe("<ModFileForm />", () => {
-  const Component = <ModFileForm />;
+  const game = "BG3";
+  const Component = <ModFileForm game={game} />;
 
   it("should be defined", () => {
     expect(ModFileForm).toBeDefined();

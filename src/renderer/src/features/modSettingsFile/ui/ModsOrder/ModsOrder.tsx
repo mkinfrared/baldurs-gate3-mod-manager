@@ -15,8 +15,8 @@ import { InstalledMod } from "../InstalledMod";
 
 import css from "./ModsOrder.module.scss";
 import { ModsOrderProps } from "./ModsOrder.type";
-
-const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
+// TODO check
+const ModsOrder = ({ className, mods = [], game }: ModsOrderProps) => {
   const utils = trpc.useContext();
 
   const { mutate } = trpc.mod.reorderActiveMods.useMutation({
@@ -32,11 +32,11 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
       const previousData = utils.mod.getInstalledMods.getData();
 
       // Optimistically update to the new value
-      utils.mod.getInstalledMods.setData(undefined, (oldData) => {
+      utils.mod.getInstalledMods.setData(game, (oldData) => {
         const installedMods = oldData?.installedMods ?? [];
         const activeMods = oldData?.activeMods ?? [];
 
-        const newActiveMods = values
+        const newActiveMods = values.mods
           .map((value) => activeMods.find(({ uuid }) => uuid === value.uuid))
           .filter(Boolean);
 
@@ -49,7 +49,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
     // If the mutation fails,
     // use the context returned from onMutate to roll back
     onError: (_, __, context) => {
-      utils.mod.getInstalledMods.setData(undefined, context?.previousData);
+      utils.mod.getInstalledMods.setData(game, context?.previousData);
     },
     // Always refetch after error or success:
     onSettled: () => {
@@ -93,7 +93,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
       return;
     }
 
-    mutate(items);
+    mutate({ mods: items, gameKey: game });
   };
 
   return (
@@ -132,6 +132,7 @@ const ModsOrder = ({ className, mods = [] }: ModsOrderProps) => {
                       >
                         <InstalledMod
                           className={css.installedMod}
+                          game={game}
                           mod={mod}
                           position={index + 1}
                         />

@@ -10,7 +10,10 @@ import { Loading } from "@renderer/shared/ui";
 import css from "./InstalledModsSection.module.scss";
 import { InstalledModsSectionProps } from "./InstalledModsSection.type";
 
-const InstalledModsSection = ({ className }: InstalledModsSectionProps) => {
+const InstalledModsSection = ({
+  className,
+  game,
+}: InstalledModsSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
@@ -20,7 +23,7 @@ const InstalledModsSection = ({ className }: InstalledModsSectionProps) => {
       ref={ref}
     >
       <SuspenseError loadingFallback={<Loading />}>
-        <InstalledModsList />
+        <InstalledModsList game={game} />
       </SuspenseError>
     </div>
   );
