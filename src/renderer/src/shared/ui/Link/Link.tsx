@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { classNames } from "@renderer/shared/lib/helpers";
-import { ButtonColors, ButtonVariants } from "@renderer/shared/ui/Button";
+
+import { ButtonColors, ButtonVariants } from "../Button";
 
 import css from "./Link.module.scss";
 import {
@@ -32,6 +33,7 @@ const Link: OverridableComponent<LinkTypeMap> = (props: LinkProps) => {
   const variants: Record<ButtonVariants, string> = {
     contained: css.contained,
     transparent: css.transparent,
+    outlined: css.outlined,
   };
 
   const getButtonColor = (currentColor: ButtonColors) => colors[currentColor];

@@ -1,0 +1,16 @@
+@use "../Button/Button.module.scss";
+@use "../IconButton/IconButton.module.scss";
+
+.LinkButton {
+  text-decoration: none;
+
+  &.button {
+    @extend %button;
+
+    gap: 10px;
+  }
+
+  &.icon {
+    @extend %icon-button;
+  }
+}

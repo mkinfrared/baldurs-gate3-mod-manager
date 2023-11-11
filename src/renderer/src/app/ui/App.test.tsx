@@ -5,6 +5,8 @@ import { withQueryProvider } from "@renderer/shared/lib/helpers/testUtils";
 
 import { App } from "./App";
 
+vi.mock("@renderer/shared/lib/hooks");
+
 describe("<App/>", () => {
   const Component = <App />;
 

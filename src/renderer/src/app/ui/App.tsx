@@ -5,6 +5,7 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { AppRoutes } from "@renderer/routes";
 import ErrorBoundary from "@renderer/shared/components/ErrorBoundary";
 import { trpc, trpcClient } from "@renderer/shared/lib/helpers";
+import { useTheme } from "@renderer/shared/lib/hooks";
 import { Heading } from "@renderer/shared/ui";
 import { AppNavBar } from "@renderer/widgets/ui";
 
@@ -24,6 +25,8 @@ const queryClient = new QueryClient({
  */
 
 const App = () => {
+  useTheme("app-theme");
+
   useEffect(() => {
     document.title = `Baldur's Gate 3 Mod Manager v${APP_VERSION}`;
   }, []);
