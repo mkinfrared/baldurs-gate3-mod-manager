@@ -1,8 +1,10 @@
+import { GameKey } from "@main/shared/config";
+
 import { getCurrentSettings } from "../getCurrentSettings";
 import { saveModSettings } from "../saveModSettings";
 
-const removeDuplicates = async () => {
-  const settings = await getCurrentSettings();
+const removeDuplicates = async (key: GameKey) => {
+  const settings = await getCurrentSettings(key);
   const orderUUIDs = new Set<string>();
   const listUUIDs = new Set<string>();
 
@@ -36,7 +38,7 @@ const removeDuplicates = async () => {
     }
   });
 
-  await saveModSettings(settings.xml());
+  await saveModSettings(settings.xml(), key);
 };
 
 export { removeDuplicates };

@@ -1,9 +1,11 @@
+import { GameKey } from "@main/shared/config";
+
 import { getCurrentSettings } from "../getCurrentSettings";
 import { removeDuplicates } from "../removeDuplicates";
 import { saveModSettings } from "../saveModSettings";
 
-const verifyModSettings = async () => {
-  const settings = await getCurrentSettings();
+const verifyModSettings = async (key: GameKey) => {
+  const settings = await getCurrentSettings(key);
   const modOrder = settings("#ModOrder");
   const modList = settings("#Mods");
 
@@ -15,9 +17,9 @@ const verifyModSettings = async () => {
     modList.append("<children></children>");
   }
 
-  await saveModSettings(settings.xml());
+  await saveModSettings(settings.xml(), key);
 
-  await removeDuplicates();
+  await removeDuplicates(key);
 };
 
 export { verifyModSettings };

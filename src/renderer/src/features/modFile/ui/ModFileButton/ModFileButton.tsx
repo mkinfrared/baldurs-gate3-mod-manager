@@ -4,7 +4,7 @@ import { Button } from "@renderer/shared/ui";
 import css from "./ModFileButton.module.scss";
 import { ModFileButtonProps } from "./ModFileButton.type";
 
-const ModFileButton = ({ className, modPath }: ModFileButtonProps) => {
+const ModFileButton = ({ className, game, modPath }: ModFileButtonProps) => {
   const utils = trpc.useContext();
 
   const { mutateAsync, isLoading, isSuccess } =
@@ -23,7 +23,9 @@ const ModFileButton = ({ className, modPath }: ModFileButtonProps) => {
   };
 
   const handleClick = () => {
-    mutateAsync([modPath]);
+    const files = [modPath];
+
+    mutateAsync({ files, gameKey: game });
   };
 
   return (

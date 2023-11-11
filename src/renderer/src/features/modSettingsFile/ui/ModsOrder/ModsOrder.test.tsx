@@ -6,7 +6,8 @@ import { withQueryProvider } from "@renderer/shared/lib/helpers/testUtils";
 import { ModsOrder } from "./ModsOrder";
 
 describe("<ModsOrder />", () => {
-  const Component = <ModsOrder />;
+  const game = "BG3";
+  const Component = <ModsOrder game={game} />;
 
   it("should be defined", () => {
     expect(ModsOrder).toBeDefined();

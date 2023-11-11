@@ -7,7 +7,9 @@
     "Gate",
     "3",
     "Mod",
-    "Manager"
+    "Manager",
+    "mac",
+    "os"
   ],
   "homepage": "https://github.com/mkinfrared/baldurs-gate3-mod-manager",
   "bugs": {

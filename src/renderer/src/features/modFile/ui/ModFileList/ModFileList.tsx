@@ -6,6 +6,7 @@ import { ModFileListProps } from "./ModFileList.type";
 const ModFileList = ({
   acceptedFileTypes,
   error,
+  game,
   onFilesSelect,
   zipFiles,
 }: ModFileListProps) => {
@@ -13,6 +14,7 @@ const ModFileList = ({
     return zipFiles?.map(({ filePath, info }, index) => (
       <ModFileRow
         key={info?.uuid ?? index}
+        game={game}
         modFilePath={filePath}
         modName={info?.name ?? info?.fileName}
         modVersion={info?.version}

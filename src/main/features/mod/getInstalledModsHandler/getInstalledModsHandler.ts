@@ -3,13 +3,15 @@ import { resolve } from "path";
 
 import { getModInfoFromFile } from "@main/entities/mod";
 import { getCurrentSettings } from "@main/entities/modSettingsFile";
-import { BALDURS_GATE3 } from "@main/shared/config";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings } from "@main/shared/lib/helpers";
 import { isPak } from "@main/shared/lib/helpers/fileExtension";
 
 import { InstalledMod } from "./getInstalledModsHandler.type";
 
-const getInstalledModsHandler = async () => {
-  const settings = await getCurrentSettings();
+const getInstalledModsHandler = async (key: GameKey) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
+  const settings = await getCurrentSettings(key);
   const activeNodeUUID = new Set<string>();
 
   settings("#ModOrder children node").each((_, element) => {
@@ -25,12 +27,12 @@ const getInstalledModsHandler = async () => {
     });
   });
 
-  const files = await readdir(BALDURS_GATE3.MODS_DIRECTORY);
+  const files = await readdir(MODS_DIRECTORY);
   const allModsMap = new Map<string, InstalledMod>();
 
   const allModsList = await Promise.all(
     files.filter(isPak).map(async (file) => {
-      const filePath = resolve(BALDURS_GATE3.MODS_DIRECTORY, file);
+      const filePath = resolve(MODS_DIRECTORY, file);
       const modInfo = await getModInfoFromFile(filePath);
       const mod = modInfo as InstalledMod;
 

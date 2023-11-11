@@ -6,7 +6,8 @@ import { InstalledModsSection } from "./InstalledModsSection";
 vi.mock("@renderer/features/modSettingsFile");
 
 describe("<InstalledModsSection />", () => {
-  const Component = <InstalledModsSection />;
+  const game = "BG3";
+  const Component = <InstalledModsSection game={game} />;
 
   it("should be defined", () => {
     expect(InstalledModsSection).toBeDefined();

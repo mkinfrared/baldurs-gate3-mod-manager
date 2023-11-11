@@ -1,3 +1,5 @@
+import { Game } from "@renderer/shared/types";
+
 import { EmptyListProps } from "../EmptyList";
 import { ReadModResult } from "../ModFileForm/ModFileForm.type";
 
@@ -10,5 +12,6 @@ export type ModFileListProps = Pick<
    */
   className?: string;
   error?: string;
+  game: Game;
   zipFiles: ReadModResult | null;
 };

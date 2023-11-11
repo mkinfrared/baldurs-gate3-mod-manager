@@ -8,15 +8,15 @@ import { EmptyList } from "../EmptyList";
 import css from "./InstalledModsList.module.scss";
 import { InstalledModsListProps } from "./InstalledModsList.type";
 
-const InstalledModsList = ({ className }: InstalledModsListProps) => {
-  const { data } = trpc.mod.getInstalledMods.useQuery();
+const InstalledModsList = ({ className, game }: InstalledModsListProps) => {
+  const { data } = trpc.mod.getInstalledMods.useQuery(game);
 
   return (
     <div
       className={classNames(css.InstalledModsList, className)}
       data-testid="InstalledModsList"
     >
-      <ModsOrder mods={data?.activeMods} />
+      <ModsOrder game={game} mods={data?.activeMods} />
       <div>
         <StickyBlock>
           <Heading variant="h3">Installed Mods</Heading>
@@ -25,6 +25,7 @@ const InstalledModsList = ({ className }: InstalledModsListProps) => {
           data?.installedMods.map((mod, index) => (
             <InstalledMod
               key={mod.uuid ?? (mod.name || index)}
+              game={game}
               mod={mod}
               position={index + 1}
             />

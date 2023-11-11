@@ -6,12 +6,14 @@ import { ToggleActiveModButton } from "./ToggleActiveModButton";
 
 describe("<ToggleActiveModButton />", () => {
   const fileName = "foobar";
+  const game = "BG3";
   const isActive = true;
   const uuid = "modUUID";
 
   const Component = (
     <ToggleActiveModButton
       fileName={fileName}
+      game={game}
       isActive={isActive}
       uuid={uuid}
     />

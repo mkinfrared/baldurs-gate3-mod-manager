@@ -4,8 +4,8 @@ import path from "path";
 
 import { load } from "cheerio";
 
-import { BALDURS_GATE3 } from "@main/shared/config";
-import { netConnection } from "@main/shared/lib/helpers";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings, netConnection } from "@main/shared/lib/helpers";
 
 import { ModInfo } from "./getModInfo.type";
 
@@ -54,11 +54,13 @@ const getModInfoFromFile = async (filePath: string) => {
   return getModInfo(fileName, response);
 };
 
-const getModInfoFromBytes = async (fileData: Int8Array, fileName: string) => {
-  const tempFileName = path.resolve(
-    BALDURS_GATE3.MODS_DIRECTORY,
-    `temp-${randomUUID()}.pak`,
-  );
+const getModInfoFromBytes = async (
+  fileData: Int8Array,
+  fileName: string,
+  key: GameKey,
+) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
+  const tempFileName = path.resolve(MODS_DIRECTORY, `temp-${randomUUID()}.pak`);
 
   try {
     await writeFile(tempFileName, fileData);

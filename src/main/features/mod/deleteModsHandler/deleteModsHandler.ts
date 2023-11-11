@@ -2,16 +2,19 @@ import fs from "fs/promises";
 import path from "path";
 
 import { deactivateMod, getModInfoFromFile } from "@main/entities/mod";
-import { BALDURS_GATE3 } from "@main/shared/config";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings } from "@main/shared/lib/helpers";
 
-const deleteModsHandler = async (fileNames: string[]) => {
+const deleteModsHandler = async (fileNames: string[], key: GameKey) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
+
   await Promise.all(
     fileNames.map(async (file) => {
-      const filePath = path.resolve(BALDURS_GATE3.MODS_DIRECTORY, file);
+      const filePath = path.resolve(MODS_DIRECTORY, file);
       const modInfo = await getModInfoFromFile(filePath);
 
       if (modInfo.uuid) {
-        await deactivateMod(modInfo.uuid);
+        await deactivateMod(modInfo.uuid, key);
       }
 
       await fs.rm(filePath);
