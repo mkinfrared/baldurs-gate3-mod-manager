@@ -10,6 +10,6 @@ export { lazyImport } from "./lazyImport";
 
 export { mergeRefs } from "./mergeRefs";
 
-export * from "./typeGuards";
-
 export { trpcClient, trpc } from "./trpc";
+
+export * from "./typeGuards";

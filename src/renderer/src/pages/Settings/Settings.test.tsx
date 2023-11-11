@@ -3,7 +3,8 @@ import { render } from "@testing-library/react";
 import { Settings } from "./Settings";
 
 describe("<Settings />", () => {
-  const Component = <Settings />;
+  const game = "BG3";
+  const Component = <Settings game={game} />;
 
   it("should be defined", () => {
     expect(Settings).toBeDefined();
