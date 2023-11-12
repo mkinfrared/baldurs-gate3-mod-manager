@@ -5,4 +5,5 @@ export type GameKey = "BG3";
 export type GameSettings = {
   MODS_DIRECTORY: string;
   MOD_SETTINGS_PATH: string;
+  BACKUP_DIR: string;
 };

@@ -22,6 +22,7 @@ const SettingsForm = ({ className, game }: SettingsFormProps) => {
     defaultValues: {
       modSettingsFile: data?.MOD_SETTINGS_PATH,
       modsDirectory: data?.MODS_DIRECTORY,
+      backupDirectory: data?.BACKUP_DIR,
     },
     mode: "onTouched",
   });
@@ -45,6 +46,10 @@ const SettingsForm = ({ className, game }: SettingsFormProps) => {
       <TextField
         {...register("modsDirectory")}
         label="Path to Mods directory"
+      />
+      <TextField
+        {...register("backupDirectory")}
+        label="Path to Backup directory"
       />
       <Button
         className={css.submitButton}

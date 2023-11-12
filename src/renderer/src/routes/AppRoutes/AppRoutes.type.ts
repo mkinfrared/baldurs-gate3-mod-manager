@@ -5,6 +5,7 @@ export const APP_ROUTES = {
     "BG3",
     {},
     {
+      BACKUP: route("backup"),
       SETTINGS: route("settings"),
     },
   ),
