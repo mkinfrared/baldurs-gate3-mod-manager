@@ -1,5 +1,6 @@
+import Delete from "@renderer/shared/assets/icons/delete-forever.svg";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
-import { Button, Card } from "@renderer/shared/ui";
+import { Card, IconButton } from "@renderer/shared/ui";
 
 import { ToggleActiveModButton } from "../ToggleActiveModButton";
 
@@ -40,14 +41,15 @@ const InstalledMod = ({
         isActive={mod.isActive}
         uuid={mod.uuid}
       />
-      <Button
-        onClick={handleDelete}
-        loading={isLoading}
+      <IconButton
+        className={css.delete}
+        color="error"
         disabled={isSuccess}
-        color="primary"
+        loading={isLoading}
+        onClick={handleDelete}
       >
-        Delete
-      </Button>
+        <Delete />
+      </IconButton>
     </Card>
   );
 };
