@@ -1,6 +1,8 @@
 import { delay } from "@common/lib";
+import Copy from "@renderer/shared/assets/icons/copy.svg";
 import Delete from "@renderer/shared/assets/icons/delete-forever.svg";
 import Restore from "@renderer/shared/assets/icons/restore.svg";
+import Tick from "@renderer/shared/assets/icons/tick.svg";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
 import { Card, IconButton, Text } from "@renderer/shared/ui";
 
@@ -34,14 +36,40 @@ const Backup = ({ className, filePath, game, name }: BackupProps) => {
       },
     });
 
+  const {
+    mutateAsync: copy,
+    isLoading: isCopying,
+    isSuccess: isCopied,
+  } = trpc.backup.copyBackupContent.useMutation({
+    onMutate: async (variables) => {
+      await delay(850);
+
+      return variables;
+    },
+    onSuccess: async (content) => {
+      if (content) {
+        await navigator.clipboard.writeText(content);
+      }
+    },
+  });
+
   return (
     <Card className={classNames(css.Backup, className)} data-testid="Backup">
       <Text>{name}</Text>
       <IconButton
-        className={css.restore}
+        className={css.copy}
+        onClick={() => copy(filePath)}
+        loading={isCopying}
+        disabled={isCopying}
+        title="Copy content to buffer"
+      >
+        {isCopied ? <Tick /> : <Copy />}
+      </IconButton>
+      <IconButton
         onClick={() => restore({ file: filePath, gameKey: game })}
         loading={isRestoring}
         disabled={isRestoring}
+        title="Restore modsettings from this backup"
       >
         <Restore />
       </IconButton>
@@ -50,6 +78,7 @@ const Backup = ({ className, filePath, game, name }: BackupProps) => {
         onClick={() => deleteBackup(filePath)}
         loading={isDeleting}
         disabled={isDeleting}
+        title="Delete from file system"
       >
         <Delete />
       </IconButton>
