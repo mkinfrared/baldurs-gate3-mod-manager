@@ -1,4 +1,4 @@
-import Delete from "@renderer/shared/assets/icons/delete-forever.svg";
+import Bin from "@renderer/shared/assets/icons/rubbish-bin.svg";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
 import { Card, IconButton } from "@renderer/shared/ui";
 
@@ -47,8 +47,10 @@ const InstalledMod = ({
         disabled={isSuccess}
         loading={isLoading}
         onClick={handleDelete}
+        variant="contained"
+        title="Delete"
       >
-        <Delete />
+        <Bin />
       </IconButton>
     </Card>
   );
