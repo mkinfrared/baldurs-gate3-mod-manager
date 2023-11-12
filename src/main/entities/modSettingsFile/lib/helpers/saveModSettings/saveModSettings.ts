@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+import fs from "fs";
 
 import prettier from "prettier";
 
@@ -23,7 +23,7 @@ const saveModSettings = async (content: string, key: GameKey) => {
     ...extraSettings,
   });
 
-  return fs.writeFile(MOD_SETTINGS_PATH, formattedContent);
+  return fs.writeFileSync(MOD_SETTINGS_PATH, formattedContent);
 };
 
 export { saveModSettings };

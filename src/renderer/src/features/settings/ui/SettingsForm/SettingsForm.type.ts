@@ -11,4 +11,5 @@ export type SettingsFormProps = {
 export type SettingsFormValues = {
   modSettingsFile: string;
   modsDirectory: string;
+  backupDirectory: string;
 };

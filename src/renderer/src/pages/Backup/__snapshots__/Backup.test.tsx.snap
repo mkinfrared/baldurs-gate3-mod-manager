@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Backup /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="Backup"
+    data-testid="Backup"
+  >
+    <h1
+      class="Heading"
+      data-testid="Heading"
+    >
+      Backups
+    </h1>
+  </div>
+</div>
+`;

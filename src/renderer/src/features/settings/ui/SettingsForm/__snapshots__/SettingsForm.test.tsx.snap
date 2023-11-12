@@ -62,6 +62,34 @@ exports[`<SettingsForm /> > should match the snapshot 1`] = `
         />
       </div>
     </label>
+    <label
+      class="TextField"
+      data-testid="TextField"
+    >
+      <h4
+        class="Heading label"
+        data-testid="Heading"
+      >
+        Path to Backup directory
+      </h4>
+      <div
+        class="container"
+      >
+        <input
+          name="backupDirectory"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="errorContainer"
+      >
+        <p
+          class="Text error small"
+          data-testid="Text"
+        />
+      </div>
+    </label>
     <button
       class="Button submitButton contained success"
       data-testid="Button"

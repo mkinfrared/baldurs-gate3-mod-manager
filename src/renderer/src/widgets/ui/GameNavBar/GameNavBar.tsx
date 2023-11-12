@@ -1,5 +1,6 @@
 import { APP_ROUTES } from "@renderer/routes/AppRoutes/AppRoutes.type";
 import Collection from "@renderer/shared/assets/icons/collector.svg";
+import Database from "@renderer/shared/assets/icons/database.svg";
 import Gear from "@renderer/shared/assets/icons/gear.svg";
 import { classNames } from "@renderer/shared/lib/helpers";
 
@@ -14,6 +15,9 @@ const GameNavBar = ({ className }: GameNavBarProps) => (
   >
     <GameNavLink to={APP_ROUTES.BaldursGate3.path}>
       <Collection />
+    </GameNavLink>
+    <GameNavLink to={APP_ROUTES.BaldursGate3.BACKUP.path}>
+      <Database />
     </GameNavLink>
     <GameNavLink to={APP_ROUTES.BaldursGate3.SETTINGS.path}>
       <Gear />

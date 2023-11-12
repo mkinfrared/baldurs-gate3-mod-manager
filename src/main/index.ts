@@ -3,12 +3,12 @@ import { join } from "path";
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { BrowserWindow, app, ipcMain, shell } from "electron";
 
-import { verifyModSettings } from "@main/entities/modSettingsFile";
 import { saveSettings } from "@main/shared/config";
 
 import icon from "../../resources/icon.png?asset";
 
 import { checkForUpdates } from "./checkForUpdates";
+import { init } from "./init";
 import { appRouter } from "./router";
 import { ipcRequestHandler, netConnection } from "./shared/lib/helpers";
 import { IpcRequest } from "./shared/types";
@@ -77,7 +77,9 @@ app.whenReady().then(() => {
   const win = createWindow();
 
   win.on("focus", () => {
-    verifyModSettings("BG3");
+    if (app.isPackaged) {
+      init();
+    }
   });
 
   checkForUpdates(win);

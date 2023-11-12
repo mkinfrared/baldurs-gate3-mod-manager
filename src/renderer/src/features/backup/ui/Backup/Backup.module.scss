@@ -1,0 +1,14 @@
+.Backup {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-5);
+
+  .restore {
+    margin-left: auto;
+  }
+
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+}
