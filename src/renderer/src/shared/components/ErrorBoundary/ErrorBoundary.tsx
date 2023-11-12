@@ -4,6 +4,7 @@ import Error from "../Error";
 
 type ErrorBoundaryProps = {
   children?: ReactNode;
+  reset?: () => void;
 };
 
 type ErrorBoundaryState = {
@@ -11,11 +12,21 @@ type ErrorBoundaryState = {
   error: Error | null;
 };
 
+const initialState: ErrorBoundaryState = {
+  hasError: false,
+  error: null,
+};
+
 class ErrorBoundary extends Component<ErrorBoundaryProps, any> {
-  state: ErrorBoundaryState = {
-    hasError: false,
-    error: null,
-  };
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+
+    const { reset } = this.props;
+
+    this.state = { ...initialState };
+
+    reset?.();
+  }
 
   static getDerivedStateFromError() {
     return { hasError: true };

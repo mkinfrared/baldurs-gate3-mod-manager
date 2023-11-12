@@ -1,12 +1,18 @@
+import Bin from "@renderer/shared/assets/icons/rubbish-bin.svg";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
-import { Button, Card } from "@renderer/shared/ui";
+import { Card, IconButton } from "@renderer/shared/ui";
 
 import { ToggleActiveModButton } from "../ToggleActiveModButton";
 
 import css from "./InstalledMod.module.scss";
 import { InstalledModProps } from "./InstalledMod.type";
 
-const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
+const InstalledMod = ({
+  className,
+  game,
+  mod,
+  position,
+}: InstalledModProps) => {
   const utils = trpc.useContext();
 
   const { mutate, isLoading, isSuccess } = trpc.mod.deleteMods.useMutation({
@@ -16,7 +22,9 @@ const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
   });
 
   const handleDelete = () => {
-    mutate([mod.fileName]);
+    const files = [mod.fileName];
+
+    mutate({ files, gameKey: game });
   };
 
   return (
@@ -29,17 +37,21 @@ const InstalledMod = ({ className, mod, position }: InstalledModProps) => {
       <span>{mod.version}</span>
       <ToggleActiveModButton
         fileName={mod.fileName}
+        game={game}
         isActive={mod.isActive}
         uuid={mod.uuid}
       />
-      <Button
-        onClick={handleDelete}
-        loading={isLoading}
+      <IconButton
+        className={css.delete}
+        color="error"
         disabled={isSuccess}
-        color="primary"
+        loading={isLoading}
+        onClick={handleDelete}
+        variant="contained"
+        title="Delete"
       >
-        Delete
-      </Button>
+        <Bin />
+      </IconButton>
     </Card>
   );
 };

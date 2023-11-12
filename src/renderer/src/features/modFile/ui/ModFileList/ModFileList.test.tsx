@@ -7,12 +7,14 @@ import { ModFileList } from "./ModFileList";
 
 describe("<ModFileList />", () => {
   const acceptedFileTypes = ["zip", "rar"];
+  const game = "BG3";
   const onFilesSelect = vi.fn();
   const zipFiles = null;
 
   const Component = (
     <ModFileList
       acceptedFileTypes={acceptedFileTypes}
+      game={game}
       onFilesSelect={onFilesSelect}
       zipFiles={zipFiles}
     />

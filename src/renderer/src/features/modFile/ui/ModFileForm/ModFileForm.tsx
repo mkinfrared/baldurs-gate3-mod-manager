@@ -9,7 +9,7 @@ import { ModFileRow } from "../ModFileRow";
 import css from "./ModFileForm.module.scss";
 import { ModFileFormProps, ReadModResult } from "./ModFileForm.type";
 
-const ModFileForm = ({ className }: ModFileFormProps) => {
+const ModFileForm = ({ className, game }: ModFileFormProps) => {
   const acceptedFileTypes = ["zip", "rar", "7z"];
   const [zipFiles, setZipFiles] = useState<ReadModResult>([]);
   const { isLoading, mutateAsync, error } = trpc.mod.readMods.useMutation();
@@ -32,7 +32,7 @@ const ModFileForm = ({ className }: ModFileFormProps) => {
           }),
         );
 
-      const result = await mutateAsync(filePaths);
+      const result = await mutateAsync({ files: filePaths, gameKey: game });
 
       setZipFiles(result);
     } catch (e) {
@@ -77,6 +77,7 @@ const ModFileForm = ({ className }: ModFileFormProps) => {
     >
       <ModFileRow
         className={css.header}
+        game={game}
         modFilePath=""
         modName="Modification Name"
         modVersion="Version"
@@ -86,6 +87,7 @@ const ModFileForm = ({ className }: ModFileFormProps) => {
       ) : (
         <ModFileList
           acceptedFileTypes={acceptedFileTypes}
+          game={game}
           error={error?.message}
           onFilesSelect={handleFilesSelect}
           zipFiles={zipFiles}

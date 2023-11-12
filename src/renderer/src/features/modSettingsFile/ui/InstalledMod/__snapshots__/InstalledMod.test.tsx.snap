@@ -18,7 +18,7 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
       v3.4.7
     </span>
     <button
-      class="Button ToggleActiveModButton contained secondary"
+      class="Button ToggleActiveModButton contained primary"
       data-testid="Button"
       type="button"
     >
@@ -30,12 +30,13 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
       <span
         class="content"
       >
-        Activate
+        Enable
       </span>
     </button>
     <button
-      class="Button contained primary"
-      data-testid="Button"
+      class="IconButton Button delete contained error"
+      data-testid="IconButton"
+      title="Delete"
       type="button"
     >
       <svg
@@ -43,11 +44,9 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
       >
         bars.svg
       </svg>
-      <span
-        class="content"
-      >
-        Delete
-      </span>
+      <svg>
+        rubbish-bin.svg
+      </svg>
     </button>
   </div>
 </div>

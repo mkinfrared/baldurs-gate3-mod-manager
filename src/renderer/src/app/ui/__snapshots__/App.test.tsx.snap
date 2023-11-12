@@ -12,7 +12,7 @@ exports[`<App/> > should match the snapshot 1`] = `
         data-testid="AppNavBar"
       >
         <a
-          href="/baldurs-gate-3"
+          href="/BG3"
         >
           <img
             alt="Baldur's Gate 3 Logo"
@@ -22,16 +22,39 @@ exports[`<App/> > should match the snapshot 1`] = `
       </div>
     </aside>
     <main>
-      <div
-        class="version"
+      <nav
+        class="GameNavBar gameNavBar"
+        data-testid="GameNavBar"
       >
-        <h4
-          class="Heading"
-          data-testid="Heading"
+        <a
+          aria-current="page"
+          class="Link GameNavLink contained primary icon active"
+          data-testid="Link"
+          href="/BG3"
         >
-          9.9.9
-        </h4>
-      </div>
+          <svg>
+            collector.svg
+          </svg>
+        </a>
+        <a
+          class="Link GameNavLink outlined primary icon"
+          data-testid="Link"
+          href="/BG3/backup"
+        >
+          <svg>
+            database.svg
+          </svg>
+        </a>
+        <a
+          class="Link GameNavLink outlined primary icon"
+          data-testid="Link"
+          href="/BG3/settings"
+        >
+          <svg>
+            gear.svg
+          </svg>
+        </a>
+      </nav>
       <div
         class="BaldursGate3"
         data-testid="BaldursGate3"

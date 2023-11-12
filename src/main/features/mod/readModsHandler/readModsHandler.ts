@@ -1,4 +1,5 @@
 import { getModInfoFromBytes } from "@main/entities/mod";
+import { GameKey } from "@main/shared/config";
 import { WorkerManager } from "@main/shared/lib/helpers";
 
 import { ReadModResult } from "./readModsHandler.type";
@@ -7,7 +8,7 @@ import createWorker from "./worker?nodeWorker";
 
 const manager = new WorkerManager<ReadDataWorker>(createWorker, 1);
 
-const readModsHandler = async (filePaths: string[]) => {
+const readModsHandler = async (filePaths: string[], key: GameKey) => {
   const modsData = await Promise.all(
     filePaths.map(manager.worker.startGetModData),
   );
@@ -25,7 +26,11 @@ const readModsHandler = async (filePaths: string[]) => {
         return result;
       }
 
-      const modInfo = await getModInfoFromBytes(pakFile.data, pakFile.fileName);
+      const modInfo = await getModInfoFromBytes(
+        pakFile.data,
+        pakFile.fileName,
+        key,
+      );
 
       result.info = modInfo;
 

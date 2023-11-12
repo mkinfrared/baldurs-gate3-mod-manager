@@ -6,7 +6,8 @@ import { ModFileSection } from "./ModFileSection";
 vi.mock("@renderer/features/modFile");
 
 describe("<ModFileSection />", () => {
-  const Component = <ModFileSection />;
+  const game = "BG3";
+  const Component = <ModFileSection game={game} />;
 
   it("should be defined", () => {
     expect(ModFileSection).toBeDefined();

@@ -16,7 +16,6 @@
   .label {
     cursor: pointer;
     margin-bottom: 0.6rem;
-    text-transform: capitalize;
   }
 
   .container {
@@ -69,7 +68,7 @@
 
       &:-webkit-autofill::selection,
       &::selection {
-        background-color: var(--violet-1);
+        background-color: var(--secondary-5);
         color: var(--white);
       }
 

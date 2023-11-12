@@ -7,6 +7,7 @@ import { ToggleActiveModButtonProps } from "./ToggleActiveModButton.type";
 const ToggleActiveModButton = ({
   className,
   fileName,
+  game,
   isActive,
   uuid,
 }: ToggleActiveModButtonProps) => {
@@ -23,7 +24,7 @@ const ToggleActiveModButton = ({
   }
 
   const handleClick = () => {
-    mutateAsync(fileName);
+    mutateAsync({ file: fileName, gameKey: game });
   };
 
   return (
@@ -32,9 +33,9 @@ const ToggleActiveModButton = ({
       loading={isLoading}
       disabled={isLoading}
       onClick={handleClick}
-      color={isActive ? "error" : "secondary"}
+      color={isActive ? "secondary" : "primary"}
     >
-      {isActive ? "Deactivate" : "Activate"}
+      {isActive ? "Disable" : "Enable"}
     </Button>
   );
 };

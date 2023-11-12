@@ -1,6 +1,6 @@
-@import "../../styles/button-base.scss";
+@import "../../styles/button-base";
 
-.Button {
+%button {
   @extend %button-base;
 
   &.loading {
@@ -16,7 +16,7 @@
 
   .content {
     align-items: center;
-    display: inline-block;
+    display: inline-flex;
     gap: 1rem;
     max-height: var(--text-height);
     white-space: nowrap;
@@ -32,4 +32,8 @@
   .spinner {
     transition: opacity 250ms ease-in-out;
   }
+}
+
+.Button {
+  @extend %button;
 }

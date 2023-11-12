@@ -1,9 +1,21 @@
 @mixin focus-visible {
-  outline: 0.2rem solid var(--primary-6);
+  outline: 0.2rem solid var(--warning-6);
   outline-offset: 0.2rem;
   transition: outline-offset 250ms ease-out;
 
   &:active {
     outline-offset: 0;
+  }
+}
+
+@mixin theme($value: "dark") {
+  @if $value == "light" {
+    @at-root [data-theme="light"] & {
+      @content;
+    }
+  } @else if $value == "dark" {
+    @at-root [data-theme="dark"] & {
+      @content;
+    }
   }
 }

@@ -4,8 +4,10 @@ import path from "path";
 
 import { load } from "cheerio";
 
-import { BALDURS_GATE3 } from "@main/shared/config";
-import { netConnection } from "@main/shared/lib/helpers";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings, netConnection } from "@main/shared/lib/helpers";
+
+import { getConventionalVersion } from "../getConventionalVersion";
 
 import { ModInfo } from "./getModInfo.type";
 
@@ -22,13 +24,15 @@ const getModInfo = (fileName: string, base64?: string | null) => {
   const cheerioAPI = load(content, { xmlMode: true, decodeEntities: false });
   const moduleInfo = cheerioAPI("#ModuleInfo");
 
-  const version =
+  const versionInt =
     moduleInfo.find("#Version").attr("value") ||
     moduleInfo.find("#Version64").attr("value");
 
   const versionType =
     moduleInfo.find("#Version").attr("type") ||
     moduleInfo.find("#Version64").attr("type");
+
+  const version = getConventionalVersion(versionInt);
 
   modInfo.author = moduleInfo.find("#Author").attr("value");
 
@@ -54,11 +58,13 @@ const getModInfoFromFile = async (filePath: string) => {
   return getModInfo(fileName, response);
 };
 
-const getModInfoFromBytes = async (fileData: Int8Array, fileName: string) => {
-  const tempFileName = path.resolve(
-    BALDURS_GATE3.MODS_DIRECTORY,
-    `temp-${randomUUID()}.pak`,
-  );
+const getModInfoFromBytes = async (
+  fileData: Int8Array,
+  fileName: string,
+  key: GameKey,
+) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
+  const tempFileName = path.resolve(MODS_DIRECTORY, `temp-${randomUUID()}.pak`);
 
   try {
     await writeFile(tempFileName, fileData);

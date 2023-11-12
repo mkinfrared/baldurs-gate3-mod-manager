@@ -1,0 +1,111 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<SettingsForm /> > should match the snapshot 1`] = `
+<div>
+  <form
+    class="SettingsForm"
+    data-testid="SettingsForm"
+  >
+    <label
+      class="TextField"
+      data-testid="TextField"
+    >
+      <h4
+        class="Heading label"
+        data-testid="Heading"
+      >
+        Path to modsettings.lsx
+      </h4>
+      <div
+        class="container"
+      >
+        <input
+          name="modSettingsFile"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="errorContainer"
+      >
+        <p
+          class="Text error small"
+          data-testid="Text"
+        />
+      </div>
+    </label>
+    <label
+      class="TextField"
+      data-testid="TextField"
+    >
+      <h4
+        class="Heading label"
+        data-testid="Heading"
+      >
+        Path to Mods directory
+      </h4>
+      <div
+        class="container"
+      >
+        <input
+          name="modsDirectory"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="errorContainer"
+      >
+        <p
+          class="Text error small"
+          data-testid="Text"
+        />
+      </div>
+    </label>
+    <label
+      class="TextField"
+      data-testid="TextField"
+    >
+      <h4
+        class="Heading label"
+        data-testid="Heading"
+      >
+        Path to Backup directory
+      </h4>
+      <div
+        class="container"
+      >
+        <input
+          name="backupDirectory"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="errorContainer"
+      >
+        <p
+          class="Text error small"
+          data-testid="Text"
+        />
+      </div>
+    </label>
+    <button
+      class="Button submitButton contained success"
+      data-testid="Button"
+      type="submit"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <span
+        class="content"
+      >
+        Save
+      </span>
+    </button>
+  </form>
+</div>
+`;

@@ -1,9 +1,11 @@
 import fs from "fs/promises";
 import path from "path";
 
-import { BALDURS_GATE3 } from "@main/shared/config";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings } from "@main/shared/lib/helpers";
 
-const copyPakFile = (fileName: string, content: Buffer) => {
+const copyPakFile = (fileName: string, content: Buffer, key: GameKey) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
   /*
    * some files from node-stream-zip package
    * might end up having slashes in file name
@@ -12,7 +14,7 @@ const copyPakFile = (fileName: string, content: Buffer) => {
    * and take only the file name
    */
   const safeFileName = fileName.split("/").at(-1);
-  const pathResult = path.resolve(BALDURS_GATE3.MODS_DIRECTORY, safeFileName!);
+  const pathResult = path.resolve(MODS_DIRECTORY, safeFileName!);
 
   return fs.writeFile(pathResult, content);
 };

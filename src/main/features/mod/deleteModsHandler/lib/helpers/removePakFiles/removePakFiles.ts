@@ -1,12 +1,15 @@
 import fs from "fs/promises";
 import path from "path";
 
-import { BALDURS_GATE3 } from "@main/shared/config";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings } from "@main/shared/lib/helpers";
 
-const removePakFiles = async (pakFiles: string[]) => {
+const removePakFiles = async (pakFiles: string[], key: GameKey) => {
+  const { MODS_DIRECTORY } = getGameSettings(key);
+
   await Promise.all(
     pakFiles.map(async (file) => {
-      const filePath = path.join(BALDURS_GATE3.MODS_DIRECTORY, file);
+      const filePath = path.join(MODS_DIRECTORY, file);
 
       try {
         await fs.rm(filePath);

@@ -4,8 +4,9 @@
 %button-base {
   --background: var(--primary-4);
   --border-color: var(--primary-4);
+  --text-color: var(--primary-text-2);
 
-  @media (prefers-color-scheme: light) {
+  @include v.theme("light") {
     --background: var(--primary-7);
     --border-color: var(--primary-7);
   }
@@ -13,15 +14,15 @@
   align-items: center;
   background-color: var(--background);
   border: 1px solid var(--border-color);
-  border-radius: 2px;
-  color: var(--primary-text-2);
+  border-radius: 4px;
+  color: var(--text-color);
   cursor: pointer;
   display: inline-flex;
-  font-size: 14px;
+  font-size: var(--spacing-7);
   font-weight: 500;
   justify-content: center;
   line-height: 140%;
-  min-width: 4.4rem;
+  min-width: var(--spacing-12);
   overflow: hidden;
   padding: var(--spacing-4) var(--spacing-6);
   -webkit-tap-highlight-color: transparent; // removes blue highlight in mobile chrome
@@ -34,9 +35,9 @@
 
   svg {
     fill: currentcolor;
-    max-height: 1.4rem;
+    height: 1lh;
     transition: fill 250ms var(--ease-1);
-    width: 1.4rem;
+    width: 1lh;
   }
 
   &:active {
@@ -45,6 +46,7 @@
 
   &:disabled {
     cursor: auto;
+    filter: grayscale(0.6);
     pointer-events: none;
   }
 
@@ -57,7 +59,7 @@
       --background: var(--primary-5);
       --border-color: var(--primary-5);
 
-      @media (prefers-color-scheme: light) {
+      @include v.theme("light") {
         --background: var(--primary-6);
         --border-color: var(--primary-6);
       }
@@ -66,21 +68,16 @@
     &:active {
       --border-color: var(--primary-6);
 
-      @media (prefers-color-scheme: light) {
+      @include v.theme("light") {
         --border-color: var(--primary-5);
       }
-    }
-
-    &:disabled {
-      filter: grayscale(0.8);
-      pointer-events: none;
     }
 
     &.secondary {
       --background: var(--secondary-4);
       --border-color: var(--secondary-4);
 
-      @media (prefers-color-scheme: light) {
+      @include v.theme("light") {
         --background: var(--secondary-7);
         --border-color: var(--secondary-7);
       }
@@ -89,7 +86,7 @@
         --background: var(--secondary-5);
         --border-color: var(--secondary-5);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
           --background: var(--secondary-6);
           --border-color: var(--secondary-6);
         }
@@ -98,7 +95,7 @@
       &:active {
         --border-color: var(--secondary-6);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
           --border-color: var(--secondary-5);
         }
       }
@@ -108,7 +105,7 @@
       --background: var(--danger-4);
       --border-color: var(--danger-4);
 
-      @media (prefers-color-scheme: light) {
+      @include v.theme("light") {
         --background: var(--danger-7);
         --border-color: var(--danger-7);
       }
@@ -117,7 +114,7 @@
         --background: var(--danger-5);
         --border-color: var(--danger-5);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
           --background: var(--danger-6);
           --border-color: var(--danger-6);
         }
@@ -126,7 +123,7 @@
       &:active {
         --border-color: var(--danger-6);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
           --border-color: var(--danger-5);
         }
       }
@@ -136,7 +133,7 @@
       --background: var(--success-4);
       --border-color: var(--success-4);
 
-      @media (prefers-color-scheme: light) {
+      @include v.theme("light") {
         --background: var(--success-7);
         --border-color: var(--success-7);
       }
@@ -145,7 +142,7 @@
         --background: var(--success-5);
         --border-color: var(--success-5);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
           --background: var(--success-6);
           --border-color: var(--success-6);
         }
@@ -154,7 +151,127 @@
       &:active {
         --border-color: var(--success-6);
 
-        @media (prefers-color-scheme: light) {
+        @include v.theme("light") {
+          --border-color: var(--success-5);
+        }
+      }
+    }
+  }
+
+  &.outlined {
+    --background: transparent;
+    --text-color: var(--primary-4);
+
+    @include v.theme("light") {
+      --border-color: var(--primary-7);
+      --text-color: var(--primary-7);
+    }
+
+    &:hover {
+      --text-color: var(--primary-5);
+      --border-color: var(--primary-5);
+
+      @include v.theme("light") {
+        --text-color: var(--primary-6);
+        --border-color: var(--primary-6);
+      }
+    }
+
+    &:active {
+      --border-color: var(--primary-6);
+      --text-color: var(--primary-6);
+
+      @include v.theme("light") {
+        --border-color: var(--primary-5);
+        --text-color: var(--primary-5);
+      }
+    }
+
+    &.secondary {
+      --border-color: var(--secondary-4);
+      --text-color: var(--secondary-4);
+
+      @include v.theme("light") {
+        --border-color: var(--secondary-7);
+        --text-color: var(--secondary-7);
+      }
+
+      &:hover {
+        --border-color: var(--secondary-5);
+        --text-color: var(--secondary-5);
+
+        @include v.theme("light") {
+          --border-color: var(--secondary-6);
+          --text-color: var(--secondary-6);
+        }
+      }
+
+      &:active {
+        --border-color: var(--secondary-6);
+        --text-color: var(--secondary-6);
+
+        @include v.theme("light") {
+          --border-color: var(--secondary-5);
+          --text-color: var(--secondary-5);
+        }
+      }
+    }
+
+    &.error {
+      --text-color: var(--danger-4);
+      --border-color: var(--danger-4);
+
+      @include v.theme("light") {
+        --text-color: var(--danger-7);
+        --border-color: var(--danger-7);
+      }
+
+      &:hover {
+        --text-color: var(--danger-5);
+        --border-color: var(--danger-5);
+
+        @include v.theme("light") {
+          --text-color: var(--danger-6);
+          --border-color: var(--danger-6);
+        }
+      }
+
+      &:active {
+        --text-color: var(--danger-6);
+        --border-color: var(--danger-6);
+
+        @include v.theme("light") {
+          --text-color: var(--danger-5);
+          --border-color: var(--danger-5);
+        }
+      }
+    }
+
+    &.success {
+      --text-color: var(--success-4);
+      --border-color: var(--success-4);
+
+      @include v.theme("light") {
+        --text-color: var(--success-7);
+        --border-color: var(--success-7);
+      }
+
+      &:hover {
+        --text-color: var(--success-5);
+        --border-color: var(--success-5);
+
+        @include v.theme("light") {
+          --text-color: var(--success-6);
+          --border-color: var(--success-6);
+        }
+      }
+
+      &:active {
+        --text-color: var(--success-6);
+        --border-color: var(--success-6);
+
+        @include v.theme("light") {
+          --text-color: var(--success-5);
           --border-color: var(--success-5);
         }
       }
@@ -162,10 +279,54 @@
   }
 
   &.transparent {
-    --background: transparent;
-    --border-color: transparent;
+    @extend %button-base, .outlined;
 
-    &:hover {
+    &.transparent {
+      --border-color: transparent;
+
+      &:hover {
+        --border-color: transparent;
+      }
+
+      &:active {
+        --border-color: transparent;
+      }
+
+      &.secondary {
+        --border-color: transparent;
+
+        &:hover {
+          --border-color: transparent;
+        }
+
+        &:active {
+          --border-color: transparent;
+        }
+      }
+
+      &.error {
+        --border-color: transparent;
+
+        &:hover {
+          --border-color: transparent;
+        }
+
+        &:active {
+          --border-color: transparent;
+        }
+      }
+
+      &.success {
+        --border-color: transparent;
+
+        &:hover {
+          --border-color: transparent;
+        }
+
+        &:active {
+          --border-color: transparent;
+        }
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import { BaldursGate3 } from "./BaldursGate3";
 
-vi.mock("@renderer/widgets/ui");
+vi.mock("@renderer/widgets");
 
 describe("<BaldursGate3 />", () => {
   const Component = <BaldursGate3 />;

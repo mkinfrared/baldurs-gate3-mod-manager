@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 1.5.0 (2023-11-12)
+
+
+### Features
+
+* A backup feature has been added. This feature allows you to save your current modsettings.lsx prior to initiating any changes. It also gives you the option to restore from those saved backups or return to the default content. ([#122](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/122)) ([90b0a9e](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/90b0a9e1132d298d863d0b8293e28a46687fc13d))
+* A settings page has been introduced. This enables you to modify the locations of your game directories. ([#119](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/119)) ([fd24fc0](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/fd24fc044e7b65705887d1756f95587eeb027c58)) ([#121](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/121)) ([60243dc](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/60243dcf57c7fca73ef2b4c3997ea6be5549c10c))
+* Instead of integers, a conventional version number will now be displayed ([#123](https://github.com/mkinfrared/baldurs-gate3-mod-manager/issues/123)) ([ec24872](https://github.com/mkinfrared/baldurs-gate3-mod-manager/commit/ec2487233ff7874dfbc1542547a8bc0ea2ac8731))
+
+
 ## 1.4.4 (2023-11-09)
 
 

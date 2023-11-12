@@ -3,11 +3,12 @@ import { join } from "path";
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { BrowserWindow, app, ipcMain, shell } from "electron";
 
-import { verifyModSettings } from "@main/entities/modSettingsFile";
+import { saveSettings } from "@main/shared/config";
 
 import icon from "../../resources/icon.png?asset";
 
 import { checkForUpdates } from "./checkForUpdates";
+import { init } from "./init";
 import { appRouter } from "./router";
 import { ipcRequestHandler, netConnection } from "./shared/lib/helpers";
 import { IpcRequest } from "./shared/types";
@@ -75,7 +76,11 @@ app.whenReady().then(() => {
 
   const win = createWindow();
 
-  win.on("focus", verifyModSettings);
+  win.on("focus", () => {
+    if (app.isPackaged) {
+      init();
+    }
+  });
 
   checkForUpdates(win);
 
@@ -91,10 +96,18 @@ app.whenReady().then(() => {
 // explicitly with Cmd + Q.
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
+    saveSettings();
+
     netConnection.close();
 
     app.quit();
   }
+});
+
+app.on("quit", () => {
+  saveSettings();
+
+  netConnection.close();
 });
 
 // In this file you can include the rest of your app"s specific main process

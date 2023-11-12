@@ -5,8 +5,8 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { AppRoutes } from "@renderer/routes";
 import ErrorBoundary from "@renderer/shared/components/ErrorBoundary";
 import { trpc, trpcClient } from "@renderer/shared/lib/helpers";
-import { Heading } from "@renderer/shared/ui";
-import { AppNavBar } from "@renderer/widgets/ui";
+import { useTheme } from "@renderer/shared/lib/hooks";
+import { AppNavBar, GameNavBar } from "@renderer/widgets";
 
 import css from "./App.module.scss";
 
@@ -14,6 +14,10 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
+      retry: 3,
+      retryDelay: 1000,
+      cacheTime: 0,
+      staleTime: 0,
     },
   },
 });
@@ -24,6 +28,8 @@ const queryClient = new QueryClient({
  */
 
 const App = () => {
+  useTheme("app-theme");
+
   useEffect(() => {
     document.title = `Baldur's Gate 3 Mod Manager v${APP_VERSION}`;
   }, []);
@@ -38,9 +44,7 @@ const App = () => {
                 <AppNavBar className={css.navBar} />
               </aside>
               <main>
-                <div className={css.version}>
-                  <Heading variant="h4">{APP_VERSION}</Heading>
-                </div>
+                <GameNavBar className={css.gameNavBar} />
                 <AppRoutes />
               </main>
             </div>

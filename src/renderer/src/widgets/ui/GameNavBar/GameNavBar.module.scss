@@ -1,0 +1,6 @@
+.GameNavBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-5);
+}

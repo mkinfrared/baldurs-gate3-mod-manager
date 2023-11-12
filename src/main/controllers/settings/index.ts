@@ -1,0 +1,1 @@
+export { settingsController } from "./settings";

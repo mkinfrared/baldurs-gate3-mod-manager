@@ -1,13 +1,15 @@
-import fs from "fs/promises";
+import fs from "fs";
 
 import prettier from "prettier";
 
-import { BALDURS_GATE3 } from "@main/shared/config";
+import { GameKey } from "@main/shared/config";
+import { getGameSettings } from "@main/shared/lib/helpers";
 
-const saveModSettings = async (content: string) => {
+const saveModSettings = async (content: string, key: GameKey) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const xmlPlugin = await import("@prettier/plugin-xml");
+  const { MOD_SETTINGS_PATH } = getGameSettings(key);
 
   const extraSettings = {
     xmlWhitespaceSensitivity: "ignore",
@@ -21,7 +23,7 @@ const saveModSettings = async (content: string) => {
     ...extraSettings,
   });
 
-  return fs.writeFile(BALDURS_GATE3.MOD_SETTINGS_PATH, formattedContent);
+  return fs.writeFileSync(MOD_SETTINGS_PATH, formattedContent);
 };
 
 export { saveModSettings };

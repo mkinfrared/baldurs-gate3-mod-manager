@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Backup /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="Card Backup"
+    data-testid="Card"
+  >
+    <p
+      class="Text"
+      data-testid="Text"
+    >
+      foobar
+    </p>
+    <button
+      class="IconButton Button copy contained primary"
+      data-testid="IconButton"
+      title="Copy content to buffer"
+      type="button"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <svg>
+        copy.svg
+      </svg>
+    </button>
+    <button
+      class="IconButton Button contained primary"
+      data-testid="IconButton"
+      title="Restore modsettings from this backup"
+      type="button"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <svg>
+        restore.svg
+      </svg>
+    </button>
+    <button
+      class="IconButton Button contained error"
+      data-testid="IconButton"
+      title="Delete from file system"
+      type="button"
+    >
+      <svg
+        class="Spinner spinner"
+      >
+        bars.svg
+      </svg>
+      <svg>
+        rubbish-bin.svg
+      </svg>
+    </button>
+  </div>
+</div>
+`;

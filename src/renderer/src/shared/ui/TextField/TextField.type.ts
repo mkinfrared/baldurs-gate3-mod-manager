@@ -1,9 +1,4 @@
-import {
-  ChangeEventHandler,
-  FocusEventHandler,
-  ReactElement,
-  Ref,
-} from "react";
+import { ChangeEventHandler, FocusEventHandler, ReactElement } from "react";
 
 import { FakeButtonProps } from "@renderer/shared/ui/FakeButton";
 
@@ -23,10 +18,6 @@ export type TextFieldProps = {
    * name of the input
    */
   name?: string;
-  /**
-   * a ref to the input element
-   */
-  inputRef?: Ref<HTMLInputElement | null | undefined>;
   /**
    * a label text to be displayed above input field,
    * also acts as a label

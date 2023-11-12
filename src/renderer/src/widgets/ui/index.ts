@@ -1,5 +1,9 @@
-export * from "./AppNavBar";
+export { AppNavBar } from "./AppNavBar";
 
-export * from "./InstalledModsSection";
+export { BackupSection } from "./BackupSection";
 
-export * from "./ModFileSection";
+export { InstalledModsSection } from "./InstalledModsSection";
+
+export { GameNavBar } from "./GameNavBar";
+
+export { ModFileSection } from "./ModFileSection";
