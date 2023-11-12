@@ -9,7 +9,7 @@ const AppRoutes = () => (
     <Route path={APP_ROUTES.BaldursGate3.path} element={<BaldursGate3 />} />
     <Route
       path={APP_ROUTES.BaldursGate3.SETTINGS.path}
-      element={<Settings />}
+      element={<Settings game="BG3" />}
     />
     <Route path="*" element={<Navigate to={APP_ROUTES.BaldursGate3.path} />} />
   </Routes>

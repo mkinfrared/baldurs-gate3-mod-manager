@@ -1,10 +1,9 @@
-import { modController } from "./controllers";
+import { modController, settingsController } from "./controllers";
 import { t } from "./shared/lib/helpers";
 
 const appRouter = t.router({
-  mod: t.router({
-    ...modController,
-  }),
+  mod: t.router({ ...modController }),
+  settings: t.router({ ...settingsController }),
 });
 
 export type AppRouter = typeof appRouter;

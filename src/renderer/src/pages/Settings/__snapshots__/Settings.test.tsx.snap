@@ -2,11 +2,36 @@
 
 exports[`<Settings /> > should match the snapshot 1`] = `
 <div>
-  <div
+  <section
     class="Settings"
     data-testid="Settings"
   >
-    Settings works!!
-  </div>
+    <h1
+      class="Heading"
+      data-testid="Heading"
+    >
+      Settings
+    </h1>
+    <div
+      class="Error"
+      data-testid="Error"
+    >
+      <h3
+        class="Heading header"
+        data-testid="Heading"
+      >
+        <svg>
+          error.svg
+        </svg>
+        Error:
+      </h3>
+      <h4
+        class="Heading"
+        data-testid="Heading"
+      >
+        Unable to retrieve application context. Did you forget to wrap your App inside \`withTRPC\` HoC?
+      </h4>
+    </div>
+  </section>
 </div>
 `;
