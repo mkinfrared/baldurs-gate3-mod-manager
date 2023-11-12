@@ -3,7 +3,7 @@
 exports[`<ToggleActiveModButton /> > should match the snapshot 1`] = `
 <div>
   <button
-    class="Button ToggleActiveModButton contained error"
+    class="Button ToggleActiveModButton contained secondary"
     data-testid="Button"
     type="button"
   >
@@ -15,7 +15,7 @@ exports[`<ToggleActiveModButton /> > should match the snapshot 1`] = `
     <span
       class="content"
     >
-      Deactivate
+      Disable
     </span>
   </button>
 </div>

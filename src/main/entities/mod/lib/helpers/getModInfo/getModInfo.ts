@@ -7,6 +7,8 @@ import { load } from "cheerio";
 import { GameKey } from "@main/shared/config";
 import { getGameSettings, netConnection } from "@main/shared/lib/helpers";
 
+import { getConventionalVersion } from "../getConventionalVersion";
+
 import { ModInfo } from "./getModInfo.type";
 
 const getModInfo = (fileName: string, base64?: string | null) => {
@@ -22,13 +24,15 @@ const getModInfo = (fileName: string, base64?: string | null) => {
   const cheerioAPI = load(content, { xmlMode: true, decodeEntities: false });
   const moduleInfo = cheerioAPI("#ModuleInfo");
 
-  const version =
+  const versionInt =
     moduleInfo.find("#Version").attr("value") ||
     moduleInfo.find("#Version64").attr("value");
 
   const versionType =
     moduleInfo.find("#Version").attr("type") ||
     moduleInfo.find("#Version64").attr("type");
+
+  const version = getConventionalVersion(versionInt);
 
   modInfo.author = moduleInfo.find("#Author").attr("value");
 
