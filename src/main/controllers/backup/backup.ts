@@ -2,6 +2,7 @@ import { TRPCError } from "@trpc/server";
 
 import { isError } from "@common/lib";
 import {
+  copyBackupContentHandler,
   createBackupHandler,
   deleteBackupHandler,
   getBackupsHandler,
@@ -81,6 +82,24 @@ const deleteBackup = t.procedure.input(stringValidation).mutation((opts) => {
   }
 });
 
+const copyBackupContent = t.procedure
+  .input(stringValidation)
+  .mutation((opts) => {
+    const { input } = opts;
+
+    try {
+      return copyBackupContentHandler(input);
+    } catch (e) {
+      if (isError(e)) {
+        throw new TRPCError({
+          cause: e.cause,
+          code: "BAD_REQUEST",
+          message: e.message,
+        });
+      }
+    }
+  });
+
 const createBackup = t.procedure.input(gameKeyValidation).mutation((opts) => {
   const { input } = opts;
 
@@ -99,6 +118,7 @@ const createBackup = t.procedure.input(gameKeyValidation).mutation((opts) => {
 
 const backupController = {
   createBackup,
+  copyBackupContent,
   deleteBackup,
   getBackups,
   restoreDefaultSettings,
