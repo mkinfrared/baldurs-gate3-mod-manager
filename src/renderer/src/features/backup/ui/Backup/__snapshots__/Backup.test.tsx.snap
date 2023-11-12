@@ -54,7 +54,7 @@ exports[`<Backup /> > should match the snapshot 1`] = `
         bars.svg
       </svg>
       <svg>
-        delete-forever.svg
+        rubbish-bin.svg
       </svg>
     </button>
   </div>

@@ -36,6 +36,7 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
     <button
       class="IconButton Button delete contained error"
       data-testid="IconButton"
+      title="Delete"
       type="button"
     >
       <svg
@@ -44,7 +45,7 @@ exports[`<InstalledMod /> > should match the snapshot 1`] = `
         bars.svg
       </svg>
       <svg>
-        delete-forever.svg
+        rubbish-bin.svg
       </svg>
     </button>
   </div>

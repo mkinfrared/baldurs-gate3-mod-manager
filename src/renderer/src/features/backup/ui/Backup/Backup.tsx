@@ -1,8 +1,8 @@
 import { delay } from "@common/lib";
 import Copy from "@renderer/shared/assets/icons/copy.svg";
-import Delete from "@renderer/shared/assets/icons/delete-forever.svg";
+import Done from "@renderer/shared/assets/icons/done.svg";
 import Restore from "@renderer/shared/assets/icons/restore.svg";
-import Tick from "@renderer/shared/assets/icons/tick.svg";
+import Bin from "@renderer/shared/assets/icons/rubbish-bin.svg";
 import { classNames, trpc } from "@renderer/shared/lib/helpers";
 import { Card, IconButton, Text } from "@renderer/shared/ui";
 
@@ -63,7 +63,7 @@ const Backup = ({ className, filePath, game, name }: BackupProps) => {
         disabled={isCopying}
         title="Copy content to buffer"
       >
-        {isCopied ? <Tick /> : <Copy />}
+        {isCopied ? <Done /> : <Copy />}
       </IconButton>
       <IconButton
         onClick={() => restore({ file: filePath, gameKey: game })}
@@ -80,7 +80,7 @@ const Backup = ({ className, filePath, game, name }: BackupProps) => {
         disabled={isDeleting}
         title="Delete from file system"
       >
-        <Delete />
+        <Bin />
       </IconButton>
     </Card>
   );
